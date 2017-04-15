@@ -1,0 +1,13 @@
+icrperusa/interfaces/IPurchase.class
+icrperusa/utils/Module.class
+icrperusa/utils/Reports.class
+icrperusa/servlet/Test.class
+icrperusa/utils/NumberTOWords.class
+icrperusa/entity/Purchase.class
+icrperusa/businesslogical/BLConfig.class
+icrperusa/businesslogical/BLPurchase.class
+icrperusa/utils/Convert.class
+icrperusa/utils/RoundPlaces.class
+icrperusa/servlet/ToolsGuide.class
+icrperusa/dataaccess/Connect.class
+icrperusa/servlet/PurchaseGuide.class

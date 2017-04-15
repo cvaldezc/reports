@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.0.3.final using JasperReports Library version 6.0.3  -->
-<!-- 2017-04-11T14:49:43 -->
+<!-- 2017-04-15T13:29:42 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ordencompra" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="45f20af2-31f2-411f-8cc3-cd474d74173c">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="bdicrserver"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -157,16 +157,16 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font size="16" isBold="true"/>
+					<font fontName="SansSerif" size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ORDEN DE COMPRA]]></text>
 			</staticText>
 			<textField>
-				<reportElement positionType="Float" x="382" y="92" width="116" height="20" uuid="a826e6bc-4481-4e17-92c5-a2df4e130ef0">
+				<reportElement positionType="Float" x="382" y="91" width="116" height="20" uuid="a826e6bc-4481-4e17-92c5-a2df4e130ef0">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font size="16" isBold="true"/>
+					<font fontName="SansSerif" size="16" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{parcompra_id}]]></textFieldExpression>
 			</textField>
@@ -175,7 +175,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Documento:]]></text>
 			</staticText>
@@ -185,14 +185,14 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Pago:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" x="305" y="140" width="71" height="10" uuid="c89bf6fe-0204-4acd-9d01-83116dca396a"/>
 				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Moneda:]]></text>
 			</staticText>
@@ -202,14 +202,14 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Estado:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" x="305" y="160" width="71" height="10" uuid="9a366c5b-5bb0-4f70-8c9f-8d2f4f0b0db9"/>
 				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Contacto:]]></text>
 			</staticText>
@@ -219,25 +219,25 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Proyectos:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="25" y="130" width="84" height="10" uuid="96392b46-3122-42b8-9d48-7a5e36c0feba">
+				<reportElement positionType="Float" x="25" y="128" width="84" height="10" uuid="96392b46-3122-42b8-9d48-7a5e36c0feba">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cotizacion:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" x="25" y="140" width="84" height="10" uuid="b6aca60e-93ab-481c-8b7e-355c4f6dc4eb"/>
 				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha Registrado:]]></text>
 			</staticText>
@@ -247,16 +247,16 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha Traslado:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="25" y="170" width="84" height="10" uuid="3396adee-3581-435a-8087-303f3c072aef">
+				<reportElement positionType="Float" x="25" y="165" width="84" height="10" uuid="3396adee-3581-435a-8087-303f3c072aef">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Entrega:]]></text>
 			</staticText>
@@ -265,7 +265,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{documento}]]></textFieldExpression>
 			</textField>
@@ -276,7 +276,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{formapago}]]></textFieldExpression>
 			</textField>
@@ -285,7 +285,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{moneda}]]></textFieldExpression>
 			</textField>
@@ -296,7 +296,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
 			</textField>
@@ -305,7 +305,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{contacto}]]></textFieldExpression>
 			</textField>
@@ -316,7 +316,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{proyectos}]]></textFieldExpression>
 			</textField>
@@ -327,7 +327,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Proveedor:]]></text>
 			</staticText>
@@ -337,17 +337,17 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="7"/>
+					<font fontName="SansSerif" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{provruc}+" - "+$F{provrazonsocial}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="Float" x="112" y="130" width="180" height="10" uuid="a3cbbf05-c149-4e02-b444-46ac09d8c03b">
+				<reportElement positionType="Float" x="112" y="128" width="180" height="10" uuid="a3cbbf05-c149-4e02-b444-46ac09d8c03b">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<printWhenExpression><![CDATA[$F{cotizacion}!=null]]></printWhenExpression>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="7"/>
+					<font fontName="SansSerif" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cotizacion}]]></textFieldExpression>
 			</textField>
@@ -358,7 +358,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="7"/>
+					<font fontName="SansSerif" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{registrado}]]></textFieldExpression>
 			</textField>
@@ -367,19 +367,19 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="7"/>
+					<font fontName="SansSerif" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fechtraslado}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="Float" x="112" y="168" width="180" height="25" uuid="ad0119d1-ab59-45ba-af2e-4a9cd93f95cc">
+				<reportElement positionType="Float" x="112" y="165" width="180" height="25" uuid="ad0119d1-ab59-45ba-af2e-4a9cd93f95cc">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="7"/>
+					<font fontName="SansSerif" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lugentrega}]]></textFieldExpression>
 			</textField>
@@ -389,7 +389,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="7"/>
+					<font fontName="SansSerif" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{provdireccion}+" - "+$F{distrito}]]></textFieldExpression>
 			</textField>
@@ -579,7 +579,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				<text><![CDATA[Percepcion]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="528" y="204" width="40" height="10" forecolor="#FCFAFA" uuid="20cfb38e-ce94-4cd7-a4ea-44f13c6f61d5">
+				<reportElement positionType="Float" x="529" y="204" width="40" height="10" forecolor="#FCFAFA" uuid="20cfb38e-ce94-4cd7-a4ea-44f13c6f61d5">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<textElement>
@@ -701,7 +701,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<pen lineColor="#C94540"/>
 				</graphicElement>
 			</line>
-			<textField>
+			<textField pattern="#,###.00#;(#,###.00#-)">
 				<reportElement x="341" y="2" width="40" height="13" uuid="39db5f0e-71a2-418e-b60f-4642238ed9e8">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
@@ -721,7 +721,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{descuento}+"%"]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,###.00#;(#,###.00#)">
 				<reportElement x="528" y="2" width="40" height="13" uuid="fbeb5a11-1063-4548-b3c8-27f66121c5e9">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
@@ -731,7 +731,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				</textElement>
 				<textFieldExpression><![CDATA[Math.round(((Math.round($F{cantidad}.doubleValue()*($F{precio}.doubleValue()-(($F{precio}*$F{descuento}.doubleValue())/100))*100.0)/100.0)+(($F{perception}.doubleValue()*Math.round($F{cantidad}.doubleValue()*($F{precio}.doubleValue()-(($F{precio}*$F{descuento}.doubleValue())/100))*100.0)/100.0)/100))*100.0)/100.0]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,###.00#;(#,###.00#-)">
 				<reportElement x="385" y="2" width="35" height="13" uuid="81dd074c-852a-4c4f-aa88-4e741a70fbaf">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
@@ -743,7 +743,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="309" y="2" width="30" height="13" uuid="a0542bb2-4acf-440d-a266-60c9c8bffab5">
+				<reportElement x="307" y="2" width="30" height="13" uuid="a0542bb2-4acf-440d-a266-60c9c8bffab5">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
@@ -768,20 +768,22 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle" markup="html">
-					<font fontName="Arial" size="8"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{observaciones}.equals("")?$F{material}+" - "+$F{matmedida}+" - "+$F{marca}+" - "+$F{modelo}:$F{material}+" - "+$F{matmedida}+" - "+$F{marca}+" - "+$F{modelo}+" <br/>"+$F{observaciones}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="36" y="2" width="15" height="13" uuid="b2388017-e754-416e-8d5c-edc3e074e4d5">
+			<textField pattern="#.00#">
+				<reportElement x="28" y="2" width="22" height="13" uuid="b2388017-e754-416e-8d5c-edc3e074e4d5">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="6"/>
+					<font fontName="SansSerif" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
-			<textField pattern="">
+			<textField pattern="#,##0.00#;(-#,##0.00#)">
 				<reportElement x="478" y="2" width="40" height="13" uuid="4386db5d-8fec-4988-bdcf-e0257398d09c">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
@@ -965,9 +967,12 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="423" y="4" width="45" height="10" uuid="72d650e8-5e8a-4828-99f0-68dab9943fca"/>
+				<reportElement x="423" y="3" width="70" height="10" uuid="72d650e8-5e8a-4828-99f0-68dab9943fca">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textElement>
-					<font size="8"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SUBTOTAL]]></text>
 			</staticText>
@@ -990,11 +995,14 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="423" y="42" width="45" height="10" uuid="dd1e119b-5e7a-41c3-802e-ebf341396a88"/>
+				<reportElement x="423" y="42" width="70" height="10" uuid="dd1e119b-5e7a-41c3-802e-ebf341396a88">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textElement>
-					<font size="8"/>
+					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[IGV 18.0%]]></text>
+				<text><![CDATA[IGV %]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="423" y="55" width="45" height="10" uuid="4b92d159-d128-4042-9a0e-a8fab77f499c"/>
@@ -1012,8 +1020,8 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<pen lineColor="#C94540"/>
 				</graphicElement>
 			</line>
-			<textField>
-				<reportElement x="517" y="4" width="50" height="10" uuid="acc81e51-ce07-456c-b512-1d6e5a1faaa4">
+			<textField pattern="#,##0.00#;(-#,##0.00#)">
+				<reportElement x="501" y="3" width="66" height="10" uuid="acc81e51-ce07-456c-b512-1d6e5a1faaa4">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Right">
@@ -1021,8 +1029,8 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{parsubtotal}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="517" y="42" width="50" height="10" uuid="2f325191-9849-4ca7-803e-a1bc6c6769b2">
+			<textField pattern="#,###.00#;(#,###.00#)">
+				<reportElement x="501" y="42" width="66" height="10" uuid="2f325191-9849-4ca7-803e-a1bc6c6769b2">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Right">
@@ -1030,8 +1038,8 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				</textElement>
 				<textFieldExpression><![CDATA[Math.round((Math.round(($P{parsubtotal}-($P{parsubtotal}*($F{dsctoegeneral}/100)))*100.0)/100.0*($P{parnumigv}/100))*100.0)/100.0]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="517" y="55" width="50" height="10" uuid="512b439a-d937-4ccb-9637-06baf4e3d2bd">
+			<textField pattern="#,###.00#;(#,###.00#)">
+				<reportElement x="501" y="55" width="66" height="10" uuid="512b439a-d937-4ccb-9637-06baf4e3d2bd">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Right">
@@ -1039,8 +1047,8 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				</textElement>
 				<textFieldExpression><![CDATA[(Math.round(($P{parsubtotal}-($P{parsubtotal}*($F{dsctoegeneral}/100)))*100.0)/100.0)+(Math.round((Math.round(($P{parsubtotal}-($P{parsubtotal}*($F{dsctoegeneral}/100)))*100.0)/100.0*($P{parnumigv}/100))*100.0)/100.0)]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="517" y="16" width="50" height="10" uuid="dc2bc993-7d4c-4c66-bb4a-7485a0abea66">
+			<textField pattern="#,##0.00#;(#,##0.00#)">
+				<reportElement x="501" y="16" width="66" height="10" uuid="dc2bc993-7d4c-4c66-bb4a-7485a0abea66">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Right">
@@ -1067,25 +1075,30 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="423" y="29" width="75" height="10" uuid="54296039-c93c-4d94-ac3b-d662f88cd068">
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				<reportElement key="" isPrintRepeatedValues="false" x="423" y="29" width="70" height="10" uuid="54296039-c93c-4d94-ac3b-d662f88cd068">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
-				<textElement>
-					<font size="8"/>
+				<textElement verticalAlignment="Middle" markup="rtf">
+					<font size="7" isBold="true"/>
 				</textElement>
-				<text><![CDATA[SUBTOTAL DSCTO ]]></text>
+				<text><![CDATA[SUBTOTAL DSCT]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="423" y="16" width="70" height="10" uuid="91228d1d-517c-4609-9147-2e79f5a500d2">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font size="8"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Dscto  "+$F{dsctoegeneral}+" %"]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="517" y="28" width="50" height="10" uuid="a48cb40f-ae01-4543-9870-7eb8abc30c60">
+			<textField pattern="#,##0.00#;(-#,##0.00#)">
+				<reportElement x="501" y="29" width="66" height="10" uuid="a48cb40f-ae01-4543-9870-7eb8abc30c60">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Right">
@@ -1094,12 +1107,12 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				<textFieldExpression><![CDATA[Math.round(($P{parsubtotal}-($P{parsubtotal}*($F{dsctoegeneral}/100)))*100.0)/100.0]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="34" y="9" width="376" height="30" uuid="af7337d3-da6c-478a-a972-4356792e933a">
+				<reportElement x="33" y="6" width="376" height="56" uuid="af7337d3-da6c-478a-a972-4356792e933a">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
-				<textElement>
-					<font fontName="Arial" size="7" isBold="true"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["SON: "+$P{parnumtexto}+" /100 " +$F{moneda}]]></textFieldExpression>
 			</textField>

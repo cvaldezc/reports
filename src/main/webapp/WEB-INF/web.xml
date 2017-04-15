@@ -3,35 +3,35 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-  	<servlet-name>Test</servlet-name>
-  	<display-name>Test</display-name>
-  	<description>servlet for tested connect db</description>
-  	<servlet-class>servlet.Test</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>ToolsGuide</servlet-name>
-  	<display-name>ToolsGuide</display-name>
-  	<description></description>
-  	<servlet-class>servlet.ToolsGuide</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>PurchaseGuide</servlet-name>
-  	<display-name>PurchaseGuide</display-name>
-  	<description></description>
-  	<servlet-class>servlet.PurchaseGuide</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>Test</servlet-name>
-  	<url-pattern>/test</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>ToolsGuide</servlet-name>
-  	<url-pattern>/guide/tools</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>PurchaseGuide</servlet-name>
-  	<url-pattern>/guide/purchase</url-pattern>
-  </servlet-mapping>
+	<display-name>Archetype Created Web Application</display-name>
+	<servlet>
+		<servlet-name>Test</servlet-name>
+		<display-name>Test</display-name>
+		<description>servlet for tested connect db</description>
+		<servlet-class>icrperusa.servlet.Test</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ToolsGuide</servlet-name>
+		<display-name>ToolsGuide</display-name>
+		<description></description>
+		<servlet-class>servlet.ToolsGuide</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>OrdenPurchase</servlet-name>
+		<display-name>OrdenPurchase</display-name>
+		<description></description>
+		<servlet-class>icrperusa.servlet.OrdenPurchase</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Test</servlet-name>
+		<url-pattern>/test</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ToolsGuide</servlet-name>
+		<url-pattern>/guide/tools</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrdenPurchase</servlet-name>
+		<url-pattern>/report/purchase</url-pattern>
+	</servlet-mapping>
 </web-app>
