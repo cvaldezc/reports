@@ -1,9 +1,9 @@
 /**
- * 
+ *
  */
 package icrperusa.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -19,8 +19,8 @@ public class PurchaseTest {
     @Test
     public void testIgv(){
         BLPurchase obj = new BLPurchase();
-        Double requerido = obj.getIGV("OC17000001");
-        Double esperado = 18.0;
+        Double requerido = obj.getIGV("OC17000102");
+        Double esperado = 0.0;
         System.out.println("expected "+ requerido);
         assertEquals(requerido, esperado);
     }

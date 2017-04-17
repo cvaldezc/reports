@@ -9,24 +9,28 @@ package icrperusa.utils;
  *
  * @author juan
  * @author Christian
- * 
+ *
  */
 public class RoundPlaces {
 
-	public static Double toDouble(Double valor, int places){
+    public static Double toDouble(Double valor, int places){
         Double query = 0.0;
         try {
-        	String pattern = "1%1$0" + places + "d";
-        	double round = Double.parseDouble(String.format(pattern, 0));
+            String pattern = "1%1$0" + places + "d";
+            double round = Double.parseDouble(String.format(pattern, 0));
             query = (Math.round(valor*round)/round);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return query;
     }
-    
+
     public static Double toDouble(Double value){
-		return toDouble(value, 2);
+        return toDouble(value, 2);
     }
-    
+
+    public static Double toDouble(int value){
+        return toDouble((double) value);
+    }
+
 }

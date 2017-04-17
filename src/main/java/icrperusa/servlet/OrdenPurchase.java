@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import icrperusa.businesslogical.BLPurchase;
 import icrperusa.utils.Module;
-import icrperusa.utils.NumberTOWords;
+import icrperusa.utils.NumberToChar;
 import icrperusa.utils.Reports;
 import icrperusa.utils.RoundPlaces;
 
@@ -35,6 +35,7 @@ public class OrdenPurchase extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
         //response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -47,16 +48,15 @@ public class OrdenPurchase extends HttpServlet {
         if(request.getParameterMap().containsKey("ruc")){
             ruta = request.getParameter("ruc");
             Module.empresa = true;
-            if(parruc.equals("20428776110") || parruc.equals("")){
+            if(parruc.equals("20428776110") || parruc.equals(""))
                 logoname = "/icrlogo.png";
-            }else{
+            else
                 logoname = "/icrlogoinst.png";
-            }
         }else{
             Module.empresa = false;
             logoname = "/icrlogo.png";
         }
-        
+
         Module.RUC = ruta;
         Module.HOST = request.getServerName();
 
@@ -71,7 +71,8 @@ public class OrdenPurchase extends HttpServlet {
 
         Double subtotal = new BLPurchase().amountPurchase(purchaseid);
         System.out.println("SUb TOTAL FOR " + subtotal);
-        Double pigv = new BLPurchase().getIGV(purchaseid); 
+        Double pigv = new BLPurchase().getIGV(purchaseid);
+
         System.out.println("ig " + pigv);
         Double igv = RoundPlaces.toDouble(((subtotal * pigv)/100), 4);
         System.out.println("igv " + igv);
@@ -82,25 +83,25 @@ public class OrdenPurchase extends HttpServlet {
         Double t = RoundPlaces.toDouble(total);
         System.out.println("subtotal"+ t);
         //
-//        String [] numseparet = t.toString().split("\\.");
-//        int decen = Integer.parseInt(numseparet[0]);
-//        int unid = Integer.parseInt(numseparet[1]);
-        
-//        String textdece = new NumberTOWords()(decen);
-//        String textunid = numletras.numero_a_letras_con(unid);
-        String texttot = new NumberTOWords().numero_a_letras(total); // textdece + " CON " + textunid;
-        
+        //        String [] numseparet = t.toString().split("\\.");
+        //        int decen = Integer.parseInt(numseparet[0]);
+        //        int unid = Integer.parseInt(numseparet[1]);
+
+        //        String textdece = new NumberTOWords()(decen);
+        //        String textunid = numletras.numero_a_letras_con(unid);
+        String texttot = new NumberToChar().numero_a_letras(t); // textdece + " CON " + textunid;
+
         //System.out.println("descuento "+RoundPlaces.toDouble());
         parameter.put("parcompra_id", purchaseid);
         parameter.put("parsubtotal",RoundPlaces.toDouble(subtotal, 2));
-        parameter.put("parigv",igv2dec);
-        System.out.println("parigv "+igv2dec);
+        parameter.put("parigv", igv2dec);
+        //        System.out.println("parigv "+igv2dec);
         parameter.put("pardescuento", 0);
         parameter.put("partotal", t);
-        parameter.put("parnumigv",pigv);
+        parameter.put("parnumigv", pigv);
         parameter.put("parnumtexto", texttot);
-        System.out.println("logo "+path);
-        parameter.put("parlogo",path+logoname);
+        //        System.out.println("logo "+path);
+        parameter.put("parlogo", path+logoname);
 
         Reports rpt = new Reports();
         byte[] bytes = null;
@@ -111,6 +112,7 @@ public class OrdenPurchase extends HttpServlet {
             e.printStackTrace();
         }
         response.setContentLength(bytes.length);
+
         ServletOutputStream ouputStream = response.getOutputStream();
         ouputStream.write(bytes, 0, bytes.length);
         ouputStream.flush();
@@ -120,6 +122,7 @@ public class OrdenPurchase extends HttpServlet {
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
         doGet(request, response);

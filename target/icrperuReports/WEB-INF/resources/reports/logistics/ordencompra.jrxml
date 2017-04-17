@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.0.3.final using JasperReports Library version 6.0.3  -->
-<!-- 2017-04-15T13:29:42 -->
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2017-04-17T12:59:28 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ordencompra" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="45f20af2-31f2-411f-8cc3-cd474d74173c">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="bdicrserver"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -917,7 +917,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="100">
+		<band height="112">
 			<line>
 				<reportElement x="25" y="0" width="546" height="1" uuid="b6405e5a-4fc1-48e8-ac69-3d11587cef2b">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
@@ -974,7 +974,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				<textElement>
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[SUBTOTAL]]></text>
+				<text><![CDATA[IMPORTE]]></text>
 			</staticText>
 			<line>
 				<reportElement x="418" y="27" width="152" height="1" uuid="3e8f652c-5b33-41a1-9563-f826e6700c55">
@@ -994,16 +994,6 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<pen lineColor="#C94540"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement x="423" y="42" width="70" height="10" uuid="dd1e119b-5e7a-41c3-802e-ebf341396a88">
-					<property name="local_mesure_unitwidth" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement>
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[IGV %]]></text>
-			</staticText>
 			<staticText>
 				<reportElement x="423" y="55" width="45" height="10" uuid="4b92d159-d128-4042-9a0e-a8fab77f499c"/>
 				<textElement>
@@ -1074,20 +1064,6 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<pen lineColor="#C94540"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement key="" isPrintRepeatedValues="false" x="423" y="29" width="70" height="10" uuid="54296039-c93c-4d94-ac3b-d662f88cd068">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="local_mesure_unitwidth" value="pixel"/>
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="local_mesure_unity" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle" markup="rtf">
-					<font size="7" isBold="true"/>
-				</textElement>
-				<text><![CDATA[SUBTOTAL DSCT]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="423" y="16" width="70" height="10" uuid="91228d1d-517c-4609-9147-2e79f5a500d2">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
@@ -1095,7 +1071,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				<textElement>
 					<font size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Dscto  "+$F{dsctoegeneral}+" %"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["DSCTO  "+$F{dsctoegeneral}+" %"]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00#;(-#,##0.00#)">
 				<reportElement x="501" y="29" width="66" height="10" uuid="a48cb40f-ae01-4543-9870-7eb8abc30c60">
@@ -1115,6 +1091,26 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<font fontName="SansSerif" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["SON: "+$P{parnumtexto}+" /100 " +$F{moneda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="42" width="60" height="11" uuid="f55fe947-adf4-442e-be3d-f2953c5b55da">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["IGV " + $P{parnumigv} + "%"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="423" y="29" width="70" height="10" uuid="6bc372c9-0840-449d-a22b-e736b24f505d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SUBTOTAL"]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>

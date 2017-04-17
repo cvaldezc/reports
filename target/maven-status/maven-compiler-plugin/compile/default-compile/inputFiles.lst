@@ -5,7 +5,8 @@
 /home/christian/development/java/icrperuReports/src/main/java/icrperusa/servlet/Test.java
 /home/christian/development/java/icrperuReports/src/main/java/icrperusa/businesslogical/BLConfig.java
 /home/christian/development/java/icrperuReports/src/main/java/icrperusa/utils/Module.java
-/home/christian/development/java/icrperuReports/src/main/java/icrperusa/servlet/PurchaseGuide.java
+/home/christian/development/java/icrperuReports/src/main/java/icrperusa/servlet/OrdenPurchase.java
+/home/christian/development/java/icrperuReports/src/main/java/icrperusa/utils/NumberToChar.java
 /home/christian/development/java/icrperuReports/src/main/java/icrperusa/utils/NumberTOWords.java
 /home/christian/development/java/icrperuReports/src/main/java/icrperusa/servlet/ToolsGuide.java
 /home/christian/development/java/icrperuReports/src/main/java/icrperusa/entity/Purchase.java

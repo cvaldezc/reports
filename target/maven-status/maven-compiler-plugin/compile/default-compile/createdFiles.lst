@@ -1,3 +1,5 @@
+icrperusa/servlet/OrdenPurchase.class
+icrperusa/utils/NumberToChar.class
 icrperusa/interfaces/IPurchase.class
 icrperusa/utils/Module.class
 icrperusa/utils/Reports.class
@@ -10,4 +12,3 @@ icrperusa/utils/Convert.class
 icrperusa/utils/RoundPlaces.class
 icrperusa/servlet/ToolsGuide.class
 icrperusa/dataaccess/Connect.class
-icrperusa/servlet/PurchaseGuide.class
