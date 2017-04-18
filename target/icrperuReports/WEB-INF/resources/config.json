@@ -1,0 +1,16 @@
+{
+    "enterprice":{
+        "20428876110":{
+            "name": "ICR PERU",
+            "db": "erpicrperu",
+            "passwd": "Syst3mH3ll",
+            "host": "172.16.0.80"
+        },
+        "20555029277": {
+            "name": "ICR INSTALACIONES",
+            "db": "erpicrinstalaciones",
+            "passwd": "Syst3mH3ll",
+            "host": "172.16.0.80"
+        }
+    }
+}

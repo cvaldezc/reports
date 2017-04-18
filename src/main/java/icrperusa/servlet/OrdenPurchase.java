@@ -57,8 +57,8 @@ public class OrdenPurchase extends HttpServlet {
             logoname = "/icrlogo.png";
         }
 
-        Module.RUC = ruta;
-        Module.HOST = request.getServerName();
+        //        Module.RUC = ruta;
+        //        Module.HOST = request.getServerName();
 
         // List <Double> limporte = new ArrayList<Double>();
 

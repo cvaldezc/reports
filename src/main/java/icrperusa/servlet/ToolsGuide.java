@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//
 import icrperusa.utils.Module;
 import icrperusa.utils.Reports;
 
@@ -29,6 +28,7 @@ public class ToolsGuide extends HttpServlet {
     public ToolsGuide() {
         super();
         // TODO Auto-generated constructor stub
+        Module.setRESOURCE(getServletContext().getRealPath("/WEB-INF/resources/"));
     }
 
     /**
@@ -39,7 +39,6 @@ public class ToolsGuide extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            Module.HOST = request.getServerName();
             response.setContentType("application/pdf;charset=UTF-8");
 
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

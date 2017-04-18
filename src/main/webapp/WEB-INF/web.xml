@@ -1,37 +1,46 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+                         "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
-	<display-name>Archetype Created Web Application</display-name>
-	<servlet>
-		<servlet-name>Test</servlet-name>
-		<display-name>Test</display-name>
-		<description>servlet for tested connect db</description>
-		<servlet-class>icrperusa.servlet.Test</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>ToolsGuide</servlet-name>
-		<display-name>ToolsGuide</display-name>
-		<description></description>
-		<servlet-class>servlet.ToolsGuide</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>OrdenPurchase</servlet-name>
-		<display-name>OrdenPurchase</display-name>
-		<description></description>
-		<servlet-class>icrperusa.servlet.OrdenPurchase</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Test</servlet-name>
-		<url-pattern>/test</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>ToolsGuide</servlet-name>
-		<url-pattern>/guide/tools</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>OrdenPurchase</servlet-name>
-		<url-pattern>/report/purchase</url-pattern>
-	</servlet-mapping>
+ <icon>
+  <small-icon>/images/logo.jpg</small-icon>
+ </icon>
+ <display-name>Archetype Created Web Application</display-name>
+ <servlet>
+  <servlet-name>Test</servlet-name>
+  <display-name>Test</display-name>
+  <description>servlet for tested connect db</description>
+  <servlet-class>icrperusa.servlet.Test</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>rptToolsGuide</servlet-name>
+  <display-name>rptToolsGuide</display-name>
+  <servlet-class>icrperusa.servlet.ToolsGuide</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>OrdenPurchase</servlet-name>
+  <display-name>OrdenPurchase</display-name>
+  <servlet-class>icrperusa.servlet.OrdenPurchase</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>FileUploadServlet</servlet-name>
+  <display-name>FileUploadServlet</display-name>
+  <servlet-class>icrperusa.servlet.FileUploadServlet</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>Test</servlet-name>
+  <url-pattern>/test</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>rptToolsGuide</servlet-name>
+  <url-pattern>/report/guide/tools/</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>OrdenPurchase</servlet-name>
+  <url-pattern>/report/purchase</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>FileUploadServlet</servlet-name>
+  <url-pattern>/upload</url-pattern>
+ </servlet-mapping>
 </web-app>

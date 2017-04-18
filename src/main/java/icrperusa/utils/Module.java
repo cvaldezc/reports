@@ -3,6 +3,8 @@
  */
 package icrperusa.utils;
 
+import java.io.File;
+
 /**
  * @author christian
  *
@@ -12,7 +14,6 @@ public class Module {
     public static String USER = "postgres";
     public static String PWD = "Syst3mH3ll";
     public static String DB = "erpicrperu";
-    // public static final String DB = "dbicrperu";
 
     public static final String USERINST = "";
     public static final String DBINST = "erpicrinstalaciones";
@@ -20,6 +21,14 @@ public class Module {
     public static boolean empresa = false;
     public static String RUC = "";
     public static String HOST = "localhost";
+
+    public static String RESOURCE = "";
+
+    public static void setRESOURCE(String rESOURCE) {
+        RESOURCE = String.format("%s%s", rESOURCE, SEPARATOR);
+    }
+
+    public static char SEPARATOR = File.separatorChar;
 
     public static void usePERU(){
         USER = "postgres";
