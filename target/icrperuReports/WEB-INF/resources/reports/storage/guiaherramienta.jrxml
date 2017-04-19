@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2017-04-18T10:34:28 -->
+<!-- 2017-04-19T11:29:21 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guiaherramienta" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0b375a95-69c9-4730-9f23-9a730ed6de49">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AdapGuiaHerra"/>
@@ -20,6 +20,7 @@
 		<defaultValueExpression><![CDATA[$P{pardate}]]></defaultValueExpression>
 	</parameter>
 	<parameter name="PATHSOURCE" class="java.lang.String"/>
+	<parameter name="RUC" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select 
 	CASE to_char(gh.fechsalida, 'MM')
@@ -249,7 +250,7 @@ where gh.guia_id = $P{codguia} order by he.nombre]]>
 			</textField>
 			<image>
 				<reportElement x="21" y="20" width="137" height="90" uuid="fa186849-bdb5-4f6b-85d9-96a841e39c5f"/>
-				<imageExpression><![CDATA[$P{PATHSOURCE}+"reports/storage/"+".png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{PATHSOURCE}+"images/"+$P{RUC}+".png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="172" y="23" width="221" height="30" uuid="b6972ef1-a0c2-4d2f-bf8b-f687cf8d32e5">

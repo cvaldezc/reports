@@ -37,30 +37,10 @@ public class OrdenPurchase extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        //response.getWriter().append("Served at: ").append(request.getContextPath());
+        Module.setRESOURCE(getServletContext().getRealPath("/"));
         response.setContentType("application/pdf;charset=UTF-8");
-        // String path = getServletContext().getResource("/WEB-INF/resources/").toString().substring(6);
-        String path = getServletContext().getRealPath("/WEB-INF/resources/");
-        String ruta = "";
-        String logoname;
-        String parruc = ruta;
-        if(request.getParameterMap().containsKey("ruc")){
-            ruta = request.getParameter("ruc");
-            Module.empresa = true;
-            if(parruc.equals("20428776110") || parruc.equals(""))
-                logoname = "/icrlogo.png";
-            else
-                logoname = "/icrlogoinst.png";
-        }else{
-            Module.empresa = false;
-            logoname = "/icrlogo.png";
-        }
-
-        //        Module.RUC = ruta;
-        //        Module.HOST = request.getServerName();
-
-        // List <Double> limporte = new ArrayList<Double>();
+        if(request.getParameterMap().containsKey("ruc"))
+            Module.enterprise = (request.getParameter("ruc"));
 
         Map<String, Object> parameter = new HashMap<String, Object>();
         String purchaseid = "";
@@ -82,33 +62,25 @@ public class OrdenPurchase extends HttpServlet {
         Double total = igv2dec + subtotal2dec;
         Double t = RoundPlaces.toDouble(total);
         System.out.println("subtotal"+ t);
-        //
-        //        String [] numseparet = t.toString().split("\\.");
-        //        int decen = Integer.parseInt(numseparet[0]);
-        //        int unid = Integer.parseInt(numseparet[1]);
 
-        //        String textdece = new NumberTOWords()(decen);
-        //        String textunid = numletras.numero_a_letras_con(unid);
-        String texttot = new NumberToChar().numero_a_letras(t); // textdece + " CON " + textunid;
+        String texttot = new NumberToChar().numero_a_letras(t);
 
-        //System.out.println("descuento "+RoundPlaces.toDouble());
         parameter.put("parcompra_id", purchaseid);
         parameter.put("parsubtotal",RoundPlaces.toDouble(subtotal, 2));
         parameter.put("parigv", igv2dec);
-        //        System.out.println("parigv "+igv2dec);
         parameter.put("pardescuento", 0);
         parameter.put("partotal", t);
         parameter.put("parnumigv", pigv);
         parameter.put("parnumtexto", texttot);
-        //        System.out.println("logo "+path);
-        parameter.put("parlogo", path+logoname);
+        parameter.put("parlogo", "");
+        parameter.put("PATHSOURCE", Module.RESOURCE);
+        parameter.put("RUC", Module.RUC);
 
         Reports rpt = new Reports();
         byte[] bytes = null;
         try {
-            bytes = rpt.getReportcn(path + "/ordencompra.jasper", parameter);
+            bytes = rpt.getReportcn(String.format("%sWEB-INF/resources/reports/logistics/ordencompra.jasper", Module.RESOURCE), parameter);
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         response.setContentLength(bytes.length);

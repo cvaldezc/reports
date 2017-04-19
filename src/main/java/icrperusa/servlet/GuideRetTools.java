@@ -17,52 +17,49 @@ import icrperusa.utils.Module;
 import icrperusa.utils.Reports;
 
 /**
- * Servlet implementation class ToolsGuide
+ * Servlet implementation class GuideRetTools
  */
-public class ToolsGuide extends HttpServlet {
-    private static final long serialVersionUID = 102831973239L;
+public class GuideRetTools extends HttpServlet {
+    private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ToolsGuide() {
+    public GuideRetTools() {
         super();
     }
 
     /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-     *      response)
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        Module.setRESOURCE(getServletContext().getRealPath("/"));
-        response.setContentType("application/pdf;charset=UTF-8");
-        if(request.getParameterMap().containsKey("ruc"))
-            Module.enterprise = (request.getParameter("ruc"));
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+            Module.setRESOURCE(getServletContext().getRealPath("/"));
+            response.setContentType("application/pdf;charset=UTF-8");
+            if(request.getParameterMap().containsKey("ruc"))
+                Module.enterprise = (request.getParameter("ruc"));
+            response.setContentType("application/pdf;charset=UTF-8");
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             Date date = new Date();
 
             Map<String, Object> parameter = new HashMap<String, Object>();
-            parameter.put("codguia", request.getParameter("ng"));
+            parameter.put("iddoc", request.getParameter("ndoc"));
             parameter.put("pardate", "FECHA: "+dateFormat.format(date));
             parameter.put("PATHSOURCE", Module.RESOURCE);
             parameter.put("RUC", Module.RUC);
 
-
-            byte[] bytes = new Reports().getReportcn(String.format("%sWEB-INF/resources/reports/storage/guiaherramienta.jasper", Module.RESOURCE), parameter);
+            Reports rpt = new Reports();
+            byte[] bytes = rpt.getReportcn(String.format("%sWEB-INF/resources/reports/storage/guiadevolucionherra.jasper", Module.RESOURCE), parameter);
             response.setContentLength(bytes.length);
             ServletOutputStream ouputStream = response.getOutputStream();
             ouputStream.write(bytes, 0, bytes.length);
             ouputStream.flush();
             ouputStream.close();
         } catch (Exception e) {
-            response.setContentType("text/html;charset=UTF-8");
-            response.getWriter().println("<h3>Error al mostrar el reporte" + e.getMessage() +"</h3>");
             System.out.println("ERROR SHOW APPLICATION " + e.getMessage());
+            e.getStackTrace();
         }
     }
-
 
 }
