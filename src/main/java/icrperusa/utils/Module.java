@@ -34,10 +34,10 @@ public class Module {
     }
 
     public static void loadData(){
-        if (enterprise != "")
-            loadData(enterprise);
-        else
+        if (enterprise.isEmpty())
             loadData(defenterpise);
+        else
+            loadData(enterprise);
     }
 
 }

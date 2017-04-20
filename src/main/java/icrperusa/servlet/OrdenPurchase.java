@@ -37,11 +37,9 @@ public class OrdenPurchase extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Module.setRESOURCE(getServletContext().getRealPath("/"));
         response.setContentType("application/pdf;charset=UTF-8");
-        if(request.getParameterMap().containsKey("ruc"))
-            Module.enterprise = (request.getParameter("ruc"));
-
+        String SOURCE = getServletContext().getRealPath("/");
+        Module.enterprise = (request.getParameterMap().containsKey("ruc")) ? request.getParameter("ruc") : "";
         Map<String, Object> parameter = new HashMap<String, Object>();
         String purchaseid = "";
         if (request.getParameterMap().containsKey("purchase"))
@@ -50,7 +48,7 @@ public class OrdenPurchase extends HttpServlet {
             purchaseid = "OC17000079";
 
         Double subtotal = new BLPurchase().amountPurchase(purchaseid);
-        System.out.println("SUb TOTAL FOR " + subtotal);
+        System.out.println("SUB TOTAL FOR " + subtotal);
         Double pigv = new BLPurchase().getIGV(purchaseid);
 
         System.out.println("ig " + pigv);
@@ -73,7 +71,7 @@ public class OrdenPurchase extends HttpServlet {
         parameter.put("parnumigv", pigv);
         parameter.put("parnumtexto", texttot);
         parameter.put("parlogo", "");
-        parameter.put("PATHSOURCE", Module.RESOURCE);
+        parameter.put("PATHSOURCE", SOURCE);
         parameter.put("RUC", Module.RUC);
 
         Reports rpt = new Reports();

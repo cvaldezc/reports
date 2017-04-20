@@ -128,7 +128,8 @@ public class MangerFiles implements IManagerFile {
                 Module.PWD = enterpriseObj.get("passwd").toString();
             if (enterpriseObj.containsKey("user"))
                 Module.USER = enterpriseObj.get("user").toString();
-            Module.RUC = Module.defenterpise;
+            System.out.println("Show Enterprise object json " + enterprise);
+            Module.RUC = (enterprise.isEmpty()) ? Module.defenterpise : enterprise;
             //System.out.println(String.format("%s %s %s %s %s", Module.HOST, Module.PORT, Module.USER, Module.DB, Module.PWD));
         } catch (FileNotFoundException e) {
             e.printStackTrace();

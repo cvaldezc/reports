@@ -36,10 +36,9 @@ public class ToolsGuide extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Module.setRESOURCE(getServletContext().getRealPath("/"));
         response.setContentType("application/pdf;charset=UTF-8");
-        if(request.getParameterMap().containsKey("ruc"))
-            Module.enterprise = (request.getParameter("ruc"));
+        String SOURCE = getServletContext().getRealPath("/");
+        Module.enterprise = (request.getParameterMap().containsKey("ruc")) ? request.getParameter("ruc") : "";
         try {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             Date date = new Date();
@@ -50,8 +49,7 @@ public class ToolsGuide extends HttpServlet {
             parameter.put("PATHSOURCE", Module.RESOURCE);
             parameter.put("RUC", Module.RUC);
 
-
-            byte[] bytes = new Reports().getReportcn(String.format("%sWEB-INF/resources/reports/storage/guiaherramienta.jasper", Module.RESOURCE), parameter);
+            byte[] bytes = new Reports().getReportcn(String.format("%sWEB-INF/resources/reports/storage/guiaherramienta.jasper", SOURCE), parameter);
             response.setContentLength(bytes.length);
             ServletOutputStream ouputStream = response.getOutputStream();
             ouputStream.write(bytes, 0, bytes.length);
