@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import icrperusa.businesslogical.BLConfig;
+import icrperusa.utils.Module;
 
 /**
  * Servlet implementation class Test
@@ -32,7 +33,8 @@ public class Test extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        BLConfig nob = new BLConfig();
+        String ruc = (request.getParameterMap().containsKey("ruc"))?request.getParameter("ruc"):Module.defenterpise;
+        BLConfig nob = new BLConfig(ruc);
         ResultSet xrs = nob.getConfig();
         response.setContentType("text/html;charset=UTF-8");
         response.getWriter().append("Served at: ").append(request.getContextPath());

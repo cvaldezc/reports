@@ -1,5 +1,6 @@
 icrperusa/servlet/OrdenPurchase.class
 icrperusa/utils/NumberToChar.class
+icrperusa/servlet/ConfigClean.class
 icrperusa/interfaces/IPurchase.class
 icrperusa/utils/Module.class
 icrperusa/utils/Reports.class
@@ -14,5 +15,6 @@ icrperusa/utils/Convert.class
 icrperusa/servlet/FileUploadServlet.class
 icrperusa/utils/RoundPlaces.class
 icrperusa/servlet/ToolsGuide.class
+icrperusa/entity/ConfMaster.class
 icrperusa/dataaccess/Connect.class
 icrperusa/servlet/GuideRetTools.class

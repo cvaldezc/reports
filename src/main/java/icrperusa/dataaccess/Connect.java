@@ -8,6 +8,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import icrperusa.utils.Module;
 
@@ -17,8 +19,10 @@ import icrperusa.utils.Module;
  */
 public class Connect {
 
-    public Connect(){
-        Module.loadData();
+    protected Map<String, Object> config = new HashMap<String, Object>();
+
+    public Connect(String RUC){
+        config = Module.loadConfig(RUC);
     }
 
     public Connection Open() throws SQLException{
@@ -27,20 +31,20 @@ public class Connect {
         Connection cn = null;
         try {
             Class.forName("org.postgresql.Driver").newInstance();
-            uri = String.format("jdbc:postgresql://%s:%s/%s", Module.HOST, Module.PORT, Module.DB);
+            uri = String.format("jdbc:postgresql://%s:%s/%s",
+                    config.get("host"),
+                    config.get("port"),
+                    config.get("db"));
             System.out.println(uri);
-            cn = DriverManager.getConnection(uri, Module.USER, Module.PWD);
+            cn = DriverManager.getConnection(uri, config.get("user").toString(), config.get("passwd").toString());
             //System.out.println("user and pwd "+ Module.USER + " " + Module.PWD);
         } catch (InstantiationException e) {
-            // TODO Auto-generated catch block
             //System.out.println("INSTANCE SQL "+ e.getMessage());
             e.printStackTrace();
         } catch (IllegalAccessException e) {
-            // TODO Auto-generated catch block
             //System.out.println("ILEGAL SQL "+ e.getMessage());
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
             //System.out.println("CLASS NOT FOUND SQL "+ e.getMessage());
             e.printStackTrace();
         }

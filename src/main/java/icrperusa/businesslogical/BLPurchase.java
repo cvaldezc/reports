@@ -19,13 +19,17 @@ import icrperusa.utils.RoundPlaces;
  */
 public class BLPurchase extends Purchase implements IPurchase {
 
+    public BLPurchase(String RUC){
+        this.setEnterprise(RUC);;
+    }
+
     public double getIGV(String idpurchase){
         double _igv = 0;
         try {
             String xquery = "";
             // get year of order purchase
             xquery = "SELECT registrado, sigv FROM logistica_compra WHERE compra_id = ?;";
-            ResultSet purchase = new Connect().ExecuteQuery(xquery, new Object[]{ idpurchase });
+            ResultSet purchase = new Connect(this.getEnterprise()).ExecuteQuery(xquery, new Object[]{ idpurchase });
             String register = "";
             purchase.next();
             if (purchase.getBoolean("sigv") == true)
@@ -33,7 +37,7 @@ public class BLPurchase extends Purchase implements IPurchase {
             else
                 return _igv;
             xquery = "SELECT igv FROM home_configuracion WHERE periodo = ?;";
-            _igv = (Double)new Connect().ExecuteQuery(xquery, new Object[] { Convert.toDString(register, "yyyy")}, "igv");
+            _igv = (Double)new Connect(this.getEnterprise()).ExecuteQuery(xquery, new Object[] { Convert.toDString(register, "yyyy")}, "igv");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -94,7 +98,7 @@ public class BLPurchase extends Purchase implements IPurchase {
                     "WHERE c.compra_id = ? ORDER BY material";
             // #endregion  query
             //
-            ResultSet rs = new Connect().ExecuteQuery(xquery, new Object[]{idpurchase});
+            ResultSet rs = new Connect(this.getEnterprise()).ExecuteQuery(xquery, new Object[]{idpurchase});
             //Double precio;
             Double discount;
             //Double desctotal = 0.0;

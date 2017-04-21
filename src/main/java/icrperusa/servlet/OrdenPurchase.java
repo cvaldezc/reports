@@ -39,7 +39,7 @@ public class OrdenPurchase extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/pdf;charset=UTF-8");
         String SOURCE = getServletContext().getRealPath("/");
-        Module.enterprise = (request.getParameterMap().containsKey("ruc")) ? request.getParameter("ruc") : "";
+        String ruc = (request.getParameterMap().containsKey("ruc")) ? request.getParameter("ruc") : Module.defenterpise;
         Map<String, Object> parameter = new HashMap<String, Object>();
         String purchaseid = "";
         if (request.getParameterMap().containsKey("purchase"))
@@ -47,9 +47,9 @@ public class OrdenPurchase extends HttpServlet {
         else
             purchaseid = "OC17000079";
 
-        Double subtotal = new BLPurchase().amountPurchase(purchaseid);
+        Double subtotal = new BLPurchase(ruc).amountPurchase(purchaseid);
         System.out.println("SUB TOTAL FOR " + subtotal);
-        Double pigv = new BLPurchase().getIGV(purchaseid);
+        Double pigv = new BLPurchase(ruc).getIGV(purchaseid);
 
         System.out.println("ig " + pigv);
         Double igv = RoundPlaces.toDouble(((subtotal * pigv)/100), 4);
@@ -72,12 +72,12 @@ public class OrdenPurchase extends HttpServlet {
         parameter.put("parnumtexto", texttot);
         parameter.put("parlogo", "");
         parameter.put("PATHSOURCE", SOURCE);
-        parameter.put("RUC", Module.RUC);
+        parameter.put("RUC", ruc);
 
-        Reports rpt = new Reports();
+        Reports rpt = new Reports(ruc);
         byte[] bytes = null;
         try {
-            bytes = rpt.getReportcn(String.format("%sWEB-INF/resources/reports/logistics/ordencompra.jasper", Module.RESOURCE), parameter);
+            bytes = rpt.getReportcn(String.format("%sWEB-INF/resources/reports/logistics/ordencompra.jasper", SOURCE), parameter);
         } catch (SQLException e) {
             e.printStackTrace();
         }

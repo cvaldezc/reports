@@ -16,8 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import icrperusa.utils.Module;
-
 /**
  * Servlet implementation class FileUploadServlet
  */
@@ -61,7 +59,7 @@ public class FileUploadServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Module.setRESOURCE(getServletContext().getRealPath("/WEB-INF/"));
+        String path = getServletContext().getRealPath("/");
         response.setContentType("text/html;charset=UTF-8");
         final Part filePart = request.getPart("file");
         String filename = getFileName(filePart);
@@ -69,8 +67,9 @@ public class FileUploadServlet extends HttpServlet {
         InputStream filecontent = null;
         final PrintWriter write = response.getWriter();
         try {
-            out = new FileOutputStream(new File(String.format("%s%s", Module.RESOURCE, filename)));
-            System.out.println(out);
+            System.out.println("PATH IN SAVE FILE CONFIG " + path);
+            out = new FileOutputStream(new File(String.format("%s%s", path, filename)));
+            //            System.out.println(out);
             filecontent = filePart.getInputStream();
             int read = 0;
             final byte[] bytes = new byte[1024];

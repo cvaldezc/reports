@@ -35,22 +35,20 @@ public class GuideRetTools extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            Module.setRESOURCE(getServletContext().getRealPath("/"));
             response.setContentType("application/pdf;charset=UTF-8");
-            if(request.getParameterMap().containsKey("ruc"))
-                Module.enterprise = (request.getParameter("ruc"));
-            response.setContentType("application/pdf;charset=UTF-8");
+            String SOURCE = getServletContext().getRealPath("/");
+            String ruc = (request.getParameterMap().containsKey("ruc")) ? request.getParameter("ruc") : Module.defenterpise;;
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             Date date = new Date();
 
             Map<String, Object> parameter = new HashMap<String, Object>();
             parameter.put("iddoc", request.getParameter("ndoc"));
             parameter.put("pardate", "FECHA: "+dateFormat.format(date));
-            parameter.put("PATHSOURCE", Module.RESOURCE);
-            parameter.put("RUC", Module.RUC);
+            parameter.put("PATHSOURCE", SOURCE);
+            parameter.put("RUC", ruc);
 
-            Reports rpt = new Reports();
-            byte[] bytes = rpt.getReportcn(String.format("%sWEB-INF/resources/reports/storage/guiadevolucionherra.jasper", Module.RESOURCE), parameter);
+            Reports rpt = new Reports(ruc);
+            byte[] bytes = rpt.getReportcn(String.format("%sWEB-INF/resources/reports/storage/guiadevolucionherra.jasper", SOURCE), parameter);
             response.setContentLength(bytes.length);
             ServletOutputStream ouputStream = response.getOutputStream();
             ouputStream.write(bytes, 0, bytes.length);

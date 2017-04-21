@@ -1,5 +1,7 @@
 package icrperusa.interfaces.utils;
 
+import java.util.Map;
+
 public interface IManagerFile {
 
     boolean existsFile(String filename, boolean fullpath);
@@ -14,6 +16,6 @@ public interface IManagerFile {
 
     void readFile(String filename);
 
-    void readConfig(String filename);
+    Map readConfig(String filename);
 
 }

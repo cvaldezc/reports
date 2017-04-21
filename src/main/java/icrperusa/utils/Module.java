@@ -4,40 +4,36 @@
 package icrperusa.utils;
 
 import java.io.File;
-/**
- * @author christian
- *
- */
+import java.util.HashMap;
+import java.util.Map;
+
+
 public class Module {
 
-    public static String USER = "";
-    public static String PWD = "";
-    public static String DB = "";
-    public static String PORT = "";
-    public static String HOST = "";
-
-    public static boolean empresa = false;
-    public static String RUC = "";
+    private static Map<String, Map<String, Object>> config = new HashMap<String, Map<String, Object>>();
 
     public final static String defenterpise = "20428776110";
-    public static String enterprise = "";
-    public static String RESOURCE = "";
-
-    public static void setRESOURCE(String rESOURCE) {
-        RESOURCE = String.format("%s%s", rESOURCE, SEPARATOR);
-    }
 
     public static char SEPARATOR = File.separatorChar;
 
-    private static final void loadData(String denterprise){
-        new MangerFiles().readConfig(denterprise);
+    private static final Map<String, Object> loadData(String denterprise){
+        return new MangerFiles().readConfig(denterprise);
     }
 
-    public static void loadData(){
-        if (enterprise.isEmpty())
-            loadData(defenterpise);
-        else
-            loadData(enterprise);
+    public static Map<String, Object> loadConfig(String RUC){
+        if (config.containsKey(RUC))
+            return config.get(RUC);
+        else if (!RUC.isEmpty()){
+            config.put(RUC, loadData(RUC));
+            return loadConfig(RUC);
+        }else{
+            config.put(RUC, loadData(defenterpise));
+            return loadConfig(RUC);
+        }
     }
 
+    public static void cleanConfig()
+    {
+        config = new HashMap<String, Map<String, Object>>();
+    }
 }

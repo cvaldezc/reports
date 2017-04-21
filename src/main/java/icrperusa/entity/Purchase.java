@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package icrperusa.entity;
 
@@ -7,73 +7,73 @@ package icrperusa.entity;
  * @author christian
  *
  */
-public class Purchase {
+public class Purchase extends ConfMaster {
 
-	
-	private String purchase;
-	private double price;
-	private double quantity;
-	private double discount;
-	private double perception;
-	
-	private double discounttotal;
-	
-	private double amount;
 
-	public double getDiscounttotal() {
-		return discounttotal;
-	}
+    private String purchase;
+    private double price;
+    private double quantity;
+    private double discount;
+    private double perception;
 
-	public void setDiscounttotal(double discounttotal) {
-		this.discounttotal = discounttotal;
-	}
+    private double discounttotal;
 
-	public double getAmount() {
-		return amount;
-	}
+    private double amount;
 
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
+    public double getDiscounttotal() {
+        return discounttotal;
+    }
 
-	public double getPrice() {
-		return price;
-	}
+    public void setDiscounttotal(double discounttotal) {
+        this.discounttotal = discounttotal;
+    }
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
+    public double getAmount() {
+        return amount;
+    }
 
-	public double getQuantity() {
-		return quantity;
-	}
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
 
-	public void setQuantity(double quantity) {
-		this.quantity = quantity;
-	}
+    public double getPrice() {
+        return price;
+    }
 
-	public double getDiscount() {
-		return discount;
-	}
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
-	public void setDiscount(double discount) {
-		this.discount = discount;
-	}
+    public double getQuantity() {
+        return quantity;
+    }
 
-	public double getPerception() {
-		return perception;
-	}
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
 
-	public void setPerception(double perception) {
-		this.perception = perception;
-	}
+    public double getDiscount() {
+        return discount;
+    }
 
-	public String getPurchase() {
-		return purchase;
-	}
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
 
-	public void setPurchase(String purchase) {
-		this.purchase = purchase;
-	}
-	
+    public double getPerception() {
+        return perception;
+    }
+
+    public void setPerception(double perception) {
+        this.perception = perception;
+    }
+
+    public String getPurchase() {
+        return purchase;
+    }
+
+    public void setPurchase(String purchase) {
+        this.purchase = purchase;
+    }
+
 }

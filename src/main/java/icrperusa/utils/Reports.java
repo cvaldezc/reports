@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package icrperusa.utils;
 
@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import icrperusa.dataaccess.Connect;
+import icrperusa.entity.ConfMaster;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.JasperRunManager;
@@ -19,23 +20,26 @@ import net.sf.jasperreports.engine.util.JRLoader;
  * @author christian
  *
  */
-public class Reports {
+public class Reports extends ConfMaster {
+
+    public Reports(String RUC){
+        this.setEnterprise(RUC);
+    }
 
 
     public byte[] getReportcn(String jrxml, Map<String, Object> parameter) throws SQLException{
         byte[] bytes = null;
         Connection xcon = null;
         try {
-            xcon = new Connect().Open();
+            xcon = new Connect(this.getEnterprise()).Open();
             JasperReport master = (JasperReport) JRLoader.loadObjectFromFile(jrxml);
             bytes = JasperRunManager.runReportToPdf(master, parameter,  xcon);
         } catch (Exception e) {
             Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, e);
         }
         finally{
-            if (!xcon.isClosed()) {
+            if (!xcon.isClosed())
                 xcon.close();
-            }
         }
         return bytes;
     }
@@ -49,6 +53,6 @@ public class Reports {
             Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, e);
         }
         return bytes;
-    } 
+    }
 
 }

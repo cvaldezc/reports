@@ -3,10 +3,15 @@
  */
 package icrperusa.utils;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,12 +28,13 @@ public class MangerFiles implements IManagerFile {
     /* (non-Javadoc)
      * @see icrperusa.interfaces.utils.IUploadFile#existsFile(java.lang.String, boolean)
      */
+    @Override
     public boolean existsFile(String filename, boolean fullpath) {
         boolean _status = false;
         try {
             String path = "";
             if (!fullpath)
-                path = String.format("%s%s", Module.RESOURCE, filename);
+                path = String.format("%s%s", getClass().getResource("").getPath(), filename);
             else
                 path = filename;
             if (new File(path).exists())
@@ -42,6 +48,7 @@ public class MangerFiles implements IManagerFile {
     /* (non-Javadoc)
      * @see icrperusa.interfaces.utils.IUploadFile#existsFile(java.lang.String)
      */
+    @Override
     public boolean existsFile(String filename) {
         return existsFile(filename, true);
     }
@@ -49,6 +56,7 @@ public class MangerFiles implements IManagerFile {
     /* (non-Javadoc)
      * @see icrperusa.interfaces.utils.IUploadFile#upload(java.lang.Object)
      */
+    @Override
     public boolean upload(Object file) {
         boolean _status = false;
         try {
@@ -63,12 +71,13 @@ public class MangerFiles implements IManagerFile {
     /* (non-Javadoc)
      * @see icrperusa.interfaces.utils.IUploadFile#delete(java.lang.String, boolean)
      */
+    @Override
     public boolean delete(String filename, boolean fullpath) {
         boolean _status = false;
         try {
             String path = "";
             if (!fullpath)
-                path = String.format("%s%s", Module.RESOURCE, filename);
+                path = String.format("%s%s", getClass().getResource("").getPath(), filename);
             else
                 path = filename;
             if (existsFile(filename))
@@ -83,10 +92,12 @@ public class MangerFiles implements IManagerFile {
     /* (non-Javadoc)
      * @see icrperusa.interfaces.utils.IUploadFile#delete(java.lang.String)
      */
+    @Override
     public boolean delete(String filename) {
         return delete(filename, true);
     }
 
+    @Override
     public void readFile(String filename) {
 
         try {
@@ -103,34 +114,35 @@ public class MangerFiles implements IManagerFile {
         }
     }
 
-    public void readConfig(String enterprise) {
+    @Override
+    public Map<String, Object> readConfig(String enterprise) {
+        Map<String, Object> _config = new HashMap<String, Object>();
         JSONParser parser = new JSONParser();
-        try {
-            String path = String.format("%s../config.json", this.getClass().getClassLoader().getResource("").getPath());
-            if (existsFile(path))
-                System.out.println("File Exists Yeahh!!!");
-            System.out.println(path);
-            Object obj = parser.parse(new FileReader(path));
+        try
+        {
+            URL url = new URL("http://172.16.0.80:8089/reports/config.json");
+            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+            String all = "", tmp = "";
+            while((tmp = in.readLine()) != null)
+                all += tmp;
+            //            System.out.println(all);
+            in.close();
+            Object obj = parser.parse(all);
             JSONObject jsonObject = (JSONObject) obj;
             //System.out.println(jsonObject);
             JSONObject enterpriseObj = (JSONObject) jsonObject.get("enterprise");
-            //System.out.println(enterpriseObj);
-            //System.out.println("Name enterprise "+enterprise);
             enterpriseObj = (JSONObject) enterpriseObj.get(enterprise);
-            //System.out.println("PARSE obj json "+ enterpriseObj);
+
             if (enterpriseObj.containsKey("port"))
-                Module.PORT = enterpriseObj.get("port").toString();
+                _config.put("port", enterpriseObj.get("port").toString());
             if (enterpriseObj.containsKey("host"))
-                Module.HOST = enterpriseObj.get("host").toString();
+                _config.put("host", enterpriseObj.get("host").toString());
             if (enterpriseObj.containsKey("db"))
-                Module.DB = enterpriseObj.get("db").toString();
+                _config.put("db", enterpriseObj.get("db").toString());
             if (enterpriseObj.containsKey("passwd"))
-                Module.PWD = enterpriseObj.get("passwd").toString();
+                _config.put("passwd", enterpriseObj.get("passwd").toString());
             if (enterpriseObj.containsKey("user"))
-                Module.USER = enterpriseObj.get("user").toString();
-            System.out.println("Show Enterprise object json " + enterprise);
-            Module.RUC = (enterprise.isEmpty()) ? Module.defenterpise : enterprise;
-            //System.out.println(String.format("%s %s %s %s %s", Module.HOST, Module.PORT, Module.USER, Module.DB, Module.PWD));
+                _config.put("user", enterpriseObj.get("user").toString());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -138,6 +150,7 @@ public class MangerFiles implements IManagerFile {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        return _config;
     }
 
 }
