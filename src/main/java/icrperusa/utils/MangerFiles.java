@@ -120,7 +120,8 @@ public class MangerFiles implements IManagerFile {
         JSONParser parser = new JSONParser();
         try
         {
-            URL url = new URL("http://172.16.0.80:8089/reports/config.json");
+            //URL url = new URL("http://172.16.0.80:8089/reports/config.json");
+            URL url = new URL("http://localhost:8080/reports/config.json");
             BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
             String all = "", tmp = "";
             while((tmp = in.readLine()) != null)

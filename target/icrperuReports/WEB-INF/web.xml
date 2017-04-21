@@ -6,7 +6,6 @@
 		<small-icon>/images/fav16.jpg</small-icon>
 		<large-icon>/images/fav32.jpg</large-icon>
 	</icon>
-	<!-- <icon> <small-icon>/images/logo.jpg</small-icon> </icon> -->
 	<display-name>Archetype Created Web Application</display-name>
 	<servlet>
 		<servlet-name>Test</servlet-name>
@@ -77,7 +76,7 @@
 		<error-code>404</error-code>
 		<location>/ErrorHandler</location>
 	</error-page>
-	<error-page>
+	<!--<error-page>
 		<error-code>503</error-code>
 		<location>/ErrorHandler</location>
 	</error-page>
@@ -104,5 +103,5 @@
 	<error-page>
 		<exception-type>java.sql.SQLException</exception-type>
 		<location>/ErrorHandler</location>
-	</error-page>
+	</error-page>-->
 </web-app>

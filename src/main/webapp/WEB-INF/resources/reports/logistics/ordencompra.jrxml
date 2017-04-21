@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2017-04-20T09:58:58 -->
+<!-- 2017-04-21T17:47:55 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ordencompra" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="45f20af2-31f2-411f-8cc3-cd474d74173c">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="bdicrserver"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cn"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -41,55 +41,57 @@
 	<parameter name="PATHSOURCE" class="java.lang.String"/>
 	<parameter name="RUC" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select 
-c.compra_id as codcompra,
-prov.proveedor_id as provruc,
-prov.razonsocial as provrazonsocial,
-prov.direccion as provdireccion,
-c.registrado as registrado,
-c.traslado as fechtraslado,
-c.lugent as lugentrega,
-doc.documento as documento,
-fpago.pagos as formapago,
-mon.moneda as moneda,
-c.status as estado,
-c.contacto as contacto,
-c.projects as proyectos,
-mat.materiales_id as codmaterial,
-mat.matnom as material,
-mat.matmed as matmedida,
-br.brand as marca,
-mod.model as modelo,
-unid.uninom as unidad,
-detc.cantstatic as cantidad,
-detc.precio as precio,
-detc.discount as descuento,
-detc.perception as perception,
-dist.distnom as distrito,
-detc.observation as observaciones,
-c.discount as dsctoegeneral,
-c.cotizacion_id as cotizacion
-from logistica_compra c 
-inner join logistica_detcompra detc 
-on c.compra_id = detc.compra_id 
-inner join home_proveedor prov
-on prov.proveedor_id = c.proveedor_id
-inner join home_documentos doc
-on doc.documento_id = c.documento_id
-inner join home_formapago fpago
-on fpago.pagos_id = c.pagos_id
-inner join home_moneda mon
-on mon.moneda_id = c.moneda_id
-inner join home_materiale mat
-on mat.materiales_id = detc.materiales_id
-inner join home_brand br
-on br.brand_id = detc.brand_id
-inner join home_model mod
-on mod.model_id = detc.model_id
-inner join home_unidade unid
-on unid.unidad_id = detc.unit_id
-inner join home_distrito dist
-on dist.distrito_id = prov.distrito_id
+		<![CDATA[SELECT
+c.compra_id AS codcompra,
+prov.proveedor_id AS provruc,
+prov.razonsocial AS provrazonsocial,
+prov.direccion AS provdireccion,
+c.registrado AS registrado,
+c.traslado AS fechtraslado,
+c.lugent AS lugentrega,
+doc.documento AS documento,
+fpago.pagos AS formapago,
+mon.moneda AS moneda,
+c.status AS estado,
+c.contacto AS contacto,
+c.projects AS proyectos,
+mat.materiales_id AS codmaterial,
+mat.matnom AS material,
+mat.matmed AS matmedida,
+mat.unidad_id AS uorigin,
+br.brand AS marca,
+mod.model AS modelo,
+unid.uninom AS unidad,
+detc.cantstatic AS cantidad,
+detc.precio AS precio,
+detc.discount AS descuento,
+detc.perception AS percepcion,
+dist.distnom AS distrito,
+detc.observation AS observaciones, 
+c.discount AS dsctoegeneral,
+c.quotation AS cotizacion,
+detc.perception
+FROM logistica_compra c 
+INNER JOIN logistica_detcompra detc 
+ON c.compra_id = detc.compra_id 
+INNER JOIN home_proveedor prov 
+ON prov.proveedor_id = c.proveedor_id 
+INNER JOIN home_documentos doc 
+ON doc.documento_id = c.documento_id 
+INNER JOIN home_formapago fpago 
+ON fpago.pagos_id = c.pagos_id 
+INNER JOIN home_moneda mon 
+ON mon.moneda_id = c.moneda_id 
+INNER JOIN home_materiale mat 
+ON mat.materiales_id = detc.materiales_id 
+INNER JOIN home_brand br 
+ON br.brand_id = detc.brand_id 
+INNER JOIN home_model mod 
+ON mod.model_id = detc.model_id 
+left JOIN home_unidade unid 
+ON unid.unidad_id = detc.unit_id 
+inner JOIN home_distrito dist 
+ON dist.distrito_id = prov.distrito_id 
 where c.compra_id = $P{parcompra_id} order by material]]>
 	</queryString>
 	<field name="codcompra" class="java.lang.String"/>
@@ -108,17 +110,19 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 	<field name="codmaterial" class="java.lang.String"/>
 	<field name="material" class="java.lang.String"/>
 	<field name="matmedida" class="java.lang.String"/>
+	<field name="uorigin" class="java.lang.String"/>
 	<field name="marca" class="java.lang.String"/>
 	<field name="modelo" class="java.lang.String"/>
 	<field name="unidad" class="java.lang.String"/>
 	<field name="cantidad" class="java.lang.Double"/>
 	<field name="precio" class="java.lang.Double"/>
 	<field name="descuento" class="java.math.BigDecimal"/>
-	<field name="perception" class="java.lang.Double"/>
+	<field name="percepcion" class="java.lang.Double"/>
 	<field name="distrito" class="java.lang.String"/>
 	<field name="observaciones" class="java.lang.String"/>
 	<field name="dsctoegeneral" class="java.lang.Double"/>
 	<field name="cotizacion" class="java.lang.String"/>
+	<field name="perception" class="java.lang.Double"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -752,7 +756,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{unidad}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{unidad} == null) ? $F{uorigin}:$F{unidad}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="56" y="2" width="58" height="13" uuid="ac531c10-e42f-447b-9d73-cac3ac3360c7">
