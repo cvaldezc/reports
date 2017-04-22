@@ -27,7 +27,6 @@ public class BLConfig extends ConfMaster {
             xrs = new Connect(this.getEnterprise()).ExecuteQuery(xquery, new Object[]{});
             System.out.println("Size of Result Set" + xrs.getFetchSize());
         } catch (Exception e) {
-            // TODO: handle exception
             System.out.println("BUSSINESS LOGIN SQL "+ e.getMessage());
             System.out.println(e.getMessage());
         }

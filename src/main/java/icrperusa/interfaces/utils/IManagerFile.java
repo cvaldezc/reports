@@ -16,6 +16,6 @@ public interface IManagerFile {
 
     void readFile(String filename);
 
-    Map readConfig(String filename);
+    Map<String, Object> readConfig(String filename);
 
 }

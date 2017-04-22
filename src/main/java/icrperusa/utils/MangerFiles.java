@@ -6,7 +6,6 @@ package icrperusa.utils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -60,7 +59,7 @@ public class MangerFiles implements IManagerFile {
     public boolean upload(Object file) {
         boolean _status = false;
         try {
-            File _file = (File) file;
+            //            File _file = (File) file;
 
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
@@ -99,19 +98,10 @@ public class MangerFiles implements IManagerFile {
 
     @Override
     public void readFile(String filename) {
+        //            JSONParser parser = new JSONParser();
+        //            Object obj = parser.parse(new FileReader("/home"));
+        //            JSONObject jsonOb = (JSONObject) obj;
 
-        try {
-            JSONParser parser = new JSONParser();
-            Object obj = parser.parse(new FileReader("/home"));
-            JSONObject jsonOb = (JSONObject) obj;
-        }
-        catch(IOException ex){
-
-        }catch(ParseException exp){
-
-        } finally {
-            // TODO: handle finally clause
-        }
     }
 
     @Override
@@ -120,8 +110,8 @@ public class MangerFiles implements IManagerFile {
         JSONParser parser = new JSONParser();
         try
         {
-            //URL url = new URL("http://172.16.0.80:8089/reports/config.json");
-            URL url = new URL("http://localhost:8080/reports/config.json");
+            URL url = new URL("http://172.16.0.80:8089/reports/config.json");
+            // URL url = new URL("http://localhost:8080/reports/config.json");
             BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
             String all = "", tmp = "";
             while((tmp = in.readLine()) != null)

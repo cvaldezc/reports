@@ -11,7 +11,6 @@ import org.junit.Test;
  */
 public class PurchaseTest {
 
-    @SuppressWarnings("deprecation")
     @Test
     public void testIgv(){
         //        BLPurchase obj = new BLPurchase("");

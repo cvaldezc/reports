@@ -29,7 +29,6 @@ public class OrdenPurchase extends HttpServlet {
      */
     public OrdenPurchase() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -94,7 +93,6 @@ public class OrdenPurchase extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
         doGet(request, response);
     }
 
