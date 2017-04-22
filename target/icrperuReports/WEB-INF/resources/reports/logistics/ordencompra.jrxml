@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2017-04-21T17:47:55 -->
+<!-- 2017-04-22T12:39:33 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ordencompra" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="45f20af2-31f2-411f-8cc3-cd474d74173c">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cn"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -707,7 +707,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<pen lineColor="#C94540"/>
 				</graphicElement>
 			</line>
-			<textField pattern="#,###.00#;(#,###.00#-)">
+			<textField pattern="#,##0.00#;#,##0.00#-">
 				<reportElement x="341" y="2" width="40" height="13" uuid="39db5f0e-71a2-418e-b60f-4642238ed9e8">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
@@ -717,7 +717,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
 			</textField>
-			<textField pattern="">
+			<textField pattern="#,##0.00#;#,##0.00#-">
 				<reportElement x="427" y="2" width="40" height="13" uuid="78b0a901-38a0-4b6c-be44-7a7effd21c0e">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
@@ -727,7 +727,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{descuento}+"%"]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,###.00#;(#,###.00#)">
+			<textField pattern="#,##0.00#;#,##0.00#-">
 				<reportElement x="528" y="2" width="40" height="13" uuid="fbeb5a11-1063-4548-b3c8-27f66121c5e9">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
@@ -737,7 +737,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				</textElement>
 				<textFieldExpression><![CDATA[Math.round(((Math.round($F{cantidad}.doubleValue()*($F{precio}.doubleValue()-(($F{precio}*$F{descuento}.doubleValue())/100))*100.0)/100.0)+(($F{perception}.doubleValue()*Math.round($F{cantidad}.doubleValue()*($F{precio}.doubleValue()-(($F{precio}*$F{descuento}.doubleValue())/100))*100.0)/100.0)/100))*100.0)/100.0]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,###.00#;(#,###.00#-)">
+			<textField pattern="#,##0.00#;#,##0.00#-">
 				<reportElement x="385" y="2" width="35" height="13" uuid="81dd074c-852a-4c4f-aa88-4e741a70fbaf">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
@@ -789,7 +789,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.00#;(-#,##0.00#)">
+			<textField pattern="#,##0.00#;#,##0.00#-">
 				<reportElement x="478" y="2" width="40" height="13" uuid="4386db5d-8fec-4988-bdcf-e0257398d09c">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
