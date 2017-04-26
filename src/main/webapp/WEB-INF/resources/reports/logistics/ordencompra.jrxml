@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2017-04-22T12:39:33 -->
+<!-- 2017-04-26T10:35:51 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ordencompra" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="45f20af2-31f2-411f-8cc3-cd474d74173c">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cn"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -49,6 +49,7 @@ prov.direccion AS provdireccion,
 c.registrado AS registrado,
 c.traslado AS fechtraslado,
 c.lugent AS lugentrega,
+c.observation,
 doc.documento AS documento,
 fpago.pagos AS formapago,
 mon.moneda AS moneda,
@@ -101,6 +102,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 	<field name="registrado" class="java.sql.Timestamp"/>
 	<field name="fechtraslado" class="java.sql.Date"/>
 	<field name="lugentrega" class="java.lang.String"/>
+	<field name="observation" class="java.lang.String"/>
 	<field name="documento" class="java.lang.String"/>
 	<field name="formapago" class="java.lang.String"/>
 	<field name="moneda" class="java.lang.String"/>
@@ -923,7 +925,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="112">
+		<band height="116">
 			<line>
 				<reportElement x="25" y="0" width="546" height="1" uuid="b6405e5a-4fc1-48e8-ac69-3d11587cef2b">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
@@ -1117,6 +1119,14 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["SUBTOTAL"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="26" y="71" width="545" height="20" isRemoveLineWhenBlank="true" uuid="eac4969b-5e41-4146-8d6c-6fc69d0934c0"/>
+				<textElement markup="html">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{observation}]]></textFieldExpression>
+				<patternExpression><![CDATA["<b>Observaciones:<b><br>"+$F{observation}]]></patternExpression>
 			</textField>
 		</band>
 	</summary>

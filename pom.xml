@@ -45,6 +45,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>icrperuReports</finalName>
+		<finalName>reports</finalName>
 	</build>
 </project>

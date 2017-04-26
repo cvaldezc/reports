@@ -68,8 +68,14 @@ public class FileUploadServlet extends HttpServlet {
         final PrintWriter write = response.getWriter();
         try {
             System.out.println("PATH IN SAVE FILE CONFIG " + path);
-            out = new FileOutputStream(new File(String.format("%s%s", path, filename)));
-            //            System.out.println(out);
+            String _path = String.format("%s%s", path, filename);
+            File _file = new File(_path);
+            if (_file.exists()){
+                _file.delete();
+                write.println("File exists and delete!");
+            }
+            out = new FileOutputStream(_file);
+            // System.out.println(out);
             filecontent = filePart.getInputStream();
             int read = 0;
             final byte[] bytes = new byte[1024];
