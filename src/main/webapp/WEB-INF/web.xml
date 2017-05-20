@@ -43,6 +43,14 @@
 		<description>clear map config</description>
 		<servlet-class>icrperusa.servlet.ConfigClean</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>OrderGroup</servlet-name>
+		<display-name>OrderGroup</display-name>
+		<description></description>
+		<servlet-class>icrperusa.servlet.OrderGroup</servlet-class>
+	</servlet>
+	<!-- block implements jax-rs -->
+	<!-- end block jax-rs -->
 	<servlet-mapping>
 		<servlet-name>Test</servlet-name>
 		<url-pattern>/test</url-pattern>
@@ -70,6 +78,10 @@
 	<servlet-mapping>
 		<servlet-name>ConfigClean</servlet-name>
 		<url-pattern>/config/clean</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderGroup</servlet-name>
+		<url-pattern>/order/group</url-pattern>
 	</servlet-mapping>
 	<!-- error-code related error pages -->
 	<error-page>

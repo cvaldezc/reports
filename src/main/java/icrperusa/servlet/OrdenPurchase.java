@@ -44,7 +44,7 @@ public class OrdenPurchase extends HttpServlet {
         if (request.getParameterMap().containsKey("purchase"))
             purchaseid = request.getParameter("purchase");
         else
-            purchaseid = "OC17000079";
+            purchaseid = "OC17000001";
 
         Double subtotal = new BLPurchase(ruc).amountPurchase(purchaseid);
         System.out.println("SUB TOTAL FOR " + subtotal);

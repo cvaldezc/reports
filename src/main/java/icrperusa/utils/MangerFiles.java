@@ -27,6 +27,7 @@ public class MangerFiles implements IManagerFile {
     /* (non-Javadoc)
      * @see icrperusa.interfaces.utils.IUploadFile#existsFile(java.lang.String, boolean)
      */
+    @Override
     public boolean existsFile(String filename, boolean fullpath) {
         boolean _status = false;
         try {
@@ -46,6 +47,7 @@ public class MangerFiles implements IManagerFile {
     /* (non-Javadoc)
      * @see icrperusa.interfaces.utils.IUploadFile#existsFile(java.lang.String)
      */
+    @Override
     public boolean existsFile(String filename) {
         return existsFile(filename, true);
     }
@@ -53,6 +55,7 @@ public class MangerFiles implements IManagerFile {
     /* (non-Javadoc)
      * @see icrperusa.interfaces.utils.IUploadFile#upload(java.lang.Object)
      */
+    @Override
     public boolean upload(Object file) {
         boolean _status = false;
         try {
@@ -67,6 +70,7 @@ public class MangerFiles implements IManagerFile {
     /* (non-Javadoc)
      * @see icrperusa.interfaces.utils.IUploadFile#delete(java.lang.String, boolean)
      */
+    @Override
     public boolean delete(String filename, boolean fullpath) {
         boolean _status = false;
         try {
@@ -87,10 +91,12 @@ public class MangerFiles implements IManagerFile {
     /* (non-Javadoc)
      * @see icrperusa.interfaces.utils.IUploadFile#delete(java.lang.String)
      */
+    @Override
     public boolean delete(String filename) {
         return delete(filename, true);
     }
 
+    @Override
     public void readFile(String filename) {
         //            JSONParser parser = new JSONParser();
         //            Object obj = parser.parse(new FileReader("/home"));
@@ -98,13 +104,14 @@ public class MangerFiles implements IManagerFile {
 
     }
 
+    @Override
     public Map<String, Object> readConfig(String enterprise) {
         Map<String, Object> _config = new HashMap<String, Object>();
         JSONParser parser = new JSONParser();
         try
         {
-            URL url = new URL("http://172.16.0.80:8089/reports/config.json");
-            // URL url = new URL("http://localhost:8080/reports/config.json");
+            // URL url = new URL("http://172.16.0.80:8089/reports/settings/config.json");
+            URL url = new URL("http://localhost:8089/reports/settings/config.json");
             BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
             String all = "", tmp = "";
             while((tmp = in.readLine()) != null)
