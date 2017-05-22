@@ -11,6 +11,7 @@ icrperusa/entity/Purchase.class
 icrperusa/businesslogical/BLConfig.class
 icrperusa/utils/MangerFiles.class
 icrperusa/businesslogical/BLPurchase.class
+icrperusa/servlet/OrderGroup.class
 icrperusa/utils/Convert.class
 icrperusa/servlet/FileUploadServlet.class
 icrperusa/utils/RoundPlaces.class

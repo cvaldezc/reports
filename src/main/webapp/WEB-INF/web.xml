@@ -28,11 +28,6 @@
 		<servlet-class>icrperusa.servlet.FileUploadServlet</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>ErrorHandler</servlet-name>
-		<display-name>ErrorHandler</display-name>
-		<servlet-class>icrperusa.servlet.ErrorHandler</servlet-class>
-	</servlet>
-	<servlet>
 		<servlet-name>GuideRetTools</servlet-name>
 		<display-name>GuideRetTools</display-name>
 		<servlet-class>icrperusa.servlet.GuideRetTools</servlet-class>
@@ -68,10 +63,6 @@
 		<url-pattern>/upload</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>ErrorHandler</servlet-name>
-		<url-pattern>/ErrorHandler</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
 		<servlet-name>GuideRetTools</servlet-name>
 		<url-pattern>/guide/toolsreturn</url-pattern>
 	</servlet-mapping>
@@ -84,10 +75,6 @@
 		<url-pattern>/order/group</url-pattern>
 	</servlet-mapping>
 	<!-- error-code related error pages -->
-	<error-page>
-		<error-code>404</error-code>
-		<location>/ErrorHandler</location>
-	</error-page>
 	<!--<error-page>
 		<error-code>503</error-code>
 		<location>/ErrorHandler</location>

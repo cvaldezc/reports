@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2017-05-12T12:31:17 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="grupoxpedido" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="304262e9-2f13-41d3-9841-771fc2388470">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="dbicrperu"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<subDataset name="Dataset1" uuid="7e199a93-2f9d-495c-a7c2-1e3b9598acf8">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<parameter name="parpedido" class="java.util.List">
+			<defaultValueExpression><![CDATA[$P{parpedido}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="parcodgrupo" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[$P{parcodgrupo}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select distinct on (detgr.pedido_id)
+CASE to_char(gr.fechtraslado, 'MM')
+		WHEN '01'  THEN 'ENERO'
+		WHEN '02' THEN 'FEBRERO'
+		WHEN '03' THEN 'MARZO'
+		WHEN '04' THEN 'ABRIL'
+		WHEN '05' THEN 'MAYO'
+		WHEN '06' THEN 'JUNIO'
+		WHEN '07' THEN 'JULIO'
+		WHEN '08' THEN 'AGOSTO'
+		WHEN '09' THEN 'SEPTIEMBRE'
+		WHEN '10' THEN 'OCTUBRE'
+		WHEN '11' THEN 'NOVIEMBRE'
+		WHEN '12' THEN 'DICIEMBRE'
+		END as fechmonth,
+to_char(gr.fechtraslado, 'dd') as fechday,
+to_char(gr.fechtraslado,'YY') as fechyear,
+gr.proyecto_id as codproy,
+proy.nompro as nameproy,
+detgr.pedido_id as codped,
+cli.razonsocial as razonsocial,
+emp.lastname as apellidogrped,
+emp.firstname as nombresgrped
+from almacen_grupopedido gr
+inner join ventas_proyecto proy
+on gr.proyecto_id = proy.proyecto_id
+inner join almacen_detgrupopedido detgr
+on gr.codgrupo_id=detgr.codgrupo_id
+inner join home_cliente cli
+on proy.ruccliente_id=cli.ruccliente_id
+inner join home_employee emp
+on gr.empdni_id=emp.empdni_id
+where gr.codgrupo_id = $P{parcodgrupo} order by detgr.pedido_id asc]]>
+	</queryString>
+	<field name="fechmonth" class="java.lang.String"/>
+	<field name="fechday" class="java.lang.String"/>
+	<field name="fechyear" class="java.lang.String"/>
+	<field name="codproy" class="java.lang.String"/>
+	<field name="nameproy" class="java.lang.String"/>
+	<field name="codped" class="java.lang.String"/>
+	<field name="razonsocial" class="java.lang.String"/>
+	<field name="apellidogrped" class="java.lang.String"/>
+	<field name="nombresgrped" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="185" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="106" width="90" height="14" uuid="806f411c-6289-4099-94e0-74b0f1248ec1">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROYECTO: ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="125" y="106" width="435" height="14" uuid="b6e4b043-8f4f-4f21-91bc-49e9baeb93e2">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codproy}+" "+$F{nameproy}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="307" y="135" width="90" height="11" uuid="f92a48e4-8e3b-4112-b0dd-9a6af3a08755">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Traslado : ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="20" y="101" width="550" height="1" forecolor="#C94540" uuid="adfa26ed-5d98-4bbd-b615-79a9054cd533">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="20" y="132" width="550" height="1" forecolor="#C94540" uuid="44eb6be8-a473-4c5a-9ad6-39b3cee879fe">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="20" y="182" width="550" height="1" forecolor="#C94540" uuid="17216462-08c2-4083-8ea3-d2a66f03121c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="20" y="101" width="1" height="81" forecolor="#C94540" uuid="6609dba2-0564-412b-a71d-4447fd60dc3f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="569" y="101" width="1" height="81" forecolor="#C94540" uuid="110d1449-8204-4622-be05-3a1c97161f96">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+			</line>
+			<textField>
+				<reportElement x="400" y="135" width="160" height="11" uuid="697377b7-e077-4500-a7c4-ae76f66db18d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechday}+"  "+$F{fechmonth}+" 20"+$F{fechyear}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Opaque" x="421" y="81" width="149" height="20" forecolor="#C94540" backcolor="#C94540" uuid="515da8ff-e45e-44cd-b2a7-612953a58d9c">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement x="422" y="81" width="145" height="18" forecolor="#FCFAFA" uuid="af462f53-04d5-451c-83eb-1cb94723044c">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{parcodgrupo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="165" width="70" height="11" uuid="e913ac09-fb59-4119-b10e-4c7e37f421b7">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="165" width="460" height="11" uuid="acf7812d-8f1e-474f-b50e-5d04a96179ec">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razonsocial}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="21" y="27" width="79" height="72" uuid="79310f1a-61f3-43c2-93ba-de03f91fe34f"/>
+				<imageExpression><![CDATA["icrlogo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="30" y="135" width="70" height="11" uuid="9aab87a6-94fc-4351-8184-48d8d5c5f664">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Generado por: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="150" width="90" height="11" uuid="962bdd7d-4d72-45bb-a7cc-f17ef8f08c28">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Impresion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="150" width="70" height="11" uuid="fc5861a3-5136-4b3e-8f60-7bf5306e68d3">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Impreso por:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="135" width="200" height="11" uuid="a8215377-6146-48c3-b7ed-100481d7f409">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apellidogrped}+", "+$F{nombresgrped}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="189" y="33" width="211" height="22" uuid="85cafcaa-1a5a-4062-8eba-b90c54f76900"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Jiron Jose de San Martin Mz. E Lote 6, Los Huertos de Huachipa - Lurigancho]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="57" width="90" height="12" uuid="d022c211-ac21-4f30-9626-279b72dfd380">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Telf.: 371-0443]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="215" y="71" width="150" height="12" uuid="7a90c37e-1364-4f05-a05d-d1cdbdf39ea0">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Email: info@icrperusa.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="61" width="140" height="18" forecolor="#C94540" uuid="c737ac92-71ab-456f-9dab-6018ade78a91">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO DE GRUPO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="6">
+			<subreport>
+				<reportElement x="21" y="1" width="550" height="5" uuid="822867c8-7635-47ca-b742-802b839d0e28">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<subreportParameter name="par_subcodped">
+					<subreportParameterExpression><![CDATA[$F{codped}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="par_subcodgrupo">
+					<subreportParameterExpression><![CDATA[$P{parcodgrupo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["sub_grupoxpedido.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="70">
+			<textField>
+				<reportElement x="22" y="45" width="100" height="15" uuid="bf2997a7-223c-4e3a-bef5-4d8954ebd556"/>
+				<textFieldExpression><![CDATA[TODAY( )]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

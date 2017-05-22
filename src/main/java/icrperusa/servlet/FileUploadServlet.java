@@ -61,7 +61,7 @@ public class FileUploadServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String path = getServletContext().getRealPath("settings".concat(String.valueOf(Module.SEPARATOR)));
+        String path = getServletContext().getRealPath("settings").concat(String.valueOf(Module.SEPARATOR));
         response.setContentType("text/html;charset=UTF-8");
         final Part filePart = request.getPart("file");
         String filename = getFileName(filePart);
