@@ -59,7 +59,7 @@ public class MangerFiles implements IManagerFile {
     public boolean upload(Object file) {
         boolean _status = false;
         try {
-            //            File _file = (File) file;
+            // File _file = (File) file;
 
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
