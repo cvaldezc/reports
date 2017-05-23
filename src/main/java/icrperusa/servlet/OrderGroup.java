@@ -1,7 +1,6 @@
 package icrperusa.servlet;
 
 import java.io.IOException;
-import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -39,6 +38,7 @@ public class OrderGroup extends HttpServlet {
         // response.getWriter().append("Served at: ").append(request.getContextPath());
         response.setContentType("application/pdf;charset=UTF-8");
         final String SOURCE = getServletContext().getRealPath("/");
+        System.out.println("SOURCE PATH " + SOURCE);
         String ruc = (request.getParameterMap().containsKey("ruc")) ? request.getParameter("ruc") : Module.defenterpise;
         String groupid = "";
         // define parameter
@@ -46,15 +46,18 @@ public class OrderGroup extends HttpServlet {
         if (request.getParameterMap().containsKey("groupid"))
             groupid = request.getParameter("groupid");
         else
-            response.sendRedirect("/404");
-        parameter.put("groupid", groupid);
+            response.sendRedirect("/reports/404");
+        parameter.put("parcodgrupo", groupid);
+        parameter.put("PATHSOURCE", SOURCE);
+        parameter.put("COMPANY", ruc);
         Reports rpt = new Reports(ruc);
         byte[] bytes = null;
         try {
-            bytes = rpt.getReportcn(MessageFormat.format("{0}/reports/storage/.jasper", SOURCE), parameter);
+            bytes = rpt.getReportcn(String.format("%sreports/storage/groupbyorder.jasper", SOURCE), parameter);
+
         } catch (Exception ex) {
-            response.sendRedirect(String.format("/500?problem=%s", ex.getMessage()));
             log.info("Error when build report ".concat(ex.getMessage()));
+            response.sendRedirect(String.format("/reports/500?problem=%s", ex.getMessage()));
         }
         response.setContentLength(bytes.length);
         ServletOutputStream outputStream = response.getOutputStream();

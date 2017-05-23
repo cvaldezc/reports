@@ -3,6 +3,7 @@
 /home/christian/development/java/reports/src/main/java/icrperusa/businesslogical/BLPurchase.java
 /home/christian/development/java/reports/src/main/java/icrperusa/dataaccess/Connect.java
 /home/christian/development/java/reports/src/main/java/icrperusa/entity/Purchase.java
+/home/christian/development/java/reports/src/main/java/icrperusa/servlet/NotFound.java
 /home/christian/development/java/reports/src/main/java/icrperusa/utils/Convert.java
 /home/christian/development/java/reports/src/main/java/icrperusa/utils/Reports.java
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/FileUploadServlet.java
@@ -11,6 +12,7 @@
 /home/christian/development/java/reports/src/main/java/icrperusa/businesslogical/BLConfig.java
 /home/christian/development/java/reports/src/main/java/icrperusa/utils/Module.java
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/Test.java
+/home/christian/development/java/reports/src/main/java/icrperusa/servlet/Internal.java
 /home/christian/development/java/reports/src/main/java/icrperusa/utils/NumberToChar.java
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/ToolsGuide.java
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/GuideRetTools.java

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
-<!-- 2017-05-12T08:30:34 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sub_grupoxpedido" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="07dcd85a-0e5b-4e59-a5ca-ef50efebdbae">
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2017-05-23T12:35:58 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="groupbyorderdetails" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="07dcd85a-0e5b-4e59-a5ca-ef50efebdbae">
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -11,7 +11,7 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="dbicrperu"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cn"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="par_subcodgrupo" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$P{par_subcodgrupo}]]></defaultValueExpression>
@@ -19,6 +19,7 @@
 	<parameter name="par_subcodped" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$P{par_subcodped}]]></defaultValueExpression>
 	</parameter>
+	<parameter name="PATHSOURCE" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select  
 CASE to_char(ped.traslado, 'MM')
@@ -333,8 +334,11 @@ and dgrpe.codgrupo_id = $P{par_subcodgrupo} order by namemat asc]]>
 				<subreportParameter name="par_codpednip">
 					<subreportParameterExpression><![CDATA[$P{par_subcodped}]]></subreportParameterExpression>
 				</subreportParameter>
+				<subreportParameter name="PATHSOURCE">
+					<subreportParameterExpression><![CDATA[$P{PATHSOURCE}]]></subreportParameterExpression>
+				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["sub2_grupoxpedido.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{PATHSOURCE}+"reports/storage/groupbyorderdetailsniples.jasper"]]></subreportExpression>
 			</subreport>
 			<line>
 				<reportElement stretchType="RelativeToBandHeight" x="553" y="0" width="1" height="13" forecolor="#C94540" uuid="50e162be-e466-438d-baed-6b896c2181aa">

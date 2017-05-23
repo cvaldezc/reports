@@ -20,9 +20,10 @@ import icrperusa.utils.RoundPlaces;
 public class BLPurchase extends Purchase implements IPurchase {
 
     public BLPurchase(String RUC){
-        this.setEnterprise(RUC);;
+        this.setEnterprise(RUC);
     }
 
+    @Override
     public double getIGV(String idpurchase){
         double _igv = 0;
         try {
@@ -44,6 +45,7 @@ public class BLPurchase extends Purchase implements IPurchase {
         return _igv;
     }
 
+    @Override
     public double amountPurchase(String idpurchase){
         double _amount = 0;
         try {

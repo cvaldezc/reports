@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -111,29 +112,43 @@ public class MangerFiles implements IManagerFile {
         try
         {
             // URL url = new URL("http://172.16.0.80:8089/reports/settings/config.json");
-            URL url = new URL("http://localhost:8089/reports/settings/config.json");
+            System.out.println("aDRESS SERVER " +  InetAddress.getLocalHost());
+            URL url = new URL("http://localhost:8080/reports/settings/config.json");
             BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
             String all = "", tmp = "";
             while((tmp = in.readLine()) != null)
                 all += tmp;
-            //            System.out.println(all);
+            //System.out.println(all);
             in.close();
             Object obj = parser.parse(all);
             JSONObject jsonObject = (JSONObject) obj;
-            //System.out.println(jsonObject);
+            System.out.println("OBJECT JSON " + jsonObject);
             JSONObject enterpriseObj = (JSONObject) jsonObject.get("enterprise");
-            enterpriseObj = (JSONObject) enterpriseObj.get(enterprise);
-
-            if (enterpriseObj.containsKey("port"))
+            System.out.println("OBJECT ENTERPRISE " + enterprise);
+            enterpriseObj = (JSONObject) enterpriseObj.get(enterprise.toString());
+            System.out.println("BLOCK IFs");
+            if (enterpriseObj.containsKey("port")){
+                System.out.println("IN THE PORT");
                 _config.put("port", enterpriseObj.get("port").toString());
-            if (enterpriseObj.containsKey("host"))
+            }
+            if (enterpriseObj.containsKey("host")){
+                System.out.println("IN THE HOST");
                 _config.put("host", enterpriseObj.get("host").toString());
-            if (enterpriseObj.containsKey("db"))
+            }
+            if (enterpriseObj.containsKey("db")){
+                System.out.println("IN THE DB");
                 _config.put("db", enterpriseObj.get("db").toString());
-            if (enterpriseObj.containsKey("passwd"))
+            }
+            if (enterpriseObj.containsKey("passwd")){
+                System.out.println("IN THE PWD");
                 _config.put("passwd", enterpriseObj.get("passwd").toString());
-            if (enterpriseObj.containsKey("user"))
+            }
+            if (enterpriseObj.containsKey("user")){
+                System.out.println("IN THE USER");
                 _config.put("user", enterpriseObj.get("user").toString());
+            }
+            System.out.println("READ CONFIG " + enterpriseObj);
+            System.out.println("CONFIG " + _config);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

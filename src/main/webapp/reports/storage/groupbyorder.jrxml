@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
-<!-- 2017-05-12T12:31:17 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="grupoxpedido" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="304262e9-2f13-41d3-9841-771fc2388470">
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2017-05-23T13:00:55 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="groupbyorder" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="304262e9-2f13-41d3-9841-771fc2388470">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="dbicrperu"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -26,6 +25,8 @@
 		<parameterDescription><![CDATA[]]></parameterDescription>
 		<defaultValueExpression><![CDATA[$P{parcodgrupo}]]></defaultValueExpression>
 	</parameter>
+	<parameter name="PATHSOURCE" class="java.lang.String"/>
+	<parameter name="COMPANY" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select distinct on (detgr.pedido_id)
 CASE to_char(gr.fechtraslado, 'MM')
@@ -192,7 +193,7 @@ where gr.codgrupo_id = $P{parcodgrupo} order by detgr.pedido_id asc]]>
 			</textField>
 			<image>
 				<reportElement x="21" y="27" width="79" height="72" uuid="79310f1a-61f3-43c2-93ba-de03f91fe34f"/>
-				<imageExpression><![CDATA["icrlogo.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{PATHSOURCE}+"images/"+$P{COMPANY}+".png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="30" y="135" width="70" height="11" uuid="9aab87a6-94fc-4351-8184-48d8d5c5f664">
@@ -285,16 +286,19 @@ where gr.codgrupo_id = $P{parcodgrupo} order by detgr.pedido_id asc]]>
 				<subreportParameter name="par_subcodgrupo">
 					<subreportParameterExpression><![CDATA[$P{parcodgrupo}]]></subreportParameterExpression>
 				</subreportParameter>
+				<subreportParameter name="PATHSOURCE">
+					<subreportParameterExpression><![CDATA[$P{PATHSOURCE}]]></subreportParameterExpression>
+				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["sub_grupoxpedido.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{PATHSOURCE}+"reports/storage/groupbyorderdetails.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="70">
-			<textField>
-				<reportElement x="22" y="45" width="100" height="15" uuid="bf2997a7-223c-4e3a-bef5-4d8954ebd556"/>
-				<textFieldExpression><![CDATA[TODAY( )]]></textFieldExpression>
+		<band height="72">
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement stretchType="RelativeToTallestObject" x="10" y="40" width="100" height="20" uuid="2b60f0df-3044-4c94-9fde-69c439a6e05b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

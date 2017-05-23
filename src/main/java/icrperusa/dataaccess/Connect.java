@@ -8,8 +8,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import icrperusa.utils.Module;
 
@@ -19,10 +21,14 @@ import icrperusa.utils.Module;
  */
 public class Connect {
 
+    final Logger log = Logger.getLogger(Connect.class.getName());
+
     protected Map<String, Object> config = new HashMap<String, Object>();
 
     public Connect(String RUC){
+        System.out.println("IN CONNECT RUC " + RUC);
         config = Module.loadConfig(RUC);
+        System.out.println("LOAD CONFIG" + Arrays.toString(config.values().toArray()));
     }
 
     public Connection Open() throws SQLException{
@@ -35,18 +41,14 @@ public class Connect {
                     config.get("host"),
                     config.get("port"),
                     config.get("db"));
-            System.out.println(uri);
+            System.out.println("SHOW URL " + uri);
             cn = DriverManager.getConnection(uri, config.get("user").toString(), config.get("passwd").toString());
-            //System.out.println("user and pwd "+ Module.USER + " " + Module.PWD);
         } catch (InstantiationException e) {
-            //System.out.println("INSTANCE SQL "+ e.getMessage());
-            e.printStackTrace();
+            log.info("ERROR INSTANCIA: ".concat(e.getMessage()));
         } catch (IllegalAccessException e) {
-            //System.out.println("ILEGAL SQL "+ e.getMessage());
-            e.printStackTrace();
+            log.info("ERROR ILEGAL ACCESS: ".concat(e.getMessage()));
         } catch (ClassNotFoundException e) {
-            //System.out.println("CLASS NOT FOUND SQL "+ e.getMessage());
-            e.printStackTrace();
+            log.info("ERROR CLASS NOT FOUND: ".concat(e.getMessage()));
         }
         return cn;
     }

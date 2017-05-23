@@ -17,18 +17,24 @@ public class Module {
     public static char SEPARATOR = File.separatorChar;
 
     private static final Map<String, Object> loadData(String denterprise){
+        System.out.println("READ FILE CONFIG");
         return new MangerFiles().readConfig(denterprise);
     }
 
     public static Map<String, Object> loadConfig(String RUC){
-        if (config.containsKey(RUC))
+        if (config.containsKey(RUC)){
+            System.out.println("GET RUC CONFIG");
             return config.get(RUC);
-        else if (!RUC.isEmpty()){
-            config.put(RUC, loadData(RUC));
-            return loadConfig(RUC);
         }else{
-            config.put(RUC, loadData(defenterpise));
-            return loadConfig(RUC);
+            if (!RUC.isEmpty()){
+                config.put(RUC, loadData(RUC));
+                System.out.println("GET RUC CONFIG EMPTY");
+                return loadConfig(RUC);
+            }else{
+                config.put(RUC, loadData(defenterpise));
+                System.out.println("GET RUC CONFIG DEFAULT");
+                return loadConfig(RUC);
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 icrperusa/servlet/OrdenPurchase.class
 icrperusa/utils/NumberToChar.class
+icrperusa/servlet/Internal.class
 icrperusa/servlet/ConfigClean.class
 icrperusa/interfaces/IPurchase.class
 icrperusa/utils/Module.class
@@ -9,6 +10,7 @@ icrperusa/interfaces/utils/IManagerFile.class
 icrperusa/servlet/Test.class
 icrperusa/entity/Purchase.class
 icrperusa/businesslogical/BLConfig.class
+icrperusa/servlet/NotFound.class
 icrperusa/utils/MangerFiles.class
 icrperusa/businesslogical/BLPurchase.class
 icrperusa/servlet/OrderGroup.class

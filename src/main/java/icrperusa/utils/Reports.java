@@ -3,6 +3,7 @@
  */
 package icrperusa.utils;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
@@ -26,14 +27,18 @@ public class Reports extends ConfMaster {
         this.setEnterprise(RUC);
     }
 
-
     public byte[] getReportcn(String jrxml, Map<String, Object> parameter) throws SQLException{
         byte[] bytes = null;
-        Connection xcon = null;
+        Connection xcon = new Connect(this.getEnterprise()).Open();
         try {
-            xcon = new Connect(this.getEnterprise()).Open();
-            JasperReport master = (JasperReport) JRLoader.loadObjectFromFile(jrxml);
-            bytes = JasperRunManager.runReportToPdf(master, parameter,  xcon);
+            System.out.println("PATH COMPLETE JRXML " + jrxml);
+            if (new File(jrxml).exists()){
+                System.out.println("JRXML EXIST");
+                JasperReport master = (JasperReport) JRLoader.loadObjectFromFile(jrxml);
+                System.out.println("Object process");
+                bytes = JasperRunManager.runReportToPdf(master, parameter,  xcon);
+
+            }
         } catch (Exception e) {
             Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, e);
         }

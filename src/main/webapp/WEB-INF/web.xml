@@ -44,6 +44,18 @@
 		<description></description>
 		<servlet-class>icrperusa.servlet.OrderGroup</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>NotFound</servlet-name>
+		<display-name>NotFound</display-name>
+		<description></description>
+		<servlet-class>icrperusa.servlet.NotFound</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Internal</servlet-name>
+		<display-name>Internal</display-name>
+		<description></description>
+		<servlet-class>icrperusa.servlet.Internal</servlet-class>
+	</servlet>
 	<!-- block implements jax-rs -->
 	<!-- end block jax-rs -->
 	<servlet-mapping>
@@ -73,6 +85,14 @@
 	<servlet-mapping>
 		<servlet-name>OrderGroup</servlet-name>
 		<url-pattern>/order/group</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>NotFound</servlet-name>
+		<url-pattern>/404</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Internal</servlet-name>
+		<url-pattern>/500</url-pattern>
 	</servlet-mapping>
 	<!-- error-code related error pages -->
 	<!--<error-page>

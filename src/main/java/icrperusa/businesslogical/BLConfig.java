@@ -15,6 +15,7 @@ import icrperusa.entity.ConfMaster;
 public class BLConfig extends ConfMaster {
 
     public BLConfig(String RUC){
+        System.out.println("RUC " + RUC);
         this.setEnterprise(RUC);
     }
 
@@ -23,7 +24,7 @@ public class BLConfig extends ConfMaster {
         ResultSet xrs = null;
         try {
             String xquery = "SELECT * FROM home_configuracion";
-            // System.out.println("Cursor Name" + xrs.getCursorName());
+            System.out.println("Cursor Name " + this.getEnterprise());
             xrs = new Connect(this.getEnterprise()).ExecuteQuery(xquery, new Object[]{});
             System.out.println("Size of Result Set" + xrs.getFetchSize());
         } catch (Exception e) {
