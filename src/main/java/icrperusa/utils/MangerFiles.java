@@ -6,10 +6,8 @@ package icrperusa.utils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.InetAddress;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -112,9 +110,9 @@ public class MangerFiles implements IManagerFile {
         try
         {
             // URL url = new URL("http://172.16.0.80:8089/reports/settings/config.json");
-            System.out.println("aDRESS SERVER " +  InetAddress.getLocalHost());
-            URL url = new URL("http://localhost:8080/reports/settings/config.json");
-            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+            // System.out.println("aDRESS SERVER " +  InetAddress.getLocalHost());
+            // URL url = new URL("http://localhost:8080/reports/settings/config.json");
+            BufferedReader in = new BufferedReader(new FileReader(new File(Module.UPLOAD_PATH().concat("config.json"))));
             String all = "", tmp = "";
             while((tmp = in.readLine()) != null)
                 all += tmp;
