@@ -3,14 +3,6 @@
                          "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
-	<context-param>
-	   <param-name>tempfile.dir</param-name>
-	   <param-value>tmpfiles</param-value>
-	</context-param>
-	<icon>
-		<small-icon>/images/fav16.jpg</small-icon>
-		<large-icon>/images/fav32.jpg</large-icon>
-	</icon>
 	<servlet>
 		<servlet-name>Test</servlet-name>
 		<display-name>Test</display-name>
@@ -55,19 +47,11 @@
 		<servlet-class>icrperusa.servlet.NotFound</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>Internal</servlet-name>
-		<display-name>Internal</display-name>
-		<description></description>
-		<servlet-class>icrperusa.servlet.Internal</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>FIleLocationContextListener</servlet-name>
-		<display-name>FIleLocationContextListener</display-name>
-		<description></description>
-		<servlet-class>icrperusa.servlet.FIleLocationContextListener</servlet-class>
-	</servlet>
-	<!-- block implements jax-rs -->
-	<!-- end block jax-rs -->
+        <servlet-name>Internal</servlet-name>
+        <display-name>Internal</display-name>
+        <description></description>
+        <servlet-class>icrperusa.servlet.Internal</servlet-class>
+    </servlet>
 	<servlet-mapping>
 		<servlet-name>Test</servlet-name>
 		<url-pattern>/test</url-pattern>
@@ -104,37 +88,4 @@
 		<servlet-name>Internal</servlet-name>
 		<url-pattern>/500</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>FIleLocationContextListener</servlet-name>
-		<url-pattern>/FIleLocationContextListener</url-pattern>
-	</servlet-mapping>
-	<!-- error-code related error pages -->
-	<!--<error-page>
-		<error-code>503</error-code>
-		<location>/ErrorHandler</location>
-	</error-page>
-	<error-page>
-		<error-code>403</error-code>
-		<location>/ErrorHandler</location>
-	</error-page>
-	<error-page>
-		<exception-type>javax.servlet.ServletException</exception-type>
-		<location>/ErrorHandler</location>
-	</error-page>
-	<error-page>
-		<exception-type>java.io.IOException</exception-type>
-		<location>/ErrorHandler</location>
-	</error-page>
-	<error-page>
-		<exception-type>java.lang.Throwable</exception-type>
-		<location>/ErrorHandler</location>
-	</error-page>
-	<error-page>
-		<exception-type>org.postgresql.util.PSQLException</exception-type>
-		<location>/ErrorHandler</location>
-	</error-page>
-	<error-page>
-		<exception-type>java.sql.SQLException</exception-type>
-		<location>/ErrorHandler</location>
-	</error-page>-->
 </web-app>

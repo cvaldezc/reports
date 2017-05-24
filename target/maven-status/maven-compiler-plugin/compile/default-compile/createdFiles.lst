@@ -11,13 +11,13 @@ icrperusa/servlet/Test.class
 icrperusa/entity/Purchase.class
 icrperusa/businesslogical/BLConfig.class
 icrperusa/servlet/NotFound.class
-icrperusa/utils/MangerFiles.class
 icrperusa/businesslogical/BLPurchase.class
 icrperusa/servlet/OrderGroup.class
 icrperusa/utils/Convert.class
 icrperusa/servlet/FileUploadServlet.class
 icrperusa/utils/RoundPlaces.class
 icrperusa/servlet/ToolsGuide.class
+icrperusa/utils/ManagerFiles.class
 icrperusa/entity/ConfMaster.class
 icrperusa/dataaccess/Connect.class
 icrperusa/servlet/GuideRetTools.class

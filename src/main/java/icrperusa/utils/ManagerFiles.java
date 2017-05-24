@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -21,7 +22,7 @@ import icrperusa.interfaces.utils.IManagerFile;
  * @author christian
  *
  */
-public class MangerFiles implements IManagerFile {
+public class ManagerFiles implements IManagerFile {
 
     /* (non-Javadoc)
      * @see icrperusa.interfaces.utils.IUploadFile#existsFile(java.lang.String, boolean)
@@ -105,19 +106,21 @@ public class MangerFiles implements IManagerFile {
 
     @Override
     public Map<String, Object> readConfig(String enterprise) {
+        Logger.getLogger(ManagerFiles.class.getName()).info("PATH FOR READER CONFIG ".concat(Module.UPLOAD_PATH()));
         Map<String, Object> _config = new HashMap<String, Object>();
         JSONParser parser = new JSONParser();
         try
         {
-            // URL url = new URL("http://172.16.0.80:8089/reports/settings/config.json");
-            // System.out.println("aDRESS SERVER " +  InetAddress.getLocalHost());
-            // URL url = new URL("http://localhost:8080/reports/settings/config.json");
-            BufferedReader in = new BufferedReader(new FileReader(new File(Module.UPLOAD_PATH().concat("config.json"))));
-            String all = "", tmp = "";
-            while((tmp = in.readLine()) != null)
-                all += tmp;
-            //System.out.println(all);
-            in.close();
+            BufferedReader reader =  new BufferedReader(new FileReader(Module.UPLOAD_PATH().concat("config.json")));
+            String all = "", line = "";
+            try {
+                while((line = reader.readLine()) != null)
+                    all = all.concat(line);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }finally{
+                reader.close();
+            }
             Object obj = parser.parse(all);
             JSONObject jsonObject = (JSONObject) obj;
             System.out.println("OBJECT JSON " + jsonObject);
@@ -148,11 +151,11 @@ public class MangerFiles implements IManagerFile {
             System.out.println("READ CONFIG " + enterpriseObj);
             System.out.println("CONFIG " + _config);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Logger.getLogger(ManagerFiles.class.getName()).info(e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger.getLogger(ManagerFiles.class.getName()).info(e.getMessage());
         } catch (ParseException e) {
-            e.printStackTrace();
+            Logger.getLogger(ManagerFiles.class.getName()).info(e.getMessage());
         }
         return _config;
     }

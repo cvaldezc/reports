@@ -36,8 +36,7 @@ public class OrderGroup extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // response.getWriter().append("Served at: ").append(request.getContextPath());
-        response.setContentType("application/pdf;charset=UTF-8");
-        final String SOURCE = getServletContext().getRealPath("/");
+        final String SOURCE = getServletContext().getRealPath("/").concat(String.valueOf(Module.SEPARATOR));
         System.out.println("SOURCE PATH " + SOURCE);
         String ruc = (request.getParameterMap().containsKey("ruc")) ? request.getParameter("ruc") : Module.defenterpise;
         String groupid = "";
@@ -59,8 +58,11 @@ public class OrderGroup extends HttpServlet {
             log.info("Error when build report ".concat(ex.getMessage()));
             response.sendRedirect(String.format("/reports/500?problem=%s", ex.getMessage()));
         }
-        response.setContentLength(bytes.length);
+        if (bytes == null)
+            bytes = new byte[0];
         ServletOutputStream outputStream = response.getOutputStream();
+        response.setContentType("application/pdf;charset=UTF-8");
+        response.setContentLength(bytes.length);
         outputStream.write(bytes, 0, bytes.length);
         outputStream.flush();
         outputStream.close();

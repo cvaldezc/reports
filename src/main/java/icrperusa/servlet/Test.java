@@ -3,6 +3,7 @@ package icrperusa.servlet;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +34,7 @@ public class Test extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String ruc = (request.getParameterMap().containsKey("ruc"))?request.getParameter("ruc"):Module.defenterpise;
+        Logger.getLogger(Test.class.getName()).info("RUC READER ".concat(ruc));
         BLConfig nob = new BLConfig(ruc);
         ResultSet xrs = nob.getConfig();
         response.setContentType("text/html;charset=UTF-8");

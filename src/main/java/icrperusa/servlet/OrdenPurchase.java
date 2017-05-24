@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -36,8 +37,10 @@ public class OrdenPurchase extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         response.setContentType("application/pdf;charset=UTF-8");
-        String SOURCE = getServletContext().getRealPath("/");
+        String SOURCE = getServletContext().getRealPath("/").concat(String.valueOf(Module.SEPARATOR));
+        Logger.getLogger(OrdenPurchase.class.getName()).info("SERVCER PATH DIR ".concat(SOURCE));
         String ruc = (request.getParameterMap().containsKey("ruc")) ? request.getParameter("ruc") : Module.defenterpise;
         Map<String, Object> parameter = new HashMap<String, Object>();
         String purchaseid = "";
@@ -76,7 +79,7 @@ public class OrdenPurchase extends HttpServlet {
         Reports rpt = new Reports(ruc);
         byte[] bytes = null;
         try {
-            bytes = rpt.getReportcn(String.format("%sWEB-INF/resources/reports/logistics/ordencompra.jasper", SOURCE), parameter);
+            bytes = rpt.getReportcn(String.format("%sreports/logistics/ordencompra.jasper", SOURCE), parameter);
         } catch (SQLException e) {
             e.printStackTrace();
         }

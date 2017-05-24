@@ -1,4 +1,3 @@
-/home/christian/development/java/reports/src/main/java/icrperusa/utils/MangerFiles.java
 /home/christian/development/java/reports/src/main/java/icrperusa/utils/RoundPlaces.java
 /home/christian/development/java/reports/src/main/java/icrperusa/businesslogical/BLPurchase.java
 /home/christian/development/java/reports/src/main/java/icrperusa/dataaccess/Connect.java
@@ -16,6 +15,7 @@
 /home/christian/development/java/reports/src/main/java/icrperusa/utils/NumberToChar.java
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/ToolsGuide.java
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/GuideRetTools.java
+/home/christian/development/java/reports/src/main/java/icrperusa/utils/ManagerFiles.java
 /home/christian/development/java/reports/src/main/java/icrperusa/interfaces/IPurchase.java
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/OrdenPurchase.java
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/ErrorHandler.java

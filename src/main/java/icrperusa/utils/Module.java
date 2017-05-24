@@ -20,7 +20,7 @@ public class Module {
 
     private static final Map<String, Object> loadData(String denterprise){
         System.out.println("READ FILE CONFIG");
-        return new MangerFiles().readConfig(denterprise);
+        return new ManagerFiles().readConfig(denterprise);
     }
 
     public static Map<String, Object> loadConfig(String RUC){

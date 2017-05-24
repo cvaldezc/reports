@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -97,8 +98,7 @@ public class FileUploadServlet extends HttpServlet {
                 out.write(bytes, 0, read);
             write.println("New File "+ filename);
         } catch (FileNotFoundException exf) {
-            write.println("MIssing file or no insufficient permission.");
-            write.print("Error " + exf.getMessage());
+            Logger.getLogger(FileUploadServlet.class.getName()).info("ERROR UPLOAD FILE MSG ".concat(exf.getMessage()));
         }finally{
             if (out != null)
                 out.close();

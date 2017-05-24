@@ -27,17 +27,16 @@ public class Reports extends ConfMaster {
         this.setEnterprise(RUC);
     }
 
-    public byte[] getReportcn(String jrxml, Map<String, Object> parameter) throws SQLException{
+    public byte[] getReportcn(String jasper, Map<String, Object> parameter) throws SQLException{
         byte[] bytes = null;
         Connection xcon = new Connect(this.getEnterprise()).Open();
         try {
-            System.out.println("PATH COMPLETE JRXML " + jrxml);
-            if (new File(jrxml).exists()){
+            System.out.println("PATH COMPLETE JRXML " + jasper);
+            if (new File(jasper).exists()){
                 System.out.println("JRXML EXIST");
-                JasperReport master = (JasperReport) JRLoader.loadObjectFromFile(jrxml);
+                JasperReport master = (JasperReport) JRLoader.loadObjectFromFile(jasper);
                 System.out.println("Object process");
                 bytes = JasperRunManager.runReportToPdf(master, parameter,  xcon);
-
             }
         } catch (Exception e) {
             Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, e);
