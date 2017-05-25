@@ -1,4 +1,4 @@
-package icrperusa.servlet;
+package icrperusa.servlet.reports;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -39,6 +39,7 @@ public class Test extends HttpServlet {
         ResultSet xrs = nob.getConfig();
         response.setContentType("text/html;charset=UTF-8");
         response.getWriter().append("Served at: ").append(request.getContextPath());
+        response.getWriter().write("<h3>UPDATED</h3>");
         response.getWriter().write("<h3>LIST CONF:</h3>");
         try {
             while (xrs.next()) {

@@ -1,4 +1,4 @@
-package icrperusa.servlet;
+package icrperusa.servlet.reports;
 
 import java.io.IOException;
 import java.sql.SQLException;

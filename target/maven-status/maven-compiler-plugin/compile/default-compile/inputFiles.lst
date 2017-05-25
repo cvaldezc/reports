@@ -1,6 +1,8 @@
 /home/christian/development/java/reports/src/main/java/icrperusa/utils/RoundPlaces.java
+/home/christian/development/java/reports/src/main/java/icrperusa/servlet/reports/Test.java
 /home/christian/development/java/reports/src/main/java/icrperusa/businesslogical/BLPurchase.java
 /home/christian/development/java/reports/src/main/java/icrperusa/dataaccess/Connect.java
+/home/christian/development/java/reports/src/main/java/icrperusa/servlet/reports/OrdenPurchase.java
 /home/christian/development/java/reports/src/main/java/icrperusa/entity/Purchase.java
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/NotFound.java
 /home/christian/development/java/reports/src/main/java/icrperusa/utils/Convert.java
@@ -10,14 +12,12 @@
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/ConfigClean.java
 /home/christian/development/java/reports/src/main/java/icrperusa/businesslogical/BLConfig.java
 /home/christian/development/java/reports/src/main/java/icrperusa/utils/Module.java
-/home/christian/development/java/reports/src/main/java/icrperusa/servlet/Test.java
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/Internal.java
 /home/christian/development/java/reports/src/main/java/icrperusa/utils/NumberToChar.java
-/home/christian/development/java/reports/src/main/java/icrperusa/servlet/ToolsGuide.java
-/home/christian/development/java/reports/src/main/java/icrperusa/servlet/GuideRetTools.java
 /home/christian/development/java/reports/src/main/java/icrperusa/utils/ManagerFiles.java
+/home/christian/development/java/reports/src/main/java/icrperusa/servlet/reports/ToolsGuide.java
+/home/christian/development/java/reports/src/main/java/icrperusa/servlet/reports/GuideRetTools.java
 /home/christian/development/java/reports/src/main/java/icrperusa/interfaces/IPurchase.java
-/home/christian/development/java/reports/src/main/java/icrperusa/servlet/OrdenPurchase.java
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/ErrorHandler.java
 /home/christian/development/java/reports/src/main/java/icrperusa/interfaces/utils/IManagerFile.java
-/home/christian/development/java/reports/src/main/java/icrperusa/servlet/OrderGroup.java
+/home/christian/development/java/reports/src/main/java/icrperusa/servlet/reports/OrderGroup.java
