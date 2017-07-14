@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2017-07-14T17:24:51 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="detailsGuideRemisionNiple" columnCount="2" printOrder="Horizontal" pageWidth="336" pageHeight="842" columnWidth="154" columnSpacing="14" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d484f993-707b-44f7-a216-733c0734b057">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cn"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="cm"/>
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Dataset1" uuid="7c900046-4d8c-48df-aab0-4e6c2962807b">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (15)"/>
+		<queryString>
+			<![CDATA[select to_char(c.traslado,'TMMonth'), extract(year from c.traslado),extract(day from c.traslado), proy.nompro,cn.conlic,tr.tranom,ap.pedido_id,ht.marca,unid.uninom,ap.proyecto_id,d.guia_id,d.cantguide,c.puntollegada,c.traslado,m.matnom,cl.razonsocial,cl.ruccliente_id ,tr.traruc_id,ht.nropla_id,cn.coninscription,to_char(c.traslado,'YY'),m.matmed,m.materiales_id
+from almacen_detguiaremision d
+inner join almacen_guiaremision c
+on c.guia_id = d.guia_id
+inner join home_materiale m
+on d.materiales_id = m.materiales_id
+inner join home_cliente cl
+on c.ruccliente_id = cl.ruccliente_id
+inner join home_transportista tr
+on c.traruc_id = tr.traruc_id
+inner join home_transporte ht
+on c.nropla_id=ht.nropla_id and ht.traruc_id = tr.traruc_id
+inner join home_conductore cn
+on c.condni_id = cn.condni_id and cn.traruc_id = tr.traruc_id
+inner join almacen_pedido ap
+on c.pedido_id = ap.pedido_id
+inner join home_unidade unid
+on m.unidad_id=unid.unidad_id
+inner join ventas_proyecto proy
+on ap.proyecto_id=proy.proyecto_id
+where c.guia_id='001-0019672']]>
+		</queryString>
+		<field name="to_char" class="java.lang.String"/>
+		<field name="date_part" class="java.lang.Double"/>
+		<field name="COLUMN_3" class="java.lang.Double"/>
+		<field name="nompro" class="java.lang.String"/>
+		<field name="conlic" class="java.lang.String"/>
+		<field name="tranom" class="java.lang.String"/>
+		<field name="pedido_id" class="java.lang.String"/>
+		<field name="marca" class="java.lang.String"/>
+		<field name="uninom" class="java.lang.String"/>
+		<field name="proyecto_id" class="java.lang.String"/>
+		<field name="guia_id" class="java.lang.String"/>
+		<field name="cantguide" class="java.lang.Double"/>
+		<field name="puntollegada" class="java.lang.String"/>
+		<field name="traslado" class="java.sql.Date"/>
+		<field name="matnom" class="java.lang.String"/>
+		<field name="razonsocial" class="java.lang.String"/>
+		<field name="ruccliente_id" class="java.lang.String"/>
+		<field name="traruc_id" class="java.lang.String"/>
+		<field name="nropla_id" class="java.lang.String"/>
+		<field name="coninscription" class="java.lang.String"/>
+		<field name="COLUMN_21" class="java.lang.String"/>
+		<field name="matmed" class="java.lang.String"/>
+		<field name="materiales_id" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Dataset2" uuid="b3f91b79-17d9-4077-ab58-5e66ff84ebb9">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="Param_cod_mat" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[$P{Param_cod_mat}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Param_cod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{Param_cod}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="brand" class="java.lang.String">
+		<defaultValueExpression><![CDATA["BR000"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="model" class="java.lang.String">
+		<defaultValueExpression><![CDATA["MO000"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+CASE   angr.tipo WHEN 'A'  THEN 'Roscado'
+            WHEN 'B' THEN 'Ranura'
+            WHEN 'C' THEN 'Rosca Ranura'
+            WHEN 'D' THEN 'Brida'
+            WHEN 'E' THEN 'Brida - Rosca'
+            WHEN 'F' THEN 'Brida - Ranura'
+            WHEN 'G' THEN 'Bisel'
+            WHEN 'H' THEN 'Bisel - Rosca'
+            WHEN 'I' THEN 'Brida - Hechizo'
+            WHEN 'J' THEN 'Bisel - Ranura'
+            WHEN '-' THEN '-'
+            END
+
+,angr.tipo,angr.cantguide,hm.matmed,angr.metrado from almacen_nipleguiaremision angr
+inner join home_materiale hm
+on angr.materiales_id=hm.materiales_id
+where angr.guia_id=$P{Param_cod}
+and angr.materiales_id=$P{Param_cod_mat}
+and angr.brand_id = $P{brand}
+and angr.model_id = $P{model}]]>
+	</queryString>
+	<field name="case" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="cantguide" class="java.lang.Double"/>
+	<field name="matmed" class="java.lang.String"/>
+	<field name="metrado" class="java.lang.Double"/>
+	<group name="case">
+		<groupExpression><![CDATA[$F{case}]]></groupExpression>
+	</group>
+	<group name="tipo">
+		<groupExpression><![CDATA[$F{tipo}]]></groupExpression>
+	</group>
+	<group name="cantguide">
+		<groupExpression><![CDATA[$F{cantguide}]]></groupExpression>
+	</group>
+	<group name="matmed">
+		<groupExpression><![CDATA[$F{matmed}]]></groupExpression>
+	</group>
+	<group name="metrado">
+		<groupExpression><![CDATA[$F{metrado}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="11" splitType="Stretch">
+			<textField>
+				<reportElement x="4" y="0" width="326" height="11" uuid="f675350e-7bb4-4b9e-b22e-1964d00be19e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantguide}+" Niple "+$F{case}+" "+$F{matmed}+" x "+$F{metrado}+" cm"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

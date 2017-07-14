@@ -52,6 +52,18 @@
         <description></description>
         <servlet-class>icrperusa.servlet.Internal</servlet-class>
     </servlet>
+    <!-- @cvaldezch 2017-7-14 15:07 - add servlet guide remission materials -->
+    <servlet>
+        <servlet-name>GuideRemissionMaterials</servlet-name>
+        <display-name>GuideRemissionMaterials</display-name>
+        <description>show guide remission for materials</description>
+        <servlet-class>icrperusa.servlet.reports.VWGuideRemissionMaterials</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GuideRemissionMaterials</servlet-name>
+        <url-pattern>/guide/remission/materials</url-pattern>
+    </servlet-mapping>
+    <!-- endblock -->
 	<servlet-mapping>
 		<servlet-name>Test</servlet-name>
 		<url-pattern>/test</url-pattern>

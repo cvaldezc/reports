@@ -7,8 +7,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang.SystemUtils;
-
 
 public class Module {
 
@@ -24,6 +22,7 @@ public class Module {
     }
 
     public static Map<String, Object> loadConfig(String RUC){
+        System.out.println("PATH SETTINGS " + UPLOAD_PATH());
         if (config.containsKey(RUC)){
             System.out.println("GET RUC CONFIG");
             return config.get(RUC);
@@ -32,15 +31,15 @@ public class Module {
             System.out.println("GET RUC CONFIG EMPTY");
             return loadConfig(RUC);
         }else{
-            config.put(RUC, loadData(defenterpise));
             System.out.println("GET RUC CONFIG DEFAULT");
+            config.put(RUC, loadData(defenterpise));
             return loadConfig(RUC);
         }
     }
 
     public static final String UPLOAD_PATH(){
         String UPLOAD_PATH = "";
-        if (SystemUtils.IS_OS_LINUX)
+        if (System.getProperty("os.name").equals("Linux"))
             UPLOAD_PATH = "/mnt/webapp/reports";
         else
             UPLOAD_PATH = "C:\\webapp\\reports";
