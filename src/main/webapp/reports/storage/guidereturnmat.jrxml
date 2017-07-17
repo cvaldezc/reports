@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2017-07-17T17:25:58 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guidereturnmat" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="7609f1f5-1145-4a07-8c09-f91bd73d9a0f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cn"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="idguiadevmat" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{idguiadevmat}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SOURCE" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select
+CASE to_char(c.fechadevolucion, 'MM')
+		WHEN '01'  THEN 'ENERO'
+		WHEN '02' THEN 'FEBRERO'
+		WHEN '03' THEN 'MARZO'
+		WHEN '04' THEN 'ABRIL'
+		WHEN '05' THEN 'MAYO'
+		WHEN '06' THEN 'JUNIO'
+		WHEN '07' THEN 'JULIO'
+		WHEN '08' THEN 'AGOSTO'
+		WHEN '09' THEN 'SEPTIEMBRE'
+		WHEN '10' THEN 'OCTUBRE'
+		WHEN '11' THEN 'NOVIEMBRE'
+		WHEN '12' THEN 'DICIEMBRE'
+		END as fechmonth,
+detc.motivo as motivmat,
+to_char(c.fechadevolucion, 'dd') as fechday,
+to_char(c.fechadevolucion,'YY') as fechyear,
+c.guiadevmat_id as codgdevmat,
+c.fechadevolucion as fdev,
+c.comentario as comentguia,
+empaut.lastname as apeaut,
+empaut.firstname as nameaut,
+empgen.lastname as apegen,
+empgen.firstname as namegen,
+detc.guia_id as numguia,
+detc.material_id as codmat,
+detc.cantidad as cantmat,
+detc.comentario as comentmat,
+ped.proyecto_id as codproy,
+proy.nompro as nameproy,
+proy.direccion as direcproy,
+cli.ruccliente_id as ruccliente,
+cli.razonsocial as razsoccliente,
+distrcli.distnom as distrito,
+provcli.pronom as provincia,
+depcli.depnom as departamento,
+mat.matnom as namemat,
+mat.matmed as medmat,
+unid.uninom as nameunid,
+br.brand as namebrand,
+mod.model as namemodel,
+placa.nropla_id as nroplaca,
+placa.marca as marcatransp,
+transp.traruc_id as ructransport,
+transp.tranom as nametranspor,
+cond.conlic as licenciacond,
+cond.coninscription as incripcond
+from almacen_guiadevmat c
+inner join almacen_detguiadevmat detc
+on c.guiadevmat_id=detc.guiadevmat_id
+inner join home_employee empaut
+on c.emple_aut_id=empaut.empdni_id
+inner join home_employee empgen
+on c.empdni_id=empgen.empdni_id
+inner join almacen_guiaremision grem
+on detc.guia_id=grem.guia_id
+inner join almacen_pedido ped
+on grem.pedido_id=ped.pedido_id
+inner join ventas_proyecto proy
+on ped.proyecto_id=proy.proyecto_id
+inner join home_cliente cli
+on proy.ruccliente_id=cli.ruccliente_id
+inner join home_distrito distrcli
+on cli.distrito_id=distrcli.distrito_id
+inner join home_provincia provcli
+on cli.provincia_id=provcli.provincia_id
+inner join home_departamento depcli
+on cli.departamento_id=depcli.departamento_id
+inner join home_materiale mat
+on detc.material_id=mat.materiales_id
+inner join home_unidade unid
+on mat.unidad_id=unid.unidad_id
+inner join home_brand br
+on detc.marca_id=br.brand_id
+inner join home_model mod
+on detc.model_id=mod.model_id
+inner join home_transporte placa
+on c.nropla_id=placa.nropla_id
+inner join home_transportista transp
+on c.traruc_id=transp.traruc_id
+inner join home_conductore cond
+on c.condni_id=cond.condni_id
+where c.guiadevmat_id=$P{idguiadevmat}]]>
+	</queryString>
+	<field name="fechmonth" class="java.lang.String"/>
+	<field name="motivmat" class="java.lang.String"/>
+	<field name="fechday" class="java.lang.String"/>
+	<field name="fechyear" class="java.lang.String"/>
+	<field name="codgdevmat" class="java.lang.String"/>
+	<field name="fdev" class="java.sql.Date"/>
+	<field name="comentguia" class="java.lang.String"/>
+	<field name="apeaut" class="java.lang.String"/>
+	<field name="nameaut" class="java.lang.String"/>
+	<field name="apegen" class="java.lang.String"/>
+	<field name="namegen" class="java.lang.String"/>
+	<field name="numguia" class="java.lang.String"/>
+	<field name="codmat" class="java.lang.String"/>
+	<field name="cantmat" class="java.lang.Double"/>
+	<field name="comentmat" class="java.lang.String"/>
+	<field name="codproy" class="java.lang.String"/>
+	<field name="nameproy" class="java.lang.String"/>
+	<field name="direcproy" class="java.lang.String"/>
+	<field name="ruccliente" class="java.lang.String"/>
+	<field name="razsoccliente" class="java.lang.String"/>
+	<field name="distrito" class="java.lang.String"/>
+	<field name="provincia" class="java.lang.String"/>
+	<field name="departamento" class="java.lang.String"/>
+	<field name="namemat" class="java.lang.String"/>
+	<field name="medmat" class="java.lang.String"/>
+	<field name="nameunid" class="java.lang.String"/>
+	<field name="namebrand" class="java.lang.String"/>
+	<field name="namemodel" class="java.lang.String"/>
+	<field name="nroplaca" class="java.lang.String"/>
+	<field name="marcatransp" class="java.lang.String"/>
+	<field name="ructransport" class="java.lang.String"/>
+	<field name="nametranspor" class="java.lang.String"/>
+	<field name="licenciacond" class="java.lang.String"/>
+	<field name="incripcond" class="java.lang.String"/>
+	<columnHeader>
+		<band height="385" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="">
+				<reportElement x="325" y="180" width="244" height="25" isRemoveLineWhenBlank="true" uuid="fb4b5e6c-c02d-4c19-a396-e12f6525a158">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+					<paragraph firstLineIndent="50"/>
+				</textElement>
+				<textFieldExpression><![CDATA["JR. SAN MARTIN MZ E LOTE 6 LOS HUERTOS DE HUACHIPA LURIGANCHO LIMA PERU"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="303" width="151" height="25" uuid="7365b6a9-5277-4441-937a-dcca32817e16"/>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nametranspor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="335" width="151" height="11" uuid="623059b1-8725-4099-820b-e0b6cd860405">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ructransport}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="131" y="265" width="100" height="11" uuid="37f405c8-9d9d-4977-832c-83448fcc2a0a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ruccliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="303" width="120" height="11" uuid="33a84089-05b9-42e0-b0e6-d8d3d42307d5">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{marcatransp}+" "+$F{nroplaca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="335" width="120" height="11" uuid="fc818160-6d6c-4e6e-9db6-4388157b7daf">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{licenciacond}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="318" width="120" height="11" uuid="1adc7105-5132-407b-a4d9-3add8974e810">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incripcond}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="503" y="256" width="51" height="11" uuid="b51b3e5c-6ee0-4512-b0a9-e78850d81b19">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechyear}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="256" width="69" height="11" uuid="bcb5907c-abe9-4736-af77-676001ee1539"/>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechmonth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="362" y="256" width="50" height="11" uuid="04e8203e-eed3-4f4e-b0eb-42b93967efe3">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechday}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="180" width="254" height="25" uuid="f911fb7c-533d-4c2e-a042-2b598750a1a0">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isStrikeThrough="false"/>
+					<paragraph firstLineIndent="50"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direcproy}+" - "+$F{distrito}+" "+$F{provincia}+" "+$F{departamento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="50" y="237" width="254" height="20" uuid="f5ab8b38-30c1-400e-8c19-d9578a7e58c7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razsoccliente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="35" y="0" width="22" height="11" uuid="3ccb1be4-502f-463c-b055-13c72324ad93">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="cm"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;(###0.00)">
+				<reportElement x="62" y="0" width="40" height="11" uuid="fd87f709-cd0c-461c-8ee6-1926b46b1a81">
+					<property name="com.jaspersoft.studio.unit.y" value="cm"/>
+					<property name="com.jaspersoft.studio.unit.x" value="cm"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantmat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="0" width="31" height="11" uuid="6755a62d-8a89-405f-a4f3-35086206f169">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="cm"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nameunid}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="178" y="0" width="390" height="11" uuid="3c4f18c1-d316-4108-92b8-ac79caade5a5">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{namemat}+" "+$F{medmat}+" "+$F{namebrand}+" "+$F{namemodel}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement isPrintRepeatedValues="false" x="178" y="12" width="390" height="0" isRemoveLineWhenBlank="true" uuid="6e86b0ee-782b-4dcf-80ba-669e5e5c6a50">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<subreportParameter name="par_codguiadev">
+					<subreportParameterExpression><![CDATA[$F{codgdevmat}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="par_codmat">
+					<subreportParameterExpression><![CDATA[$F{codmat}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SOURCE} + "reports/storage/guidereturnmatniple.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<summary>
+		<band height="235">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField>
+				<reportElement x="178" y="10" width="332" height="30" uuid="3bfcae2b-9662-44da-8e51-e2f7809f034d">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PROYECTO: "+$F{codproy}+" "+$F{nameproy}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

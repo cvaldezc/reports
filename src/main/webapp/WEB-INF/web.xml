@@ -59,6 +59,12 @@
         <description>show guide remission for materials</description>
         <servlet-class>icrperusa.servlet.reports.VWGuideRemissionMaterials</servlet-class>
     </servlet>
+    <servlet>
+    	<servlet-name>GuideReturnMaterials</servlet-name>
+    	<display-name>GuideReturnMaterials</display-name>
+    	<description></description>
+    	<servlet-class>icrperusa.servlet.reports.GuideReturnMaterials</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GuideRemissionMaterials</servlet-name>
         <url-pattern>/guide/remission/materials</url-pattern>
@@ -99,5 +105,9 @@
 	<servlet-mapping>
 		<servlet-name>Internal</servlet-name>
 		<url-pattern>/500</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GuideReturnMaterials</servlet-name>
+		<url-pattern>/guide/return/materials</url-pattern>
 	</servlet-mapping>
 </web-app>
