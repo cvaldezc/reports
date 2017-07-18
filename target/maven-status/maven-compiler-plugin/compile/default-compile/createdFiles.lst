@@ -18,6 +18,7 @@ icrperusa/servlet/reports/Test.class
 icrperusa/utils/Reports.class
 icrperusa/servlet/ErrorHandler.class
 icrperusa/businesslogical/BLConfig.class
+icrperusa/servlet/reports/GuideReturnMaterials.class
 icrperusa/servlet/NotFound.class
 icrperusa/businesslogical/BLPurchase.class
 icrperusa/servlet/reports/ToolsGuide.class
