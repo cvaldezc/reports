@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2017-07-25T16:37:51 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guiaherramienta_sinformato" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0b375a95-69c9-4730-9f23-9a730ed6de49">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cn"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="codguia" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{codguia}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SOURCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SOURCE}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cont" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$P{cont}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="RUC" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select 
+	CASE to_char(gh.fechsalida, 'MM')
+		WHEN '01'  THEN 'ENERO'
+		WHEN '02' THEN 'FEBRERO'
+		WHEN '03' THEN 'MARZO'
+		WHEN '04' THEN 'ABRIL'
+		WHEN '05' THEN 'MAYO'
+		WHEN '06' THEN 'JUNIO'
+		WHEN '07' THEN 'JULIO'
+		WHEN '08' THEN 'AGOSTO'
+		WHEN '09' THEN 'SEPTIEMBRE'
+		WHEN '10' THEN 'OCTUBRE'
+		WHEN '11' THEN 'NOVIEMBRE'
+		WHEN '12' THEN 'DICIEMBRE'
+		END as salidmonth,
+gh.guia_id as codguia,
+gh.motivo as motivoguia,
+gh.proyecto_id as codproy,
+to_char(gh.fechsalida, 'dd') as saliday,
+to_char(gh.fechsalida,'YY') as salidyear,
+gh.comentario as comentguia,
+trans.traruc_id as transpruc,
+trans.tranom as transname,
+tr.nropla_id as placa,
+tr.marca as marcatransp,
+cond.coninscription as incripcond,
+cond.conlic as numlicencia,
+proy.ruccliente_id as ruccliente,
+proy.nompro as nameproy,
+proy.direccion as direcproy,
+cli.razonsocial as rsocialcliente,
+emp.lastname as apegenerado,
+emp.firstname as namegenerado,
+dist.distnom as distritoproy,
+prov.pronom as provinciaproy,
+dep.depnom as departproy
+from almacen_guiaherramienta gh 
+inner join home_transportista trans 
+on gh.traruc_id = trans.traruc_id 
+inner join home_transporte tr 
+on gh.nropla_id = tr.nropla_id 
+inner join home_conductore cond 
+on gh.condni_id = cond.condni_id 
+inner join ventas_proyecto proy 
+on gh.proyecto_id = proy.proyecto_id 
+inner join home_cliente cli 
+on proy.ruccliente_id = cli.ruccliente_id 
+inner join home_employee emp 
+on emp.empdni_id=gh.empdni_id
+inner join home_distrito dist 
+on dist.distrito_id = proy.distrito_id
+inner join home_provincia prov
+on prov.provincia_id = proy.provincia_id
+inner join home_departamento dep
+on dep.departamento_id = proy.departamento_id
+where gh.guia_id = $P{codguia}]]>
+	</queryString>
+	<field name="salidmonth" class="java.lang.String"/>
+	<field name="codguia" class="java.lang.String"/>
+	<field name="motivoguia" class="java.lang.String"/>
+	<field name="codproy" class="java.lang.String"/>
+	<field name="saliday" class="java.lang.String"/>
+	<field name="salidyear" class="java.lang.String"/>
+	<field name="comentguia" class="java.lang.String"/>
+	<field name="transpruc" class="java.lang.String"/>
+	<field name="transname" class="java.lang.String"/>
+	<field name="placa" class="java.lang.String"/>
+	<field name="marcatransp" class="java.lang.String"/>
+	<field name="incripcond" class="java.lang.String"/>
+	<field name="numlicencia" class="java.lang.String"/>
+	<field name="ruccliente" class="java.lang.String"/>
+	<field name="nameproy" class="java.lang.String"/>
+	<field name="direcproy" class="java.lang.String"/>
+	<field name="rsocialcliente" class="java.lang.String"/>
+	<field name="apegenerado" class="java.lang.String"/>
+	<field name="namegenerado" class="java.lang.String"/>
+	<field name="distritoproy" class="java.lang.String"/>
+	<field name="provinciaproy" class="java.lang.String"/>
+	<field name="departproy" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+		</band>
+	</background>
+	<pageHeader>
+		<band height="385">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField>
+				<reportElement x="49" y="180" width="254" height="25" uuid="4ef0ad0b-f618-468c-81b5-2031caebb57e">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+					<paragraph firstLineIndent="50"/>
+				</textElement>
+				<textFieldExpression><![CDATA["JR. SAN MARTIN MZ E LOTE 6 LOS HUERTOS DE HUACHIPA LURIGANCHO LIMA PERU"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="324" y="180" width="244" height="25" uuid="c069d502-95fd-4076-84f9-4ebd44ca7448">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+					<paragraph firstLineIndent="40"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direcproy}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="131" y="265" width="100" height="11" uuid="53e35f42-c568-4088-afcf-aa8a69d28e42">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ruccliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="303" width="151" height="25" uuid="21886189-b048-4044-bf00-ec345dd7132f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="49" y="236" width="254" height="20" uuid="61631da8-e422-46a7-adb7-36205ab2be2e">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rsocialcliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="335" width="151" height="11" uuid="dcdf532d-da2b-40c6-bdb0-3081dd7c8d2d">
+					<property name="com.jaspersoft.studio.unit.x" value="cm"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transpruc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="362" y="256" width="50" height="11" uuid="6be4ba0a-1ff3-48b1-9643-0fd031b03e61"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{saliday}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="109" width="120" height="11" uuid="2f6597a8-5b1d-4cf1-a12e-8963ced25f69">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="false" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codguia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="303" width="120" height="11" uuid="797ea5c6-f8db-4d5e-99c6-ba59edccefff">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{marcatransp}+" "+$F{placa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="318" width="120" height="11" uuid="1356ccc9-2b90-44cc-b01f-0799c4ecb36a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incripcond}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="335" width="120" height="11" uuid="404dd8f9-b14b-4fd2-a8ec-0a9f65fa84ca">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numlicencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="256" width="69" height="11" uuid="a54a20e2-35e6-45ab-b652-2372a7eb7da9"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salidmonth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="503" y="256" width="51" height="11" uuid="a4c82ebe-2b86-4ef6-84f3-c262c84da650"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salidyear} + $P{cont}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="6">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<subreport>
+				<reportElement x="28" y="1" width="550" height="5" uuid="6d3f7d3e-40cc-4638-bcd3-425c70f408dc">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<subreportParameter name="codguia_sub">
+					<subreportParameterExpression><![CDATA[$P{codguia}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="path_sub">
+					<subreportParameterExpression><![CDATA[$P{SOURCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cont">
+					<subreportParameterExpression><![CDATA[$P{cont}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SOURCE}+"reports/storage/guiaherramienta_details.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+	<summary>
+		<band height="235">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField>
+				<reportElement x="178" y="10" width="332" height="30" uuid="89294901-acd5-4450-91e5-4f98b679fee2">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PROYECTO: "+$F{codproy}+" "+$F{nameproy}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

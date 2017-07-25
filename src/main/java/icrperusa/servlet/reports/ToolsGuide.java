@@ -1,6 +1,7 @@
 package icrperusa.servlet.reports;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,6 +40,7 @@ public class ToolsGuide extends HttpServlet {
         response.setContentType("application/pdf;charset=UTF-8");
         String SOURCE = getServletContext().getRealPath("/").concat(String.valueOf(Module.SEPARATOR));
         String ruc = (request.getParameterMap().containsKey("ruc")) ? request.getParameter("ruc") : Module.defenterpise;
+        boolean format = (request.getParameterMap().containsKey("format")) ? true: false;
         try {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             Date date = new Date();
@@ -46,10 +48,22 @@ public class ToolsGuide extends HttpServlet {
             Map<String, Object> parameter = new HashMap<String, Object>();
             parameter.put("codguia", request.getParameter("ng"));
             parameter.put("pardate", "FECHA: "+dateFormat.format(date));
-            parameter.put("PATHSOURCE", SOURCE);
+            parameter.put("SOURCE", SOURCE);
             parameter.put("RUC", ruc);
+            parameter.put("cont", (request.getParameterMap().containsKey("cont")) ? 0: 0);
+            parameter.put("emple", (request.getParameterMap().containsKey("emple")) ? request.getParameter("emple"): "");
 
-            byte[] bytes = new Reports(ruc).getReportcn(String.format("%sreports/storage/guiaherramienta.jasper", SOURCE), parameter);
+            // byte[] bytes = new Reports(ruc).getReportcn(String.format("%sreports/storage/guiaherramienta.jasper", SOURCE), parameter);
+            Reports rpt = new Reports(ruc);
+            byte[] bytes = null;
+            try {
+                if (format)
+                    bytes = rpt.getReportcn(String.format("%sreports/storage/guiaherramienta.jasper", SOURCE), parameter);
+                else
+                    bytes = rpt.getReportcn(String.format("%sreports/storage/guiaherramienta_sinformato.jasper", SOURCE), parameter);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             response.setContentLength(bytes.length);
             ServletOutputStream ouputStream = response.getOutputStream();
             ouputStream.write(bytes, 0, bytes.length);

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2017-07-25T16:18:47 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guiaherramienta_niples" pageWidth="550" pageHeight="842" columnWidth="550" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9c28ba94-7540-46d5-8b33-e31c10f93bb8">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="dbicrperu_05_17"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="grupo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{grupo}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="codguia_sub2" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{codguia_sub2}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Parameter1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONTEXT}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select 
+dgh.estado as estadohe,
+dgh.fechdevolucion as fdevhe,
+dgh.grupo as grupo,
+dgh.cantidad as canthe,
+he.matnom as namehe,
+he.matmed as medhe,
+he.unidad_id as unidhe,
+dgh.comentario as detcomentario,
+br.brand as marcahe
+from almacen_detguiaherramienta dgh
+inner join home_materiale he 
+on dgh.herramienta_id = he.materiales_id 
+inner join home_brand br 
+on dgh.brand_id = br.brand_id
+where dgh.grupo=$P{grupo}
+and dgh.guia_id=$P{codguia_sub2}]]>
+	</queryString>
+	<field name="estadohe" class="java.lang.String"/>
+	<field name="fdevhe" class="java.sql.Date"/>
+	<field name="grupo" class="java.lang.String"/>
+	<field name="canthe" class="java.lang.Double"/>
+	<field name="namehe" class="java.lang.String"/>
+	<field name="medhe" class="java.lang.String"/>
+	<field name="unidhe" class="java.lang.String"/>
+	<field name="detcomentario" class="java.lang.String"/>
+	<field name="marcahe" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="11" splitType="Stretch">
+			<textField>
+				<reportElement x="19" y="1" width="15" height="10" uuid="c195c0de-3a18-4f08-a671-ce1694daf580">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<printWhenExpression><![CDATA[$F{grupo}.length()==0]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="1" width="25" height="10" uuid="32f0a5e9-bcfe-44e6-aa6e-8ca3a4a3c1ec">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{canthe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="1" width="29" height="10" uuid="dad25699-72c3-401f-bc06-3c3587c7d880">
+					<property name="com.jaspersoft.studio.unit.x" value="cm"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unidhe}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="144" y="1" width="300" height="10" uuid="b83b2e33-3029-4ae5-b805-a65723527e1f">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grupo}.length()==0?$F{namehe}+" "+$F{medhe}+" "+$F{marcahe}+" - "+$F{estadohe}+"  "+$F{detcomentario}:"      "+$F{namehe}+" "+$F{medhe}+" "+$F{marcahe}+" - "+$F{estadohe}+"  "+$F{detcomentario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="454" y="1" width="100" height="10" uuid="f96f559c-5d49-47ed-b490-1eee59713103">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fdevhe} == null?"":"F.Dev. "+$F{fdevhe}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

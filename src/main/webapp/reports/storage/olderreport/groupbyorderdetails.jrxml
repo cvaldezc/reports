@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2017-07-25T17:06:17 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="groupbyorderdetails" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="07dcd85a-0e5b-4e59-a5ca-ef50efebdbae">
+<!-- 2017-05-23T12:35:58 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="groupbyorderdetails" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="07dcd85a-0e5b-4e59-a5ca-ef50efebdbae">
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -19,7 +19,7 @@
 	<parameter name="par_subcodped" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$P{par_subcodped}]]></defaultValueExpression>
 	</parameter>
-	<parameter name="SOURCE" class="java.lang.String"/>
+	<parameter name="PATHSOURCE" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select  
 CASE to_char(ped.traslado, 'MM')
@@ -115,16 +115,15 @@ and dgrpe.codgrupo_id = $P{par_subcodgrupo} order by namemat asc]]>
 	<columnHeader>
 		<band height="13">
 			<rectangle>
-				<reportElement mode="Opaque" x="0" y="0" width="563" height="13" backcolor="#C94540" uuid="c10317db-e27a-44f5-bbf3-be27b53f7adf">
+				<reportElement mode="Opaque" x="0" y="0" width="537" height="13" backcolor="#C94540" uuid="c10317db-e27a-44f5-bbf3-be27b53f7adf">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.0" lineColor="#C94540"/>
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement x="0" y="2" width="20" height="10" forecolor="#FCFAFA" uuid="815e1983-c175-4941-9fed-0733c2ea22ff">
+				<reportElement x="2" y="2" width="20" height="10" forecolor="#FCFAFA" uuid="815e1983-c175-4941-9fed-0733c2ea22ff">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
@@ -153,7 +152,7 @@ and dgrpe.codgrupo_id = $P{par_subcodgrupo} order by namemat asc]]>
 				<text><![CDATA[DESCRIPCION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="448" y="2" width="40" height="10" forecolor="#FCFAFA" uuid="88c29adc-a680-40c5-9423-65e4be98901e">
+				<reportElement x="399" y="2" width="40" height="10" forecolor="#FCFAFA" uuid="88c29adc-a680-40c5-9423-65e4be98901e">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
@@ -162,7 +161,7 @@ and dgrpe.codgrupo_id = $P{par_subcodgrupo} order by namemat asc]]>
 				<text><![CDATA[MARCA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="487" y="2" width="37" height="10" forecolor="#FCFAFA" uuid="dd55ec8e-e7fb-454a-9b4d-4f4d6b629833">
+				<reportElement x="450" y="2" width="37" height="10" forecolor="#FCFAFA" uuid="dd55ec8e-e7fb-454a-9b4d-4f4d6b629833">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
@@ -171,9 +170,8 @@ and dgrpe.codgrupo_id = $P{par_subcodgrupo} order by namemat asc]]>
 				<text><![CDATA[MODELO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="531" y="2" width="30" height="10" forecolor="#FCFAFA" uuid="8f788d5b-5bfc-44cb-a24e-f9668b5d05fa">
+				<reportElement x="494" y="2" width="42" height="10" forecolor="#FCFAFA" uuid="8f788d5b-5bfc-44cb-a24e-f9668b5d05fa">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement>
 					<font fontName="Arial" size="8" isBold="true"/>
@@ -181,7 +179,7 @@ and dgrpe.codgrupo_id = $P{par_subcodgrupo} order by namemat asc]]>
 				<text><![CDATA[CANT.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="410" y="2" width="35" height="10" forecolor="#FCFAFA" uuid="3182e3f5-8959-47af-bd77-3ce484e78eaa">
+				<reportElement x="360" y="2" width="35" height="10" forecolor="#FCFAFA" uuid="3182e3f5-8959-47af-bd77-3ce484e78eaa">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
@@ -191,12 +189,17 @@ and dgrpe.codgrupo_id = $P{par_subcodgrupo} order by namemat asc]]>
 				</textElement>
 				<text><![CDATA[UNID.]]></text>
 			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="535" y="12" width="19" height="1" forecolor="#C94540" uuid="15b09563-956f-42d3-bed8-8ed2890b4dee">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="13" splitType="Stretch">
 			<textField>
-				<reportElement x="2" y="1" width="15" height="10" uuid="ace8b240-b2ba-422a-83c6-02b3f7b274b8">
+				<reportElement x="2" y="1" width="20" height="10" uuid="ace8b240-b2ba-422a-83c6-02b3f7b274b8">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
@@ -206,7 +209,7 @@ and dgrpe.codgrupo_id = $P{par_subcodgrupo} order by namemat asc]]>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="22" y="1" width="80" height="10" uuid="f74bf659-f98f-4643-8067-d0f02e04535b">
+				<reportElement x="31" y="1" width="80" height="10" uuid="f74bf659-f98f-4643-8067-d0f02e04535b">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
@@ -216,7 +219,7 @@ and dgrpe.codgrupo_id = $P{par_subcodgrupo} order by namemat asc]]>
 				<textFieldExpression><![CDATA[$F{codmat}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToTallestObject" x="106" y="1" width="298" height="10" uuid="b6dfabf4-55b7-49ee-9c85-f42bfc51bbdf">
+				<reportElement stretchType="RelativeToTallestObject" x="111" y="1" width="240" height="10" uuid="b6dfabf4-55b7-49ee-9c85-f42bfc51bbdf">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
@@ -226,7 +229,7 @@ and dgrpe.codgrupo_id = $P{par_subcodgrupo} order by namemat asc]]>
 				<textFieldExpression><![CDATA[$F{namemat}+" "+$F{medidamat}+"  "+$F{comentmat}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="407" y="1" width="30" height="10" uuid="59c62029-8073-475a-8c81-e7392bbab32d">
+				<reportElement stretchType="RelativeToTallestObject" x="358" y="1" width="30" height="10" uuid="59c62029-8073-475a-8c81-e7392bbab32d">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
@@ -237,14 +240,16 @@ and dgrpe.codgrupo_id = $P{par_subcodgrupo} order by namemat asc]]>
 				<textFieldExpression><![CDATA[$F{unidad}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToTallestObject" x="440" y="1" width="45" height="10" uuid="295ac1f4-5979-4301-b68e-a8ce747c2b30"/>
+				<reportElement stretchType="RelativeToTallestObject" x="391" y="1" width="53" height="10" uuid="295ac1f4-5979-4301-b68e-a8ce747c2b30">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{marcamat}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="486" y="1" width="37" height="10" uuid="81a33ca8-2186-41cc-bb83-f428dafa7e61">
+				<reportElement stretchType="RelativeToTallestObject" x="450" y="1" width="37" height="10" uuid="81a33ca8-2186-41cc-bb83-f428dafa7e61">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
@@ -254,7 +259,7 @@ and dgrpe.codgrupo_id = $P{par_subcodgrupo} order by namemat asc]]>
 				<textFieldExpression><![CDATA[$F{modelmat}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00#;(#,##0.00#-)">
-				<reportElement stretchType="RelativeToTallestObject" x="525" y="1" width="37" height="10" uuid="85bad0ca-e6be-4a93-86b9-e4b22c25d813"/>
+				<reportElement stretchType="RelativeToTallestObject" x="493" y="1" width="42" height="10" uuid="85bad0ca-e6be-4a93-86b9-e4b22c25d813"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
@@ -266,49 +271,50 @@ and dgrpe.codgrupo_id = $P{par_subcodgrupo} order by namemat asc]]>
 				</reportElement>
 			</line>
 			<line>
-				<reportElement stretchType="RelativeToBandHeight" x="19" y="0" width="1" height="13" forecolor="#C94540" uuid="4405242b-368e-4d66-8ec0-7757a31226fa">
+				<reportElement stretchType="RelativeToBandHeight" x="24" y="0" width="1" height="13" forecolor="#C94540" uuid="4405242b-368e-4d66-8ec0-7757a31226fa">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
 			</line>
 			<line>
-				<reportElement stretchType="RelativeToBandHeight" x="104" y="0" width="1" height="13" forecolor="#C94540" uuid="44b82911-c62b-4698-be13-27d755e7e441">
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-				</reportElement>
-			</line>
-			<line>
-				<reportElement stretchType="RelativeToBandHeight" x="405" y="0" width="1" height="13" forecolor="#C94540" uuid="c4c6f984-1ffc-4be0-a932-50b6992512a1">
+				<reportElement stretchType="RelativeToBandHeight" x="108" y="0" width="1" height="13" forecolor="#C94540" uuid="44b82911-c62b-4698-be13-27d755e7e441">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 			</line>
 			<line>
-				<reportElement stretchType="RelativeToBandHeight" x="437" y="0" width="1" height="13" forecolor="#C94540" uuid="5a415f65-18a6-42ca-ae60-9a5e4fde6c01">
+				<reportElement stretchType="RelativeToBandHeight" x="356" y="0" width="1" height="13" forecolor="#C94540" uuid="c4c6f984-1ffc-4be0-a932-50b6992512a1">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 			</line>
 			<line>
-				<reportElement stretchType="RelativeToBandHeight" x="485" y="0" width="1" height="13" forecolor="#C94540" uuid="7b16a97d-753b-41d7-8e55-51bf196f9cbe">
+				<reportElement stretchType="RelativeToBandHeight" x="388" y="0" width="1" height="13" forecolor="#C94540" uuid="5a415f65-18a6-42ca-ae60-9a5e4fde6c01">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 			</line>
 			<line>
-				<reportElement stretchType="RelativeToBandHeight" x="523" y="0" width="1" height="13" forecolor="#C94540" uuid="cf19ff50-fe8e-4a15-9e14-dfd9f2770708">
+				<reportElement stretchType="RelativeToBandHeight" x="445" y="0" width="1" height="13" forecolor="#C94540" uuid="7b16a97d-753b-41d7-8e55-51bf196f9cbe">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 			</line>
 			<line>
-				<reportElement stretchType="RelativeToBandHeight" x="562" y="0" width="1" height="13" forecolor="#C94540" uuid="c81ebf10-43dc-4ffc-9e7f-9c9cdf292754">
+				<reportElement stretchType="RelativeToBandHeight" x="490" y="0" width="1" height="13" forecolor="#C94540" uuid="cf19ff50-fe8e-4a15-9e14-dfd9f2770708">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="536" y="0" width="1" height="13" forecolor="#C94540" uuid="c81ebf10-43dc-4ffc-9e7f-9c9cdf292754">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 			</line>
@@ -328,18 +334,29 @@ and dgrpe.codgrupo_id = $P{par_subcodgrupo} order by namemat asc]]>
 				<subreportParameter name="par_codpednip">
 					<subreportParameterExpression><![CDATA[$P{par_subcodped}]]></subreportParameterExpression>
 				</subreportParameter>
+				<subreportParameter name="PATHSOURCE">
+					<subreportParameterExpression><![CDATA[$P{PATHSOURCE}]]></subreportParameterExpression>
+				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["reports/storage/groupbyorderniples.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{PATHSOURCE}+"reports/storage/groupbyorderdetailsniples.jasper"]]></subreportExpression>
 			</subreport>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="553" y="0" width="1" height="13" forecolor="#C94540" uuid="50e162be-e466-438d-baed-6b896c2181aa">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
 		<band height="1">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="563" height="1" forecolor="#C94540" uuid="c596ffbb-e164-4122-a6e2-e452e486aa86">
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="554" height="1" forecolor="#C94540" uuid="c596ffbb-e164-4122-a6e2-e452e486aa86">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 			</line>
 		</band>

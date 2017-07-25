@@ -65,6 +65,12 @@
     	<description></description>
     	<servlet-class>icrperusa.servlet.reports.GuideReturnMaterials</servlet-class>
     </servlet>
+    <servlet>
+    	<servlet-name>NotadeIngreso</servlet-name>
+    	<display-name>NotadeIngreso</display-name>
+    	<description></description>
+    	<servlet-class>icrperusa.servlet.reports.NotadeIngreso</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GuideRemissionMaterials</servlet-name>
         <url-pattern>/guide/remission/materials</url-pattern>
@@ -109,5 +115,9 @@
 	<servlet-mapping>
 		<servlet-name>GuideReturnMaterials</servlet-name>
 		<url-pattern>/guide/return/materials</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>NotadeIngreso</servlet-name>
+		<url-pattern>/storage/note/ingress</url-pattern>
 	</servlet-mapping>
 </web-app>

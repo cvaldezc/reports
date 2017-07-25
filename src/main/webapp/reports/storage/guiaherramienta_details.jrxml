@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2017-07-25T16:36:56 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guiaherramienta_details" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="117f0811-ee7f-4d3f-971c-dd12d89d06ab">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="dbicrperu_05_17"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="codguia_sub" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{codguia_sub}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SOURCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SOURCE}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cont" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$P{cont}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select 
+dgh.grupo as grupo
+from almacen_detguiaherramienta dgh
+where dgh.guia_id = $P{codguia_sub}  
+group by grupo order by grupo]]>
+	</queryString>
+	<field name="grupo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="27">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<subreport>
+				<reportElement x="0" y="12" width="550" height="10" uuid="cec4912d-e3fc-4e97-831b-ac0f23c95f60">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<subreportParameter name="codguia_sub2">
+					<subreportParameterExpression><![CDATA[$P{codguia_sub}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="grupo">
+					<subreportParameterExpression><![CDATA[$F{grupo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SOURCE}+"reports/storage/guiaherramienta_niples.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="145" y="2" width="400" height="10" isRemoveLineWhenBlank="true" uuid="5b0c9e06-a3da-4377-a399-1eb37a472f81">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grupo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="2" width="24" height="10" uuid="71174aec-91e9-43c3-94c7-182d15c94134">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<printWhenExpression><![CDATA[$F{grupo}.length()>0]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}+$P{cont}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

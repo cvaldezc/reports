@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -16,42 +15,41 @@ import icrperusa.utils.Module;
 import icrperusa.utils.Reports;
 
 /**
- * Servlet implementation class GuideReturnMaterials
+ * Servlet implementation class NotadeIngreso
  */
-public class GuideReturnMaterials extends HttpServlet {
+public class NotadeIngreso extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GuideReturnMaterials() {
+    public NotadeIngreso() {
         super();
     }
 
     /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-     *      response)
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/pdf;charset=UTF-8");
         String SOURCE = getServletContext().getRealPath("/").concat(String.valueOf(Module.SEPARATOR));
+        // Logger.getLogger(OrdenPurchase.class.getName()).info("SERVCER PATH DIR ".concat(SOURCE));
         String ruc = (request.getParameterMap().containsKey("ruc")) ? request.getParameter("ruc") : Module.defenterpise;
-        boolean format = (request.getParameterMap().containsKey("format")) ? true : false;
-        Map<String, Object> parameter = new HashMap<String, Object>();
-        Logger.getLogger(OrdenPurchase.class.getName()).info("SERVCER PATH DIR ".concat(SOURCE));
 
-        parameter.put("idguiadevmat", request.getParameter("nguide"));
+        Map<String, Object> parameter = new HashMap<String, Object>();
+        String paridnota = "";
+        if (request.getParameterMap().containsKey("idnota"))
+            paridnota = request.getParameter("idnota");
+
+        parameter.put("paridnota", paridnota);
         parameter.put("SOURCE", SOURCE);
         parameter.put("RUC", ruc);
+
         Reports rpt = new Reports(ruc);
         byte[] bytes = null;
         try {
-            if (format)
-                bytes = rpt.getReportcn(String.format("%sreports/storage/guidereturnmatformat.jasper", SOURCE), parameter);
-            else
-                bytes = rpt.getReportcn(String.format("%sreports/storage/guidereturnmat.jasper", SOURCE), parameter);
+            bytes = rpt.getReportcn(String.format("%sreports/storage/notadeingreso.jasper", SOURCE), parameter);
         } catch (SQLException e) {
             e.printStackTrace();
         }

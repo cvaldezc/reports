@@ -48,7 +48,7 @@ public class OrderGroup extends HttpServlet {
             response.sendRedirect("/reports/404");
         parameter.put("parcodgrupo", groupid);
         parameter.put("PATHSOURCE", SOURCE);
-        parameter.put("COMPANY", ruc);
+        parameter.put("RUC", ruc);
         Reports rpt = new Reports(ruc);
         byte[] bytes = null;
         try {

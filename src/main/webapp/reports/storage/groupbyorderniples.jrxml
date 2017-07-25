@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2017-07-25T17:09:55 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sub2_grupoxpedido" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="6957761d-7a16-49e6-9334-28cfa7213df1">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cn"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="par_codmatnip" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{par_codmatnip}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="par_codgruponip" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{par_codgruponip}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="par_codpednip" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{par_codpednip}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+CASE  grnip.tipo WHEN 'A'  THEN 'Roscado'
+            WHEN 'B' THEN 'Ranurado'
+            WHEN 'C' THEN 'Rosca-Ranura'
+            WHEN 'D' THEN 'Brida'
+            WHEN 'E' THEN 'Brida-Rosca'
+            WHEN 'F' THEN 'Brida-Ranura'
+            WHEN 'G' THEN 'Bisel'
+            WHEN 'H' THEN 'Bisel-Rosca'
+            WHEN 'I' THEN 'Brida-Hechizo'
+            WHEN 'J' THEN 'Bisel-Ranura'
+            WHEN '-' THEN '-'
+            END as tipo,
+grnip.cantidad as cantnip,
+grnip.metrado as metrado, 
+he.matmed as medmat
+from almacen_grupopedniple grnip
+inner join home_materiale he
+on grnip.material_id=he.materiales_id 
+where grnip.material_id =  $P{par_codmatnip} 
+and grnip.codgrupo_id = $P{par_codgruponip}
+and grnip.pedido_id=$P{par_codpednip}]]>
+	</queryString>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="cantnip" class="java.lang.Double"/>
+	<field name="metrado" class="java.lang.Double"/>
+	<field name="medmat" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="9" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="2" y="0" width="301" height="9" uuid="0d71bea1-99c6-4809-a1b9-76c769476c57">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantnip}+" Niple "+$F{tipo}+" "+$F{medmat}+" x "+$F{metrado}+" cm"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

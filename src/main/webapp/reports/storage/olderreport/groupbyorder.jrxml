@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2017-07-25T17:07:36 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="groupbyorder" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="304262e9-2f13-41d3-9841-771fc2388470">
+<!-- 2017-05-23T13:00:55 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="groupbyorder" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="304262e9-2f13-41d3-9841-771fc2388470">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cn"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -26,8 +25,8 @@
 		<parameterDescription><![CDATA[]]></parameterDescription>
 		<defaultValueExpression><![CDATA[$P{parcodgrupo}]]></defaultValueExpression>
 	</parameter>
-	<parameter name="RUC" class="java.lang.String"/>
-	<parameter name="SOURCE" class="java.lang.String"/>
+	<parameter name="PATHSOURCE" class="java.lang.String"/>
+	<parameter name="COMPANY" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select distinct on (detgr.pedido_id)
 CASE to_char(gr.fechtraslado, 'MM')
@@ -115,16 +114,17 @@ where gr.codgrupo_id = $P{parcodgrupo} order by detgr.pedido_id asc]]>
 				</reportElement>
 			</line>
 			<line>
-				<reportElement x="20" y="132" width="563" height="1" forecolor="#C94540" uuid="44eb6be8-a473-4c5a-9ad6-39b3cee879fe">
+				<reportElement x="20" y="132" width="550" height="1" forecolor="#C94540" uuid="44eb6be8-a473-4c5a-9ad6-39b3cee879fe">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 			</line>
 			<line>
-				<reportElement x="20" y="182" width="563" height="1" forecolor="#C94540" uuid="17216462-08c2-4083-8ea3-d2a66f03121c">
+				<reportElement x="20" y="182" width="550" height="1" forecolor="#C94540" uuid="17216462-08c2-4083-8ea3-d2a66f03121c">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 			</line>
@@ -137,7 +137,7 @@ where gr.codgrupo_id = $P{parcodgrupo} order by detgr.pedido_id asc]]>
 				</reportElement>
 			</line>
 			<line>
-				<reportElement x="583" y="101" width="1" height="81" forecolor="#C94540" uuid="110d1449-8204-4622-be05-3a1c97161f96">
+				<reportElement x="569" y="101" width="1" height="81" forecolor="#C94540" uuid="110d1449-8204-4622-be05-3a1c97161f96">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
@@ -153,13 +153,12 @@ where gr.codgrupo_id = $P{parcodgrupo} order by detgr.pedido_id asc]]>
 				<textFieldExpression><![CDATA[$F{fechday}+"  "+$F{fechmonth}+" 20"+$F{fechyear}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement mode="Opaque" x="434" y="81" width="149" height="20" forecolor="#C94540" backcolor="#C94540" uuid="515da8ff-e45e-44cd-b2a7-612953a58d9c">
+				<reportElement mode="Opaque" x="421" y="81" width="149" height="20" forecolor="#C94540" backcolor="#C94540" uuid="515da8ff-e45e-44cd-b2a7-612953a58d9c">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
 			</rectangle>
 			<textField>
-				<reportElement x="435" y="81" width="145" height="18" forecolor="#FCFAFA" uuid="af462f53-04d5-451c-83eb-1cb94723044c">
+				<reportElement x="422" y="81" width="145" height="18" forecolor="#FCFAFA" uuid="af462f53-04d5-451c-83eb-1cb94723044c">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
@@ -194,7 +193,7 @@ where gr.codgrupo_id = $P{parcodgrupo} order by detgr.pedido_id asc]]>
 			</textField>
 			<image>
 				<reportElement x="21" y="27" width="79" height="72" uuid="79310f1a-61f3-43c2-93ba-de03f91fe34f"/>
-				<imageExpression><![CDATA[$P{SOURCE}+"images/"+$P{RUC}+".png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{PATHSOURCE}+"images/"+$P{COMPANY}+".png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="30" y="135" width="70" height="11" uuid="9aab87a6-94fc-4351-8184-48d8d5c5f664">
@@ -272,16 +271,13 @@ where gr.codgrupo_id = $P{parcodgrupo} order by detgr.pedido_id asc]]>
 				</textElement>
 				<text><![CDATA[CODIGO DE GRUPO]]></text>
 			</staticText>
-			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="400" y="149" width="150" height="16" uuid="3e135e3a-7df3-44c1-a011-714aee75d262"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="6">
 			<subreport>
-				<reportElement x="21" y="1" width="563" height="5" uuid="822867c8-7635-47ca-b742-802b839d0e28">
+				<reportElement x="21" y="1" width="550" height="5" uuid="822867c8-7635-47ca-b742-802b839d0e28">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
 				<subreportParameter name="par_subcodped">
@@ -290,15 +286,20 @@ where gr.codgrupo_id = $P{parcodgrupo} order by detgr.pedido_id asc]]>
 				<subreportParameter name="par_subcodgrupo">
 					<subreportParameterExpression><![CDATA[$P{parcodgrupo}]]></subreportParameterExpression>
 				</subreportParameter>
-				<subreportParameter name="SOURCE">
-					<subreportParameterExpression><![CDATA[$P{SOURCE}]]></subreportParameterExpression>
+				<subreportParameter name="PATHSOURCE">
+					<subreportParameterExpression><![CDATA[$P{PATHSOURCE}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SOURCE}+"reports/storage/groupbyorderdetails.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{PATHSOURCE}+"reports/storage/groupbyorderdetails.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="70"/>
+		<band height="72">
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement stretchType="RelativeToTallestObject" x="10" y="40" width="100" height="20" uuid="2b60f0df-3044-4c94-9fde-69c439a6e05b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 </jasperReport>
