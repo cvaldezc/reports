@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import icrperusa.businesslogical.BLGuideTools;
 import icrperusa.utils.Module;
 import icrperusa.utils.Reports;
 
@@ -50,7 +51,7 @@ public class ToolsGuide extends HttpServlet {
             parameter.put("pardate", "FECHA: "+dateFormat.format(date));
             parameter.put("SOURCE", SOURCE);
             parameter.put("RUC", ruc);
-            parameter.put("cont", (request.getParameterMap().containsKey("cont")) ? 0: 0);
+            parameter.put("cont", new BLGuideTools(ruc).getCounter(request.getParameter("ng")));
             parameter.put("emple", (request.getParameterMap().containsKey("emple")) ? request.getParameter("emple"): "");
 
             // byte[] bytes = new Reports(ruc).getReportcn(String.format("%sreports/storage/guiaherramienta.jasper", SOURCE), parameter);

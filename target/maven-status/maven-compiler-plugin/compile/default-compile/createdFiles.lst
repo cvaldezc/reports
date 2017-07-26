@@ -21,7 +21,10 @@ icrperusa/businesslogical/BLConfig.class
 icrperusa/servlet/reports/GuideReturnMaterials.class
 icrperusa/servlet/NotFound.class
 icrperusa/businesslogical/BLPurchase.class
+icrperusa/servlet/reports/NotadeIngreso.class
 icrperusa/servlet/reports/ToolsGuide.class
 icrperusa/servlet/FileUploadServlet.class
+icrperusa/businesslogical/BLGuideTools.class
 icrperusa/utils/RoundPlaces.class
+icrperusa/entity/GuideTools.class
 icrperusa/entity/ConfMaster.class

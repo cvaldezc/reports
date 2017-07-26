@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2017-07-25T15:43:18 -->
+<!-- 2017-07-26T11:22:11 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="notadeingreso" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a68cfbea-4692-4721-bd69-f1c8416d27b3">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cn"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -21,7 +21,7 @@
 	<queryString>
 		<![CDATA[SELECT 
 CASE (comp.tipoing)
-		WHEN 'HE'  THEN 'HERRAMIENTA'
+		WHEN 'TL'  THEN 'HERRAMIENTA'
 	    ELSE 'EPPs'
 		END as tipoingreso,
 c.ingresohe_id as idnotaingreso,
@@ -101,13 +101,6 @@ WHERE c.ingresohe_id=$P{paridnota}]]>
 					<pen lineWidth="2.0" lineStyle="Solid" lineColor="#C94540"/>
 				</graphicElement>
 			</rectangle>
-			<staticText>
-				<reportElement x="359" y="52" width="200" height="20" uuid="6feb005a-091c-4334-b1ff-f8533771a3eb"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="16" isBold="true"/>
-				</textElement>
-				<text><![CDATA[R.U.C.  $P{RUC}]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="359" y="110" width="200" height="19" uuid="e82322a2-aab2-4bc2-8065-8cd4d8677740">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
@@ -471,6 +464,13 @@ WHERE c.ingresohe_id=$P{paridnota}]]>
 				<reportElement x="38" y="45" width="128" height="112" uuid="812819ef-a168-4e96-bb09-fdf5e29fbee1"/>
 				<imageExpression><![CDATA[$P{SOURCE}+"images/"+$P{RUC}+".png"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement x="359" y="53" width="201" height="24" uuid="416fb331-8c79-4a51-9f3e-7a2511cfef28"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["R.U.C."+ $P{RUC}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<detail>

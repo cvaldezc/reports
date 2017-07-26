@@ -42,9 +42,10 @@ public class GuideRetTools extends HttpServlet {
             Date date = new Date();
 
             Map<String, Object> parameter = new HashMap<String, Object>();
-            parameter.put("iddoc", request.getParameter("ndoc"));
+            parameter.put("iddoc", request.getParameter("iddoc"));
             parameter.put("pardate", "FECHA: "+dateFormat.format(date));
-            parameter.put("PATHSOURCE", SOURCE);
+            parameter.put("SOURCE", SOURCE);
+            parameter.put("emple", (request.getParameterMap().containsKey("emple")) ? request.getParameter("emple"): "");
             parameter.put("RUC", ruc);
 
             Reports rpt = new Reports(ruc);

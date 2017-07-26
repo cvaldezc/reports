@@ -118,6 +118,6 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>NotadeIngreso</servlet-name>
-		<url-pattern>/storage/note/ingress</url-pattern>
+		<url-pattern>/tools/note/ingress</url-pattern>
 	</servlet-mapping>
 </web-app>

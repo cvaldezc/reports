@@ -5,6 +5,8 @@
 /home/christian/development/java/reports/src/main/java/icrperusa/entity/Purchase.java
 /home/christian/development/java/reports/src/main/java/icrperusa/utils/Convert.java
 /home/christian/development/java/reports/src/main/java/icrperusa/utils/Reports.java
+/home/christian/development/java/reports/src/main/java/icrperusa/servlet/reports/NotadeIngreso.java
+/home/christian/development/java/reports/src/main/java/icrperusa/entity/GuideTools.java
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/reports/VWGuideRemissionMaterials.java
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/reports/ToolsGuide.java
 /home/christian/development/java/reports/src/main/java/icrperusa/interfaces/utils/IManagerFile.java
@@ -25,3 +27,4 @@
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/reports/GuideRetTools.java
 /home/christian/development/java/reports/src/main/java/icrperusa/interfaces/IPurchase.java
 /home/christian/development/java/reports/src/main/java/icrperusa/servlet/ErrorHandler.java
+/home/christian/development/java/reports/src/main/java/icrperusa/businesslogical/BLGuideTools.java
