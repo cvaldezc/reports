@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2017-04-26T10:35:51 -->
+<!-- 2017-08-21T09:47:48 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ordencompra" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="45f20af2-31f2-411f-8cc3-cd474d74173c">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cn"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -137,13 +137,6 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 			</rectangle>
-			<staticText>
-				<reportElement positionType="Float" x="150" y="20" width="308" height="10" uuid="0d1e7f94-f415-4795-9918-871dd6f50dd6"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Jr San Martin Mz E Lote 6 Los Huertos de Huachipa-Lurigancho - Lima-Peru]]></text>
-			</staticText>
 			<staticText>
 				<reportElement positionType="Float" x="225" y="33" width="150" height="10" uuid="3365ab6c-1c85-428e-9d89-53a2a8cf5194"/>
 				<textElement>
@@ -607,6 +600,13 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				<reportElement x="27" y="20" width="82" height="60" uuid="b9dddc41-a0e3-48b8-a072-c1575c0d331d"/>
 				<imageExpression><![CDATA[$P{PATHSOURCE} + "images/" +$P{RUC} + ".png"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement x="30" y="17" width="534" height="10" uuid="2f0e78e3-c3ed-460e-b419-894c32eeccdb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{RUC} == "20428776110") ? "Jr San Martín Mz E Lote 6 Los Huertos de Huachipa - Lurigancho - Lima - Perú" : "Jr. José de San Martín Mz. F Lt. 8A Urb. Asoc. Huertos de Huachipa Lurigancho - Lima - Lima Perú"]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<detail>
@@ -860,7 +860,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				<text><![CDATA[DATOS DE FACTURACION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="30" y="20" width="500" height="11" uuid="d75e78a2-2e33-48e9-b424-033165be4a4e">
+				<reportElement positionType="Float" x="30" y="18" width="500" height="11" uuid="d75e78a2-2e33-48e9-b424-033165be4a4e">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
@@ -871,38 +871,7 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 				<text><![CDATA[MESA DE PARTES EN EL HORARIO DE LUNES A VIERNES DE 8:00 AM A 5:30 PM Y SABADOS DE 8:00 AM A 1:00 PM]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="30" y="30" width="73" height="11" uuid="dd041cc4-108b-4165-b800-5d23ff4e1b39">
-					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[ICR PERU S.A.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" x="30" y="40" width="87" height="11" uuid="94b9292d-6868-4ecc-bdc1-7f679111a07a">
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[RUC 20428776110]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" x="30" y="50" width="308" height="10" uuid="395c0db4-dded-4a51-a897-5ca972117993">
-					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-				</reportElement>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Jr San Martin Mz E Lote 6 Los Huertos de Huachipa-Lurigancho - Lima-Peru]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" x="30" y="60" width="350" height="10" uuid="f2fc6e1e-6230-48ef-a8b5-75e574f33765">
+				<reportElement positionType="Float" x="30" y="61" width="350" height="10" uuid="f2fc6e1e-6230-48ef-a8b5-75e574f33765">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
@@ -922,6 +891,27 @@ where c.compra_id = $P{parcompra_id} order by material]]>
 					<pen lineColor="#C94540"/>
 				</graphicElement>
 			</line>
+			<textField>
+				<reportElement x="30" y="39" width="112" height="9" uuid="09a4c8b4-8a5f-4b02-ab7c-03669f2272fb"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RUC " + $P{RUC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="29" width="180" height="9" uuid="bb75d120-4b8e-43b2-9e67-0ec1c78fae26"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{RUC} == "20428776110") ? "ICR PERU S.A." : "ICR PERÚ INSTALACIONES S.A.C."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="50" width="534" height="10" uuid="6476ff1a-6009-4f1b-af49-6ad83a092726"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{RUC} == "20428776110") ? "Jr San Martín Mz E Lote 6 Los Huertos de Huachipa - Lurigancho - Lima - Perú" : "Jr. José de San Martín Mz. F Lt. 8A Urb. Asoc. Huertos de Huachipa Lurigancho - Lima - Lima Perú"]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageFooter>
 	<summary>

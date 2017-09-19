@@ -45,6 +45,19 @@ public class BLPurchase extends Purchase implements IPurchase {
         return _igv;
     }
 
+    public double getDiscountGlobal(String idpurchase){
+        double _dsct = 0;
+        try {
+            String xquery = "";
+            // get discount of order purchase
+            xquery = "SELECT discount FROM logistica_compra WHERE compra_id = ?;";
+            _dsct = (Double) new Connect(this.getEnterprise()).ExecuteQuery(xquery, new Object[] { idpurchase }, "discount");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return _dsct;
+    }
+
     @Override
     public double amountPurchase(String idpurchase){
         double _amount = 0;

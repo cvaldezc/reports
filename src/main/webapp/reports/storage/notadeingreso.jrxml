@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2017-07-26T11:22:11 -->
+<!-- 2017-08-08T09:39:19 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="notadeingreso" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a68cfbea-4692-4721-bd69-f1c8416d27b3">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cn"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -18,6 +18,9 @@
 	</parameter>
 	<parameter name="SOURCE" class="java.lang.String"/>
 	<parameter name="RUC" class="java.lang.String"/>
+	<parameter name="emple" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{emple}]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT 
 CASE (comp.tipoing)
@@ -402,8 +405,9 @@ WHERE c.ingresohe_id=$P{paridnota}]]>
 				<textElement>
 					<font fontName="Arial" size="10"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$P{emple}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="MMMMM dd, yyyy">
 				<reportElement x="170" y="294" width="130" height="12" uuid="f4c7d983-c6ab-4627-bffd-7ae064f2b0ca">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
@@ -411,6 +415,7 @@ WHERE c.ingresohe_id=$P{paridnota}]]>
 				<textElement>
 					<font fontName="Arial" size="10"/>
 				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="403" y="254" width="179" height="12" uuid="9f28d55e-9f1f-4f08-936f-eb46b613e7dc">

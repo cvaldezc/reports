@@ -43,6 +43,7 @@ public class NotadeIngreso extends HttpServlet {
             paridnota = request.getParameter("idnota");
 
         parameter.put("paridnota", paridnota);
+        parameter.put("emple", (request.getParameterMap().containsKey("emple")) ? request.getParameter("emple"): "");
         parameter.put("SOURCE", SOURCE);
         parameter.put("RUC", ruc);
 

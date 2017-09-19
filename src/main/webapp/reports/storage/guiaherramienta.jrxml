@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2017-07-26T10:07:36 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guiaherramienta" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0b375a95-69c9-4730-9f23-9a730ed6de49">
+<!-- 2017-08-08T09:40:44 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guiaherramienta" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0b375a95-69c9-4730-9f23-9a730ed6de49">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cn"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -28,65 +28,7 @@
 	</parameter>
 	<parameter name="RUC" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select 
-	CASE to_char(gh.fechsalida, 'MM')
-		WHEN '01'  THEN 'ENERO'
-		WHEN '02' THEN 'FEBRERO'
-		WHEN '03' THEN 'MARZO'
-		WHEN '04' THEN 'ABRIL'
-		WHEN '05' THEN 'MAYO'
-		WHEN '06' THEN 'JUNIO'
-		WHEN '07' THEN 'JULIO'
-		WHEN '08' THEN 'AGOSTO'
-		WHEN '09' THEN 'SEPTIEMBRE'
-		WHEN '10' THEN 'OCTUBRE'
-		WHEN '11' THEN 'NOVIEMBRE'
-		WHEN '12' THEN 'DICIEMBRE'
-		END as salidmonth,
-	CASE gh.motivo
-	WHEN 'AL' THEN 'ALMACEN'
-	ELSE 'TRASLADO'
-	END as motivoguia,
-gh.guia_id as codguia,
-gh.proyecto_id as codproy,
-to_char(gh.fechsalida, 'dd') as saliday,
-to_char(gh.fechsalida,'YY') as salidyear,
-gh.comentario as comentguia,
-trans.traruc_id as transpruc,
-trans.tranom as transname,
-tr.nropla_id as placa,
-tr.marca as marcatransp,
-cond.coninscription as incripcond,
-cond.conlic as numlicencia,
-proy.ruccliente_id as ruccliente,
-proy.nompro as nameproy,
-proy.direccion as direcproy,
-cli.razonsocial as rsocialcliente,
-emp.lastname as apegenerado,
-emp.firstname as namegenerado,
-dist.distnom as distritoproy,
-prov.pronom as provinciaproy,
-dep.depnom as departproy
-from almacen_guiaherramienta gh 
-inner join home_transportista trans 
-on gh.traruc_id = trans.traruc_id 
-inner join home_transporte tr 
-on gh.nropla_id = tr.nropla_id 
-inner join home_conductore cond 
-on gh.condni_id = cond.condni_id 
-inner join ventas_proyecto proy 
-on gh.proyecto_id = proy.proyecto_id 
-inner join home_cliente cli 
-on proy.ruccliente_id = cli.ruccliente_id 
-inner join home_employee emp 
-on emp.empdni_id=gh.empdni_id
-inner join home_distrito dist 
-on dist.distrito_id = proy.distrito_id
-inner join home_provincia prov
-on prov.provincia_id = proy.provincia_id
-inner join home_departamento dep
-on dep.departamento_id = proy.departamento_id
-where gh.guia_id = $P{codguia}]]>
+		<![CDATA[select * from sp_guiaherra($P{codguia})]]>
 	</queryString>
 	<field name="salidmonth" class="java.lang.String"/>
 	<field name="motivoguia" class="java.lang.String"/>
@@ -101,12 +43,13 @@ where gh.guia_id = $P{codguia}]]>
 	<field name="marcatransp" class="java.lang.String"/>
 	<field name="incripcond" class="java.lang.String"/>
 	<field name="numlicencia" class="java.lang.String"/>
-	<field name="ruccliente" class="java.lang.String"/>
-	<field name="nameproy" class="java.lang.String"/>
-	<field name="direcproy" class="java.lang.String"/>
-	<field name="rsocialcliente" class="java.lang.String"/>
 	<field name="apegenerado" class="java.lang.String"/>
 	<field name="namegenerado" class="java.lang.String"/>
+	<field name="estadoguia" class="java.lang.String"/>
+	<field name="nameproy" class="java.lang.String"/>
+	<field name="ruccliente" class="java.lang.String"/>
+	<field name="direcproy" class="java.lang.String"/>
+	<field name="rsocialcliente" class="java.lang.String"/>
 	<field name="distritoproy" class="java.lang.String"/>
 	<field name="provinciaproy" class="java.lang.String"/>
 	<field name="departproy" class="java.lang.String"/>
@@ -114,10 +57,13 @@ where gh.guia_id = $P{codguia}]]>
 		<band splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<printWhenExpression><![CDATA[$F{estadoguia}.equals("GE") || $F{estadoguia}.equals("DEVCOMP")]]></printWhenExpression>
 		</band>
 	</background>
 	<pageHeader>
 		<band height="398">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<printWhenExpression><![CDATA[$F{estadoguia}.equals("GE") || $F{estadoguia}.equals("DEVCOMP")]]></printWhenExpression>
 			<rectangle radius="10">
 				<reportElement mode="Transparent" x="345" y="43" width="230" height="107" backcolor="#FCFCFC" uuid="ef4bf61d-f523-4817-a689-4d6639572df0"/>
 				<graphicElement>
@@ -135,6 +81,7 @@ where gh.guia_id = $P{codguia}]]>
 				<reportElement x="324" y="207" width="244" height="25" uuid="c069d502-95fd-4076-84f9-4ebd44ca7448">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<printWhenExpression><![CDATA[$F{codproy}!=null]]></printWhenExpression>
 				</reportElement>
 				<textElement>
 					<font fontName="Arial" size="9"/>
@@ -142,14 +89,7 @@ where gh.guia_id = $P{codguia}]]>
 				<textFieldExpression><![CDATA[$F{direcproy}+" - "+$F{distritoproy}+" - "+$F{provinciaproy}+" - "+$F{departproy}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="126" y="296" width="143" height="11" uuid="53e35f42-c568-4088-afcf-aa8a69d28e42"/>
-				<textElement>
-					<font fontName="Arial" size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ruccliente}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="420" y="333" width="148" height="25" uuid="21886189-b048-4044-bf00-ec345dd7132f">
+				<reportElement x="420" y="269" width="148" height="25" uuid="21886189-b048-4044-bf00-ec345dd7132f">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
@@ -160,17 +100,7 @@ where gh.guia_id = $P{codguia}]]>
 				<textFieldExpression><![CDATA[$F{transname}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="269" width="228" height="20" uuid="61631da8-e422-46a7-adb7-36205ab2be2e">
-					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-				</reportElement>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{rsocialcliente}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="420" y="366" width="148" height="11" uuid="dcdf532d-da2b-40c6-bdb0-3081dd7c8d2d">
+				<reportElement x="420" y="302" width="148" height="11" uuid="dcdf532d-da2b-40c6-bdb0-3081dd7c8d2d">
 					<property name="com.jaspersoft.studio.unit.x" value="cm"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
@@ -257,7 +187,7 @@ where gh.guia_id = $P{codguia}]]>
 				</reportElement>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="405" y="194" width="100" height="11" forecolor="#FCFCFC" backcolor="#C94540" uuid="ac77fc81-5936-410c-b41c-de868ab7b863">
+				<reportElement mode="Opaque" x="395" y="194" width="100" height="11" forecolor="#FCFCFC" backcolor="#C94540" uuid="ac77fc81-5936-410c-b41c-de868ab7b863">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
@@ -268,28 +198,7 @@ where gh.guia_id = $P{codguia}]]>
 				<text><![CDATA[Punto de Llegada]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="106" y="255" width="80" height="11" forecolor="#FCFCFC" backcolor="#C94540" uuid="90676225-be44-4079-963b-e2b395f99ae5">
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
-				</reportElement>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="9" isBold="true" isItalic="false" isUnderline="false"/>
-					<paragraph lineSpacingSize="0.0"/>
-				</textElement>
-				<text><![CDATA[Destinatario]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="405" y="255" width="105" height="11" forecolor="#FCFCFC" backcolor="#C94540" uuid="d9d0a7e6-2a79-491e-add9-3f6a1d1c460a">
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-				</reportElement>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="9" isBold="true" isItalic="false" isUnderline="false"/>
-					<paragraph lineSpacingSize="0.0"/>
-				</textElement>
-				<text><![CDATA[Responsables]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="81" y="319" width="140" height="11" forecolor="#FCFCFC" backcolor="#C94540" uuid="3be1a6d6-e6ba-4104-9637-cd742a2dcc14">
+				<reportElement mode="Opaque" x="81" y="255" width="140" height="11" forecolor="#FCFCFC" backcolor="#C94540" uuid="3be1a6d6-e6ba-4104-9637-cd742a2dcc14">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
@@ -300,7 +209,7 @@ where gh.guia_id = $P{codguia}]]>
 				<text><![CDATA[Transporte y Conductor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="393" y="319" width="140" height="11" forecolor="#FCFCFC" backcolor="#C94540" uuid="9c0ef0c7-3898-4824-9c79-1256d28397a5">
+				<reportElement mode="Opaque" x="378" y="255" width="140" height="11" forecolor="#FCFCFC" backcolor="#C94540" uuid="9c0ef0c7-3898-4824-9c79-1256d28397a5">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
@@ -324,7 +233,7 @@ where gh.guia_id = $P{codguia}]]>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="13" isBold="true"/>
 				</textElement>
-				<text><![CDATA[GUIA REMISION-HERRAMIENTA]]></text>
+				<text><![CDATA[GUIA REMISIO-HERRAMIENTA]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="360" y="109" width="200" height="19" uuid="2f6597a8-5b1d-4cf1-a12e-8963ced25f69">
@@ -401,6 +310,7 @@ where gh.guia_id = $P{codguia}]]>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<printWhenExpression><![CDATA[$F{codproy}!=null]]></printWhenExpression>
 				</reportElement>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
@@ -418,58 +328,7 @@ where gh.guia_id = $P{codguia}]]>
 				<text><![CDATA[Fecha Salida:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="322" y="269" width="60" height="10" uuid="68cdf117-508f-435f-ad48-6861a3cfd9bb">
-					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Generado por:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="382" y="269" width="190" height="11" uuid="f1349648-33fa-4118-898b-ff901d1dec9b">
-					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Arial" size="9" isStrikeThrough="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{apegenerado}+", "+$F{namegenerado}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="322" y="281" width="60" height="10" uuid="3eeeab6d-6b0b-4046-9823-577191afc158">
-					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Impreso por:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="322" y="293" width="105" height="10" uuid="d8692c55-6365-4d2d-8910-303bca77c124">
-					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Fecha y hora de Impresion:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="40" y="296" width="81" height="10" uuid="46c376a8-976c-4667-8d9d-b0d244f63c95">
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Numero de R.U.C.:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="40" y="335" width="135" height="10" uuid="f9e17d11-9112-4dc7-9b1f-466230b11ef0">
+				<reportElement x="40" y="271" width="135" height="10" uuid="f9e17d11-9112-4dc7-9b1f-466230b11ef0">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement>
@@ -478,7 +337,7 @@ where gh.guia_id = $P{codguia}]]>
 				<text><![CDATA[Marca y Numero de Placa:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="180" y="335" width="120" height="11" uuid="797ea5c6-f8db-4d5e-99c6-ba59edccefff">
+				<reportElement x="180" y="271" width="120" height="11" uuid="797ea5c6-f8db-4d5e-99c6-ba59edccefff">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement>
@@ -487,7 +346,7 @@ where gh.guia_id = $P{codguia}]]>
 				<textFieldExpression><![CDATA[$F{marcatransp}+" "+$F{placa}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="40" y="350" width="135" height="10" uuid="aefb34a0-fbe7-4f20-bbf5-52508048808b">
+				<reportElement x="40" y="286" width="135" height="10" uuid="aefb34a0-fbe7-4f20-bbf5-52508048808b">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement>
@@ -496,7 +355,7 @@ where gh.guia_id = $P{codguia}]]>
 				<text><![CDATA[N de Constancia de Inscripcion:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="180" y="350" width="120" height="11" uuid="1356ccc9-2b90-44cc-b01f-0799c4ecb36a">
+				<reportElement x="180" y="286" width="120" height="11" uuid="1356ccc9-2b90-44cc-b01f-0799c4ecb36a">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
@@ -506,7 +365,7 @@ where gh.guia_id = $P{codguia}]]>
 				<textFieldExpression><![CDATA[$F{incripcond}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="180" y="365" width="120" height="11" uuid="404dd8f9-b14b-4fd2-a8ec-0a9f65fa84ca">
+				<reportElement x="180" y="301" width="120" height="11" uuid="404dd8f9-b14b-4fd2-a8ec-0a9f65fa84ca">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
@@ -516,7 +375,7 @@ where gh.guia_id = $P{codguia}]]>
 				<textFieldExpression><![CDATA[$F{numlicencia}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="40" y="365" width="135" height="10" uuid="a45d226b-03b0-42bb-ae9d-d0a950b8953b">
+				<reportElement x="40" y="301" width="135" height="10" uuid="a45d226b-03b0-42bb-ae9d-d0a950b8953b">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement>
@@ -525,7 +384,7 @@ where gh.guia_id = $P{codguia}]]>
 				<text><![CDATA[N (s) de Licencia (s) de Conducir:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="322" y="366" width="95" height="10" uuid="e2a5b6e1-3ab8-43af-aecc-dfb7c4ea4f4f">
+				<reportElement x="322" y="302" width="95" height="10" uuid="e2a5b6e1-3ab8-43af-aecc-dfb7c4ea4f4f">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
@@ -535,7 +394,7 @@ where gh.guia_id = $P{codguia}]]>
 				<text><![CDATA[Numero de R.U.C.:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="322" y="335" width="95" height="10" uuid="1b018ea2-1767-4c35-84be-665d8b71bb46">
+				<reportElement x="322" y="271" width="95" height="10" uuid="1b018ea2-1767-4c35-84be-665d8b71bb46">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
 				<textElement>
@@ -553,7 +412,55 @@ where gh.guia_id = $P{codguia}]]>
 				<textFieldExpression><![CDATA[$F{motivoguia}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="382" y="281" width="190" height="11" uuid="732cb128-bbf5-40a1-8141-e354977e668a">
+				<reportElement x="350" y="58" width="218" height="19" uuid="d14441b1-813e-4a43-8829-33678d5d87c9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["R.U.C. "+ $P{RUC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="40" y="357" width="105" height="10" uuid="be333a02-ac7c-4300-9ed5-801836797b50">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha y hora de Impresion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="345" width="60" height="10" uuid="e7203e8e-f90e-4b48-bccd-806e360bfaf3">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Impreso por:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="333" width="60" height="10" uuid="0ed72993-9cb3-4306-8d73-e4e431a8b605">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Generado por:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="333" width="190" height="11" uuid="0207c288-0861-4853-98d3-6011a8950313">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apegenerado}+", "+$F{namegenerado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="345" width="190" height="11" uuid="466272e9-46c6-4eee-a0e1-052d35409b8f">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
 				<textElement>
@@ -562,20 +469,67 @@ where gh.guia_id = $P{codguia}]]>
 				<textFieldExpression><![CDATA[$P{emple}]]></textFieldExpression>
 			</textField>
 			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="431" y="292" width="100" height="12" uuid="1f7175f8-a4fa-4ccb-bf6e-42cee7ee4d49"/>
+				<reportElement x="149" y="356" width="100" height="12" uuid="c7ec9cd0-fff5-445d-979d-16259bee6fb7"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="350" y="58" width="218" height="19" uuid="d14441b1-813e-4a43-8829-33678d5d87c9"/>
+			<staticText>
+				<reportElement mode="Opaque" x="99" y="319" width="105" height="11" forecolor="#FCFCFC" backcolor="#C94540" uuid="98b36f28-974c-45d3-8cf3-dd57f3a7140b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
 				<textElement textAlignment="Center">
-					<font size="16" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacingSize="0.0"/>
 				</textElement>
-				<textFieldExpression><![CDATA["R.U.C. "+ $P{RUC}]]></textFieldExpression>
+				<text><![CDATA[Responsables]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="406" y="319" width="80" height="11" forecolor="#FCFCFC" backcolor="#C94540" uuid="657d547e-b032-4487-8663-54351c639385">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<printWhenExpression><![CDATA[$F{codproy}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacingSize="0.0"/>
+				</textElement>
+				<text><![CDATA[Destinatario]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="322" y="333" width="246" height="20" uuid="db4c1ddc-e912-4c76-8320-6d5eb793b11e">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<printWhenExpression><![CDATA[$F{codproy}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rsocialcliente}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="408" y="360" width="160" height="11" uuid="abac65c5-307e-4df3-afe1-c5e11a136b90">
+					<printWhenExpression><![CDATA[$F{codproy}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ruccliente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="322" y="360" width="81" height="10" uuid="62a1bda6-6aac-49ee-a597-f782db0fef5f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<printWhenExpression><![CDATA[$F{codproy}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero de R.U.C.:]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="6">
+			<printWhenExpression><![CDATA[$F{estadoguia}.equals("GE") || $F{estadoguia}.equals("DEVCOMP")]]></printWhenExpression>
 			<subreport>
 				<reportElement x="28" y="1" width="550" height="5" uuid="aaa44115-5fd3-4660-aa5f-a07258a14141">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
@@ -600,6 +554,7 @@ where gh.guia_id = $P{codguia}]]>
 	<pageFooter>
 		<band height="110">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<printWhenExpression><![CDATA[$F{estadoguia}.equals("GE") || $F{estadoguia}.equals("DEVCOMP")]]></printWhenExpression>
 			<rectangle>
 				<reportElement mode="Transparent" x="29" y="10" width="555" height="35" uuid="942b20c1-af34-43ed-aed3-6cadf57a05d1">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>

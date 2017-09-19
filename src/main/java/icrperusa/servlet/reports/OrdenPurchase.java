@@ -21,6 +21,7 @@ import icrperusa.utils.RoundPlaces;
 
 /**
  * Servlet implementation class PurchaseGuide
+ * @Juan Julcapari
  */
 public class OrdenPurchase extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -53,21 +54,37 @@ public class OrdenPurchase extends HttpServlet {
         System.out.println("SUB TOTAL FOR " + subtotal);
         Double pigv = new BLPurchase(ruc).getIGV(purchaseid);
 
-        System.out.println("ig " + pigv);
-        Double igv = RoundPlaces.toDouble(((subtotal * pigv)/100), 4);
-        System.out.println("igv " + igv);
-        Double igv2dec = RoundPlaces.toDouble(igv);
-        Double subtotal2dec = RoundPlaces.toDouble(subtotal);
+        Double subtotal2dec = RoundPlaces.toDouble(subtotal); // set subtotal
         System.out.println("subtotal" + subtotal2dec);
+        // calc discount
+        Double discount = new BLPurchase(ruc).getDiscountGlobal(purchaseid);
+        if (discount > 0) {
+            System.out.println("DISCOUNT PERCENT " + discount);
+            discount = RoundPlaces.toDouble(((subtotal * discount) / 100), 4);
+            System.out.println("DISCOUNT CALCULATE " + discount);
+            subtotal2dec -= discount;
+            System.out.println("SUBTOTAL - DISCOUNT " + subtotal);
+        }
+        // endblock
+
+        // calc igv
+        System.out.println("ig " + pigv); // show percent igv
+        Double igv = RoundPlaces.toDouble(((subtotal2dec * pigv)/100), 4); // calc amount igv
+        System.out.println("igv " + igv); // show anount igv
+        // endblock
+
+        Double igv2dec = RoundPlaces.toDouble(igv); // set igv
+
+
         Double total = igv2dec + subtotal2dec;
         Double t = RoundPlaces.toDouble(total);
-        System.out.println("subtotal"+ t);
+        System.out.println("TOTAL"+ t);
 
         String texttot = new NumberToChar().numero_a_letras(t);
 
         parameter.put("parcompra_id", purchaseid);
-        parameter.put("parsubtotal",RoundPlaces.toDouble(subtotal, 2));
-        parameter.put("parigv", igv2dec);
+        parameter.put("parsubtotal", RoundPlaces.toDouble(subtotal, 2));
+        parameter.put("parigv", igv);
         parameter.put("pardescuento", 0);
         parameter.put("partotal", t);
         parameter.put("parnumigv", pigv);

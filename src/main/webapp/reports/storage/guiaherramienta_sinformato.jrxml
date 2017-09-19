@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2017-07-26T09:58:59 -->
+<!-- 2017-08-08T09:41:50 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guiaherramienta_sinformato" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0b375a95-69c9-4730-9f23-9a730ed6de49">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cn"/>
@@ -24,66 +24,11 @@
 	</parameter>
 	<parameter name="RUC" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select 
-	CASE to_char(gh.fechsalida, 'MM')
-		WHEN '01'  THEN 'ENERO'
-		WHEN '02' THEN 'FEBRERO'
-		WHEN '03' THEN 'MARZO'
-		WHEN '04' THEN 'ABRIL'
-		WHEN '05' THEN 'MAYO'
-		WHEN '06' THEN 'JUNIO'
-		WHEN '07' THEN 'JULIO'
-		WHEN '08' THEN 'AGOSTO'
-		WHEN '09' THEN 'SEPTIEMBRE'
-		WHEN '10' THEN 'OCTUBRE'
-		WHEN '11' THEN 'NOVIEMBRE'
-		WHEN '12' THEN 'DICIEMBRE'
-		END as salidmonth,
-gh.guia_id as codguia,
-gh.motivo as motivoguia,
-gh.proyecto_id as codproy,
-to_char(gh.fechsalida, 'dd') as saliday,
-to_char(gh.fechsalida,'YY') as salidyear,
-gh.comentario as comentguia,
-trans.traruc_id as transpruc,
-trans.tranom as transname,
-tr.nropla_id as placa,
-tr.marca as marcatransp,
-cond.coninscription as incripcond,
-cond.conlic as numlicencia,
-proy.ruccliente_id as ruccliente,
-proy.nompro as nameproy,
-proy.direccion as direcproy,
-cli.razonsocial as rsocialcliente,
-emp.lastname as apegenerado,
-emp.firstname as namegenerado,
-dist.distnom as distritoproy,
-prov.pronom as provinciaproy,
-dep.depnom as departproy
-from almacen_guiaherramienta gh 
-inner join home_transportista trans 
-on gh.traruc_id = trans.traruc_id 
-inner join home_transporte tr 
-on gh.nropla_id = tr.nropla_id 
-inner join home_conductore cond 
-on gh.condni_id = cond.condni_id 
-inner join ventas_proyecto proy 
-on gh.proyecto_id = proy.proyecto_id 
-inner join home_cliente cli 
-on proy.ruccliente_id = cli.ruccliente_id 
-inner join home_employee emp 
-on emp.empdni_id=gh.empdni_id
-inner join home_distrito dist 
-on dist.distrito_id = proy.distrito_id
-inner join home_provincia prov
-on prov.provincia_id = proy.provincia_id
-inner join home_departamento dep
-on dep.departamento_id = proy.departamento_id
-where gh.guia_id = $P{codguia}]]>
+		<![CDATA[select * from sp_guiaherra($P{codguia})]]>
 	</queryString>
 	<field name="salidmonth" class="java.lang.String"/>
-	<field name="codguia" class="java.lang.String"/>
 	<field name="motivoguia" class="java.lang.String"/>
+	<field name="codguia" class="java.lang.String"/>
 	<field name="codproy" class="java.lang.String"/>
 	<field name="saliday" class="java.lang.String"/>
 	<field name="salidyear" class="java.lang.String"/>
@@ -94,12 +39,12 @@ where gh.guia_id = $P{codguia}]]>
 	<field name="marcatransp" class="java.lang.String"/>
 	<field name="incripcond" class="java.lang.String"/>
 	<field name="numlicencia" class="java.lang.String"/>
-	<field name="ruccliente" class="java.lang.String"/>
-	<field name="nameproy" class="java.lang.String"/>
-	<field name="direcproy" class="java.lang.String"/>
-	<field name="rsocialcliente" class="java.lang.String"/>
 	<field name="apegenerado" class="java.lang.String"/>
 	<field name="namegenerado" class="java.lang.String"/>
+	<field name="nameproy" class="java.lang.String"/>
+	<field name="ruccliente" class="java.lang.String"/>
+	<field name="direcproy" class="java.lang.String"/>
+	<field name="rsocialcliente" class="java.lang.String"/>
 	<field name="distritoproy" class="java.lang.String"/>
 	<field name="provinciaproy" class="java.lang.String"/>
 	<field name="departproy" class="java.lang.String"/>
@@ -127,18 +72,20 @@ where gh.guia_id = $P{codguia}]]>
 				<reportElement x="324" y="180" width="244" height="25" uuid="c069d502-95fd-4076-84f9-4ebd44ca7448">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<printWhenExpression><![CDATA[$F{codproy}!=null]]></printWhenExpression>
 				</reportElement>
 				<textElement>
 					<font fontName="Arial" size="9"/>
 					<paragraph firstLineIndent="40"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{direcproy}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{direcproy}+" - "+$F{distritoproy}+" - "+$F{provinciaproy}+" - "+$F{departproy}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="131" y="265" width="100" height="11" uuid="53e35f42-c568-4088-afcf-aa8a69d28e42">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<printWhenExpression><![CDATA[$F{codproy}!=null]]></printWhenExpression>
 				</reportElement>
 				<textElement>
 					<font fontName="Arial" size="9"/>
@@ -158,6 +105,7 @@ where gh.guia_id = $P{codguia}]]>
 			<textField>
 				<reportElement x="49" y="236" width="254" height="20" uuid="61631da8-e422-46a7-adb7-36205ab2be2e">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<printWhenExpression><![CDATA[$F{codproy}!=null]]></printWhenExpression>
 				</reportElement>
 				<textElement>
 					<font fontName="Arial" size="9"/>
@@ -236,7 +184,7 @@ where gh.guia_id = $P{codguia}]]>
 				<textElement>
 					<font fontName="Arial" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{salidyear} + $P{cont}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{salidyear}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
@@ -270,6 +218,7 @@ where gh.guia_id = $P{codguia}]]>
 			<textField>
 				<reportElement x="178" y="10" width="332" height="30" uuid="89294901-acd5-4450-91e5-4f98b679fee2">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<printWhenExpression><![CDATA[$F{codproy}!=null]]></printWhenExpression>
 				</reportElement>
 				<textElement>
 					<font fontName="Arial" size="11"/>
